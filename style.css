@@ -6,9 +6,10 @@
 
 .sidebar {
     background-color: rgb(206, 203, 203);
-    width: 250px;
+    /* width: 250px; */
     font-family: "Fira Sans", sans-serif;
     height: 100vh;
+    transition: transform 0.3s ease-in;
 }
 
 .sidebar nav {
@@ -215,4 +216,30 @@
 .twenty-five {
     width: 75px;
     background-color: hotpink;
+}
+
+.sidebarGo {
+    transform: translate(-443px, 0px);
+    position: absolute;
+}
+
+.hamburger {
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+}
+
+.cross {
+    margin-left: 135px;
+}
+
+
+/* Responsive Design */
+
+@media (max-width:1215px) {
+    /* .sidebar {
+        transform: translate(-443px, 0px);
+        position: absolute;
+    } */
 }
