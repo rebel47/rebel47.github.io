@@ -260,4 +260,19 @@
     .devPic {
         display: none;
     }
+    .blogContainer,
+    .introContainer,
+    .contactform {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    .contactform form div input {
+        width: auto;
+    }
+    #emailHelp {
+        font-size: 8px;
+    }
+    #clientenquiry {
+        width: auto;
+    }
 }
