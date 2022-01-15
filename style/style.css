@@ -178,6 +178,49 @@
 
 /* About Me */
 
+.skills {
+    text-align: right;
+    /* Right-align text */
+    padding-top: 10px;
+    /* Add top padding */
+    padding-bottom: 10px;
+    /* Add bottom padding */
+    color: white;
+    /* White text color */
+}
+
+.html {
+    width: 90%;
+    background-color: #04AA6D;
+}
+
+
+/* Green */
+
+.python {
+    width: 90%;
+    background-color: #2196F3;
+}
+
+
+/* Blue */
+
+.js {
+    width: 80%;
+    background-color: #f44336;
+}
+
+
+/* Red */
+
+.css {
+    width: 60%;
+    background-color: #808080;
+}
+
+
+/* Dark Grey */
+
 .introContainer {
     margin: 0 88px;
     margin-top: 80px;
@@ -198,7 +241,8 @@
     font-family: 'Source Code Pro', monospace;
 }
 
-.skillItem {
+
+/* .skillItem {
     display: flex;
     align-items: center;
     margin-top: 10px;
@@ -227,7 +271,7 @@
 .twenty-five {
     width: 75px;
     background-color: hotpink;
-}
+} */
 
 .sidebarGo {
     transform: translate(-443px, 0px);
