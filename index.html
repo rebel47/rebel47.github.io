@@ -5,97 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Ayaz Alam - Data Scientist</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <style>
-        .cert-box:hover {
-            transform: translateY(-5px);
-            transition: transform 0.3s ease-in-out;
+        .nav-link:hover {
+            text-decoration: underline;
         }
-        .carousel img {
-            height: 400px;
-            object-fit: cover;
-            width: 100%;
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
-    <header class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto text-center">
-            <h1 class="text-5xl font-bold">Mohammad Ayaz Alam</h1>
-            <p class="text-2xl mt-4">Data Scientist</p>
+
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto p-6 flex justify-between items-center">
+            <div class="text-xl font-semibold">Mohammad Ayaz Alam</div>
+            <nav class="space-x-4">
+                <a href="#about" class="nav-link text-gray-800">About</a>
+                <a href="#skills" class="nav-link text-gray-800">Skills</a>
+                <a href="#experience" class="nav-link text-gray-800">Experience</a>
+                <a href="#projects" class="nav-link text-gray-800">Projects</a>
+                <a href="#certifications" class="nav-link text-gray-800">Certifications</a>
+                <a href="#education" class="nav-link text-gray-800">Education</a>
+                <a href="#contact" class="nav-link text-gray-800">Contact</a>
+            </nav>
         </div>
     </header>
-    <main class="container mx-auto p-6 max-w-4xl">
-        <section class="my-16 bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-3xl font-semibold text-gray-800">About Me</h2>
+
+    <main class="container mx-auto p-6">
+        <section id="about" class="my-16 text-center">
+            <h2 class="text-4xl font-semibold text-gray-800">About Me</h2>
             <p class="mt-4 text-lg">Hi, I'm Mohammad Ayaz Alam, a passionate Data Scientist with expertise in Python, Machine Learning, AI, and web development. I have experience in business development, web development, and a variety of data-driven projects.</p>
         </section>
         
-        <section class="my-16 bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-3xl font-semibold text-gray-800">Skills</h2>
-            <ul class="list-disc list-inside mt-4 text-lg text-left mx-auto max-w-2xl">
-                <li>Python: Pandas, Numpy, Matplotlib, Seaborn, PyTorch</li>
-                <li>ML and AI: LLM, LangChain, Fine Tuning, NLP, Generative AI, Prompt Engineering</li>
-                <li>Databases: SQL, PostgreSQL</li>
-                <li>Web Frameworks: Django, Flask, FastAPI</li>
-                <li>Version Control: Git/GitHub</li>
-                <li>Microsoft Office: MS Word, MS PowerPoint, MS Excel</li>
-                <li>BI Tools: Microsoft Power BI, Tableau</li>
-                <li>Web Technologies: HTML, CSS, JavaScript, Bootstrap, Tailwind</li>
-                <li>Operating Systems: Windows, Linux, Mac</li>
-            </ul>
-        </section>
-        
-        <section class="my-16 bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-3xl font-semibold text-gray-800">Experience</h2>
-            <div class="mt-8 text-left mx-auto max-w-2xl">
-                <h3 class="text-2xl font-bold">Shape AI, Business Development Intern | Delhi, India (Mar 2021 - Oct 2021)</h3>
-                <ul class="list-disc list-inside mt-2 text-lg">
-                    <li>Conducted comprehensive data analysis provided by the sales team using Microsoft Power BI, resulting in actionable insights to drive business decisions.</li>
-                    <li>Designed and created visually appealing data visualizations to effectively communicate key metrics and trends across the organization.</li>
-                    <li>Formulated and implemented a demand-centric course structure for the winter training program, resulting in increased engagement and enrollment.</li>
-                    <li>Contributed to a marketing project aimed at promoting the organization’s courses, leveraging innovative strategies to reach the target audience.</li>
-                </ul>
-                
-                <h3 class="text-2xl font-bold mt-8">Hoda Engineering Works, Web Developer Intern | Delhi, India (Sep 2020 - Jan 2021)</h3>
-                <ul class="list-disc list-inside mt-2 text-lg">
-                    <li>Developed and managed websites using HTML, CSS, Bootstrap, and JavaScript to ensure high-quality and responsive user interfaces.</li>
-                    <li>Performed rigorous testing to ensure compatibility of web pages across various browsers and devices, enhancing user experience and accessibility.</li>
-                    <li>Enhanced website performance and functionality by optimizing JavaScript and CSS code, leading to faster load times and improved user interactions.</li>
-                    <li>Continuously expanded technical expertise by exploring and mastering a diverse range of web technologies, design tools, and programming best practices.</li>
-                </ul>
+        <section id="skills" class="my-16">
+            <h2 class="text-4xl font-semibold text-gray-800 text-center">Skills</h2>
+            <div class="grid grid-cols-2 gap-4 mt-8">
+                <div class="card bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Programming Languages</h3>
+                    <p class="mt-2">Python, JavaScript</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Web Frameworks</h3>
+                    <p class="mt-2">Django, Flask, FastAPI</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Machine Learning & AI</h3>
+                    <p class="mt-2">LLM, LangChain, Fine Tuning, NLP, Generative AI, Prompt Engineering</p>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Data Analysis & Visualization</h3>
+                    <p class="mt-2">Pandas, Numpy, Matplotlib, Seaborn, Microsoft Power BI, Tableau</p>
+                </div>
             </div>
         </section>
         
-        <section class="my-16 bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-3xl font-semibold text-gray-800">Projects</h2>
-            <div class="carousel mt-8 text-left mx-auto max-w-2xl">
-                <div>
+        <section id="experience" class="my-16">
+            <h2 class="text-4xl font-semibold text-gray-800 text-center">Experience</h2>
+            <div class="mt-8">
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-2xl font-bold">Shape AI, Business Development Intern</h3>
+                    <p class="text-gray-600">Delhi, India (Mar 2021 - Oct 2021)</p>
+                    <ul class="list-disc list-inside mt-2 text-lg">
+                        <li>Conducted comprehensive data analysis provided by the sales team using Microsoft Power BI, resulting in actionable insights to drive business decisions.</li>
+                        <li>Designed and created visually appealing data visualizations to effectively communicate key metrics and trends across the organization.</li>
+                        <li>Formulated and implemented a demand-centric course structure for the winter training program, resulting in increased engagement and enrollment.</li>
+                        <li>Contributed to a marketing project aimed at promoting the organization’s courses, leveraging innovative strategies to reach the target audience.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Hoda Engineering Works, Web Developer Intern</h3>
+                    <p class="text-gray-600">Delhi, India (Sep 2020 - Jan 2021)</p>
+                    <ul class="list-disc list-inside mt-2 text-lg">
+                        <li>Developed and managed websites using HTML, CSS, Bootstrap, and JavaScript to ensure high-quality and responsive user interfaces.</li>
+                        <li>Performed rigorous testing to ensure compatibility of web pages across various browsers and devices, enhancing user experience and accessibility.</li>
+                        <li>Enhanced website performance and functionality by optimizing JavaScript and CSS code, leading to faster load times and improved user interactions.</li>
+                        <li>Continuously expanded technical expertise by exploring and mastering a diverse range of web technologies, design tools, and programming best practices.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="my-16">
+            <h2 class="text-4xl font-semibold text-gray-800 text-center">Projects</h2>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">AI Story Generator from Image</h3>
                     <img src="image/story.png" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
                     <p class="text-lg mt-4">Developed a web app using Python and Streamlit that converts images into short stories. Utilized Google Generative AI for image-to-text and story generation, and gTTS for text-to-speech conversion.</p>
                     <p class="text-lg mt-2">URL: <a href="https://scenescripter.streamlit.app/" target="_blank" class="text-blue-500">scenescripter.streamlit.app</a></p>
                 </div>
-                <div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Gemini ATS Resume Improvement Tool</h3>
                     <img src="image/ats.png" alt="Gemini ATS Resume Improvement Tool" class="w-full h-auto mt-4 rounded-lg shadow-md">
                     <p class="text-lg mt-4">Developed an AI-powered application to automate resume evaluation and generate cover letters based on job descriptions. Built using Streamlit, PyPDF2, and the Gemini API. Allows users to upload resumes and input job descriptions for tailored feedback and cover letter generation.</p>
                     <p class="text-lg mt-2">URL: <a href="https://atswithcoverletter.streamlit.app/" target="_blank" class="text-blue-500">atswithcoverletter.streamlit.app</a></p>
                 </div>
-                <div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Whatsapp Chat Analyzer</h3>
                     <img src="image/whatsapp.png" alt="Whatsapp Chat Analyzer" class="w-full h-auto mt-4 rounded-lg shadow-md">
                     <p class="text-lg mt-4">Developed a web app that analyzes WhatsApp chats and generates statistics and graphs using Streamlit, matplotlib, and a custom list of stop words for Hinglish. Implemented features such as word clouds and emoji counts to provide insights and patterns from WhatsApp chats.</p>
                     <p class="text-lg mt-2">URL: <a href="https://analyzewhatsappchat.streamlit.app/" target="_blank" class="text-blue-500">analyzewhatsappchat.streamlit.app</a></p>
                 </div>
-                <div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Health Management App (Food Locha)</h3>
                     <img src="image/health.png" alt="Health Management App" class="w-full h-auto mt-4 rounded-lg shadow-md">
                     <p class="text-lg mt-4">Developed a health management application that analyzes meal images to provide detailed information about calories and nutritional content. Built using Streamlit and the Google Gemini Pro Vision API. Allows users to upload images of their meals and receive calorie details and nutritional breakdowns.</p>
                     <p class="text-lg mt-2">URL: <a href="https://healthmanagementapp.streamlit.app/" target="_blank" class="text-blue-500">healthmanagementapp.streamlit.app</a></p>
                 </div>
-                <div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Cryptocurrency Data Analysis</h3>
                     <img src="image/crypto.png" alt="Cryptocurrency Data Analysis" class="w-full h-auto mt-4 rounded-lg shadow-md">
                     <p class="text-lg mt-4">Conducted data analysis of different cryptocurrencies from 2013 to 2021 using Microsoft Power BI.</p>
@@ -104,52 +124,52 @@
             </div>
         </section>
 
-        <section class="my-16 bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-3xl font-semibold text-gray-800">Certifications</h2>
+        <section id="certifications" class="my-16">
+            <h2 class="text-4xl font-semibold text-gray-800 text-center">Certifications</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">NLP Foundations</h3>
                     <p class="text-lg mt-2">Completed the NLP Foundations program on 20th February 2023 from iNeuron.</p>
                     <p class="text-lg mt-2">Certificate: <a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank" class="text-blue-500">View Certificate</a></p>
                 </div>
                 
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Responsive Web Design</h3>
                     <p class="text-lg mt-2">Successfully completed the course on 1st April 2020 from freeCodeCamp.</p>
                     <p class="text-lg mt-2">Certificate: <a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank" class="text-blue-500">View Certificate</a></p>
                 </div>
 
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Data Analysis with Python</h3>
                     <p class="text-lg mt-2">Successfully completed the course on 7th March 2022 from freeCodeCamp.</p>
                     <p class="text-lg mt-2">Certificate: <a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank" class="text-blue-500">View Certificate</a></p>
                 </div>
 
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Python (Basic)</h3>
                     <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from HackerRank.</p>
                     <p class="text-lg mt-2">Certificate: <a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank" class="text-blue-500">View Certificate</a></p>
                 </div>
 
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">HTML</h3>
                     <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
                     <p class="text-lg mt-2">Certificate: <a href="https://www.sololearn.com/Certificate/CT-QDXM5O98/png" target="_blank" class="text-blue-500">View Certificate</a></p>
                 </div>
 
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">JavaScript (Intermediate)</h3>
                     <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
                     <p class="text-lg mt-2">Certificate: <a href="https://www.sololearn.com/Certificate/CT-STN25BSP/png" target="_blank" class="text-blue-500">View Certificate</a></p>
                 </div>
 
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Python 3</h3>
                     <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
                     <p class="text-lg mt-2">Certificate: <a href="/mnt/data/cert-CT-PO6LRWHK.pdf" target="_blank" class="text-blue-500">View Certificate</a></p>
                 </div>
 
-                <div class="cert-box p-6 bg-white rounded-lg shadow-md hover:shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Python for Data Science</h3>
                     <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
                     <p class="text-lg mt-2">Certificate: <a href="/mnt/data/cert-CT-IH6MD2WI.pdf" target="_blank" class="text-blue-500">View Certificate</a></p>
@@ -157,19 +177,24 @@
             </div>
         </section>
         
-        <section class="my-16 bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-3xl font-semibold text-gray-800">Education</h2>
-            <div class="mt-8 text-left mx-auto max-w-2xl">
-                <h3 class="text-2xl font-bold">FAU Erlangen, MSc. Data Science (2022 - Present)</h3>
-                <p class="text-lg">Courses: Business Analytics, ML Time Series, ML in Finance, Mathematics of Learning, Linked Data</p>
-                
-                <h3 class="text-2xl font-bold mt-8">GGSIPU, Bachelors of Computer Applications (2018 - 2021)</h3>
-                <p class="text-lg">Courses: OOPs, Network Security, DBMS, Web Technologies, Data Warehousing and Data Mining</p>
+        <section id="education" class="my-16">
+            <h2 class="text-4xl font-semibold text-gray-800 text-center">Education</h2>
+            <div class="mt-8">
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-2xl font-bold">FAU Erlangen, MSc. Data Science</h3>
+                    <p class="text-gray-600">(2022 - Present)</p>
+                    <p class="text-lg mt-2">Courses: Business Analytics, ML Time Series, ML in Finance, Mathematics of Learning, Linked Data</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">GGSIPU, Bachelors of Computer Applications</h3>
+                    <p class="text-gray-600">(2018 - 2021)</p>
+                    <p class="text-lg mt-2">Courses: OOPs, Network Security, DBMS, Web Technologies, Data Warehousing and Data Mining</p>
+                </div>
             </div>
         </section>
         
-        <section class="my-16 bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-3xl font-semibold text-gray-800">Contact Information</h2>
+        <section id="contact" class="my-16 text-center">
+            <h2 class="text-4xl font-semibold text-gray-800">Contact Information</h2>
             <div class="mt-8 text-lg">
                 <p>GitHub: <a href="https://github.com/rebel47" target="_blank" class="text-blue-500">github.com/rebel47</a></p>
                 <p>LinkedIn: <a href="https://www.linkedin.com/in/ayaz-alam" target="_blank" class="text-blue-500">linkedin.com/in/ayaz-alam</a></p>
@@ -177,18 +202,9 @@
         </section>
     </main>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.carousel').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 1,
-                adaptiveHeight: true
-            });
-        });
-    </script>
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
