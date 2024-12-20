@@ -37,7 +37,7 @@
     <main class="container mx-auto p-6">
         <section id="about" class="my-16 text-center">
             <h2 class="text-4xl font-semibold text-gray-800">About Me</h2>
-            <p class="mt-4 text-lg">Hi, I'm Mohammad Ayaz Alam, a passionate Data Scientist with expertise in Python, Machine Learning, AI, and web development. I have experience in business development, web development, and a variety of data-driven projects.</p>
+            <p class="mt-4 text-lg">Hi, I'm Mohammad Ayaz Alam, a Data Scientist with a passion for Natural Language Processing (NLP) and cutting-edge AI technologies. I have a strong background in machine learning, web development, and business analytics, and I am currently working as a Machine Learning Researcher.</p>
         </section>
         
         <section id="skills" class="my-16">
@@ -99,23 +99,44 @@
         <section id="projects" class="my-16">
             <h2 class="text-4xl font-semibold text-gray-800 text-center">Projects</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Lina's Audio to Text Transcription App -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">RAG-Powered Q&A for Neural Dynamics Course with LlamaIndex</h3>
-                    <img src="image/rag.jpeg" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a RAG application to analyze and interact with lecture slides from the 'Neural Dynamics' course, utilizing the Llama-2-7b-chat-hf model from Hugging Face to extract key insights, summarize complex concepts, and enable an interactive QA interface, enhancing the learning experience and understanding of advanced neural dynamics principles through interactive analysis.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" target="_blank" class="text-blue-500">GitHub Repository - RAG Application</a></p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Emotion Detection System</h3>
-                    <img src="image/emotion.jpg" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a CNN-based system to classify facial expressions into seven emotions using TensorFlow and Keras, achieving 90% validation accuracy, with image preprocessing via OpenCV and data augmentation techniques.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Emotion-Detection-System" target="_blank" class="text-blue-500">GitHub Repository-Emotion Detection System</a></p>
+                    <h3 class="text-2xl font-bold">Lina's Audio to Text Transcription App</h3>
+                    <img src="image/audio.png" alt="Audio to Text Transcription" class="w-full h-auto mt-4 rounded-lg shadow-md">
+                    <p class="text-lg mt-4">Built this Streamlit-based app to convert audio files into text, inspired by my friend Lina. The app supports various audio file formats, processes long files by splitting them into smaller chunks, and automatically converts them into a compatible WAV format. It supports multiple languages, including English, Spanish, French, German, and more.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://lina-speech-to-text.streamlit.app/" target="_blank" class="text-blue-500">lina-speech-to-text.streamlit.app</a></p>
                 </div>
                 
+                <!-- Persona Chatbot -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Persona Chatbot</h3>
+                    <img src="image/chatbot.png" alt="Persona Chatbot" class="w-full h-auto mt-4 rounded-lg shadow-md">
+                    <p class="text-lg mt-4">Created a chatbot that emulates the conversational style of a selected person based on their WhatsApp chat history. Users upload a WhatsApp chat log, choose a persona, and interact with the bot that mimics the selected individual’s communication style.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/persona-chatbot" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                </div>
+                
+                <!-- Improved Food Locha Project -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Health Management App (Food Locha)</h3>
+                    <img src="image/health.png" alt="Health Management App" class="w-full h-auto mt-4 rounded-lg shadow-md">
+                    <p class="text-lg mt-4">Developed a health management application that uses advanced machine learning techniques to analyze meal images and provide detailed information about calories and nutritional content. The app utilizes Google Gemini Pro Vision API to extract visual data, and provides real-time analysis, including calories, macro/micro-nutrients, and nutritional breakdown for diverse meal types.</p>
+                    <p class="text-lg mt-2">Incorporates multiple language support for users, making it accessible globally. The app also allows users to track their diet over time, offering personalized suggestions for maintaining a balanced diet based on goals like weight loss, muscle gain, or general health improvement.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://healthmanagementapp.streamlit.app/" target="_blank" class="text-blue-500">healthmanagementapp.streamlit.app</a></p>
+                </div>
+                <!-- Additional Projects -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">AI Story Generator from Image</h3>
                     <img src="image/story.png" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a web app using Python and Streamlit that converts images into short stories. Utilized Google Generative AI for image-to-text and story generation, and gTTS for text-to-speech conversion.</p>
+                    <p class="text-lg mt-4">AI Story Generator from Image
+                        This Streamlit app uses AI to generate stories based on images. Users upload an image, and the app extracts detailed descriptions of the content using Google Gemini API. Then, it generates a short story based on the extracted description and converts the story into speech using Google Text-to-Speech (gTTS).<br>
+                        
+                        Key Features:<br>
+                        
+                        1. Image to Text: Converts the content of an uploaded image into a concise description using Google Gemini API.<br>
+                        2. Story Generation: Generates a short, realistic story based on the description of the image.<br>
+                        3. Text-to-Speech: Converts the generated story into an audio file and plays it back to the user.<br>
+                        4. Interactive: Users can upload an image, get a story, and listen to it in one seamless flow.<br>
+                        5. The app provides a fun and engaging way to create stories from images, making it ideal for creativity and entertainment purposes.</p>
                     <p class="text-lg mt-2">URL: <a href="https://scenescripter.streamlit.app/" target="_blank" class="text-blue-500">scenescripter.streamlit.app</a></p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md">
@@ -130,24 +151,48 @@
                     <p class="text-lg mt-4">Developed a web app that analyzes WhatsApp chats and generates statistics and graphs using Streamlit, matplotlib, and a custom list of stop words for Hinglish. Implemented features such as word clouds and emoji counts to provide insights and patterns from WhatsApp chats.</p>
                     <p class="text-lg mt-2">URL: <a href="https://analyzewhatsappchat.streamlit.app/" target="_blank" class="text-blue-500">analyzewhatsappchat.streamlit.app</a></p>
                 </div>
+                <!-- Existing Projects -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Health Management App (Food Locha)</h3>
-                    <img src="image/health.png" alt="Health Management App" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a health management application that analyzes meal images to provide detailed information about calories and nutritional content. Built using Streamlit and the Google Gemini Pro Vision API. Allows users to upload images of their meals and receive calorie details and nutritional breakdowns.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://healthmanagementapp.streamlit.app/" target="_blank" class="text-blue-500">healthmanagementapp.streamlit.app</a></p>
+                    <h3 class="text-2xl font-bold">RAG-Powered Q&A for Neural Dynamics Course with LlamaIndex</h3>
+                    <img src="image/rag.jpeg" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
+                    <p class="text-lg mt-4">Developed a RAG application to analyze and interact with lecture slides from the 'Neural Dynamics' course, utilizing the Llama-2-7b-chat-hf model from Hugging Face to extract key insights, summarize complex concepts, and enable an interactive QA interface, enhancing the learning experience and understanding of advanced neural dynamics principles through interactive analysis.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" target="_blank" class="text-blue-500">GitHub Repository - RAG Application</a></p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Cryptocurrency Data Analysis</h3>
-                    <img src="image/crypto.png" alt="Cryptocurrency Data Analysis" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Conducted data analysis of different cryptocurrencies from 2013 to 2021 using Microsoft Power BI.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Crypto-Data-Analysis-using-PowerBI" target="_blank" class="text-blue-500">github.com/rebel47/Crypto-Data-Analysis-using-PowerBI</a></p>
+                    <h3 class="text-2xl font-bold">Emotion Detection System</h3>
+                    <img src="image/emotion.jpg" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
+                    <p class="text-lg mt-4">Developed a CNN-based system to classify facial expressions into seven emotions using TensorFlow and Keras, achieving 90% validation accuracy, with image preprocessing via OpenCV and data augmentation techniques.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Emotion-Detection-System" target="_blank" class="text-blue-500">GitHub Repository-Emotion Detection System</a></p>
                 </div>
+                
+                
+                
+                
             </div>
         </section>
+        
 
         <section id="certifications" class="my-16">
             <h2 class="text-4xl font-semibold text-gray-800 text-center">Certifications</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- New Certifications -->
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h3 class="text-xl font-bold">Full Stack Data Analytics</h3>
+    <p class="text-lg mt-2">Completed the Full Stack Data Analytics program on 13th August 2024 from iNeuron.ai</p>
+    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank">View Certification</a></p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h3 class="text-xl font-bold">Deep Learning Foundation</h3>
+    <p class="text-lg mt-2">Completed the Deep Learning Foundation course on 8th September 2024 from iNeuron.</p>
+    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank">View Certification</a></p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h3 class="text-xl font-bold">Intro to Machine Learning</h3>
+    <p class="text-lg mt-2">Completed the Intro to Machine Learning course on 11th November 2024 from Kaggle</p>
+    <p class="text-blue-500 mt-2"><a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank">View Certification</a></p>
+</div>
+
+
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">NLP Foundations</h3>
                     <p class="text-lg mt-2">Completed the NLP Foundations program on 20th February 2023 from iNeuron.</p>
