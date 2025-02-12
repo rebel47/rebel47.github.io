@@ -21,22 +21,7 @@
 </head>
 <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
-    <!-- Dark Mode Toggle -->
-    <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-700 z-50">
-        <span id="theme-icon">🌙</span>
-    </button>
-
-    <!-- Hero Section -->
-    <section class="bg-gray-900 text-white py-20 dark:bg-gray-800">
-        <div class="container mx-auto text-center" data-aos="fade-up">
-            <img src="image/selfai.jpg" alt="Mohammad Ayaz Alam" class="w-32 h-32 mx-auto rounded-full mb-6">
-            <h1 class="text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
-            <p class="mt-4 text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
-            <a href="#projects" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">View My Projects</a>
-        </div>
-    </section>
-
-    <header class="bg-white shadow-md dark:bg-gray-800">
+     <header class="bg-white shadow-md dark:bg-gray-800">
         <div class="container mx-auto p-6 flex justify-between items-center">
             <div class="text-xl font-semibold">Mohammad Ayaz Alam</div>
             <nav class="space-x-4">
@@ -50,6 +35,18 @@
             </nav>
         </div>
     </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-900 text-white py-20 dark:bg-gray-800">
+        <div class="container mx-auto text-center" data-aos="fade-up">
+            <img src="image/selfai.jpg" alt="Mohammad Ayaz Alam" class="w-32 h-32 mx-auto rounded-full mb-6">
+            <h1 class="text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
+            <p class="mt-4 text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
+            <a href="#projects" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">View My Projects</a>
+        </div>
+    </section>
+
+   
 
     <main class="container mx-auto p-6">
         <!-- About Section -->
@@ -311,7 +308,7 @@
             <div class="mt-8 text-lg">
                 <p>GitHub: <a href="https://github.com/rebel47" target="_blank" class="text-blue-500">github.com/rebel47</a></p>
                 <p>LinkedIn: <a href="https://www.linkedin.com/in/ayaz-alam" target="_blank" class="text-blue-500">linkedin.com/in/ayaz-alam</a></p>
-                <p>Email: <a href="mailto:alam.ayaz476@gmail.com" class="text-blue-500">alam.ayaz476@gmail.com</a></p>
+                <p>Email: <a href="mailto:alam.ayaz47@gmail.com" class="text-blue-500">alam.ayaz476@gmail.com</a></p>
             </div>
         </section>
     </main>
@@ -320,34 +317,6 @@
     <footer class="bg-gray-800 text-white py-6 text-center dark:bg-gray-900">
         <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
     </footer>
- <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS (Animate On Scroll)
-        AOS.init();
 
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
-
-        // Check for saved theme in localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            html.classList.add('dark');
-            themeIcon.textContent = '☀️';
-        } else {
-            html.classList.remove('dark');
-            themeIcon.textContent = '🌙';
-        }
-
-        // Toggle Dark Mode
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            const isDarkMode = html.classList.contains('dark');
-            themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        });
-    </script>
 </body>
 </html>
