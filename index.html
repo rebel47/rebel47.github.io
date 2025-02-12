@@ -5,17 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio website of Mohammad Ayaz Alam - Data Scientist">
     <title>Mohammad Ayaz Alam - Data Scientist</title>
-    <script>
-        // Add dark mode support
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         .nav-link {
             transition: all 0.3s ease;
@@ -24,46 +15,63 @@
             text-decoration: underline;
             opacity: 0.8;
         }
-        .card {
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200">
-    <header class="bg-white shadow-md dark:bg-gray-800">
-    <div class="container mx-auto px-4 py-4 md:p-6 flex justify-between items-center">
-        <!-- Logo / Name -->
-        <div class="text-xl md:text-2xl font-semibold">Mohammad Ayaz Alam</div>
+<body class="bg-gray-100 text-gray-900">
+    <!-- Navbar -->
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <!-- Logo / Name -->
+                <div class="flex items-center">
+                    <div class="text-xl md:text-2xl font-semibold text-white">Mohammad Ayaz Alam</div>
+                </div>
 
-        <!-- Mobile Menu Button -->
-        <button id="menu-toggle" class="md:hidden text-gray-800 dark:text-gray-200 focus:outline-none">
-            ☰
-        </button>
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden">
+                    <button id="menu-toggle" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Hamburger Icon -->
+                        <svg id="menu-open-icon" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Close Icon -->
+                        <svg id="menu-close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
 
-        <!-- Navigation Links -->
-        <nav id="nav-menu" class="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
-            <a href="#about" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">About</a>
-            <a href="#skills" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Skills</a>
-            <a href="#experience" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Experience</a>
-            <a href="#projects" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Projects</a>
-            <a href="#certifications" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Certifications</a>
-            <a href="#education" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Education</a>
-            <a href="#contact" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Contact</a>
-        </nav>
-    </div>
-</header>
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-4">
+                    <a href="#about" class="nav-link text-white text-sm md:text-base px-3 py-2">About</a>
+                    <a href="#skills" class="nav-link text-white text-sm md:text-base px-3 py-2">Skills</a>
+                    <a href="#experience" class="nav-link text-white text-sm md:text-base px-3 py-2">Experience</a>
+                    <a href="#projects" class="nav-link text-white text-sm md:text-base px-3 py-2">Projects</a>
+                    <a href="#certifications" class="nav-link text-white text-sm md:text-base px-3 py-2">Certifications</a>
+                    <a href="#education" class="nav-link text-white text-sm md:text-base px-3 py-2">Education</a>
+                    <a href="#contact" class="nav-link text-white text-sm md:text-base px-3 py-2">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#experience" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#projects" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#certifications" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Certifications</a>
+                <a href="#education" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Education</a>
+                <a href="#contact" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="bg-gray-900 text-white py-16 md:py-20 dark:bg-gray-800">
-        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+    <section class="bg-gray-900 text-white py-16 md:py-20">
+        <div class="container mx-auto px-4 text-center">
             <img src="image/selfai.jpg" alt="Mohammad Ayaz Alam" class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full mb-6 object-cover">
             <h1 class="text-4xl md:text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
             <p class="mt-4 text-lg md:text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
@@ -71,10 +79,11 @@
         </div>
     </section>
 
+    <!-- Main Content -->
     <main class="container mx-auto px-4 py-6">
         <!-- About Section -->
-        <section id="about" class="my-16 text-center" data-aos="fade-up">
-            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200">About Me</h2>
+        <section id="about" class="my-16 text-center">
+            <h2 class="text-4xl font-semibold text-gray-800">About Me</h2>
             <p class="mt-4 text-lg">Hi, I'm Mohammad Ayaz Alam, a Data Scientist with a passion for Natural Language Processing (NLP) and cutting-edge AI technologies. I have a strong background in machine learning, web development, and business analytics, and I am currently working as a Machine Learning Researcher.</p>
         </section>
 
@@ -239,7 +248,7 @@
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-xl font-bold">AI Agents Fundamentals Course</h3>
                     <p class="text-lg mt-2">Completed the AI Agents Fundamentals Course from Huggingface.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://cdn-lfs-us-1.hf.co/repos/f2/34/f2344151f60f6027c436821dc61cf3f27a46435de57df8df50ad02b5acca7c07/2f2545adf0b5fab86ec61844a0750111752547173e4c31ab6baeb0422a45eb96?response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&Expires=1739401074&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczOTQwMTA3NH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zL2YyLzM0L2YyMzQ0MTUxZjYwZjYwMjdjNDM2ODIxZGM2MWNmM2YyN2E0NjQzNWRlNTdkZjhkZjUwYWQwMmI1YWNjYTdjMDcvMmYyNTQ1YWRmMGI1ZmFiODZlYzYxODQ0YTA3NTAxMTE3NTI1NDcxNzNlNGMzMWFiNmJhZWIwNDIyYTQ1ZWI5Nj9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=DqU3NcaU9xfWqd7CoeyCimw2x03BYclvV2Xtz6v2gdcLjUmb1LhZEHSESSUjquODXXSRxWyQ8sU8WaDLPHW61TBcFN%7EHsHxTmGP31LCu1q3cRC6XOmP2%7E2t0zNt6zAF1gpekR9Alorgjiq2knI0xY42kVcQPvBDIM4HM1LNDN6kbKAN1sICu43PhmhSBghBDV9kKBOKHY7TyCPQN%7EPvA0DJMsDVdFgzYDKSTRpUDUom4Dwl8BbUrakSrIkW8vypcCPitne%7EnzL4%7EwlMSc6mI3kacyobwYO5WvxqYWHtmI4c05Jq1I2PTDOdBE7c%7EOnVYZySPo5orCEqDlBY3KgJMBA__&Key-Pair-Id=K24J24Z295AEI9" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                    <p class="text-blue-500 mt-2"><a href="https://cdn-lfs-us-1.hf.co/repos/f2/34/f2344151f60f6027c436821dc61cf3f27a46435de57df8df50ad02b5acca7c07/2f2545adf0b5fab86ec61844a0750111752547173e4c31ab6baeb0422a45eb96?response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&Expires=1739406886&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczOTQwNjg4Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zL2YyLzM0L2YyMzQ0MTUxZjYwZjYwMjdjNDM2ODIxZGM2MWNmM2YyN2E0NjQzNWRlNTdkZjhkZjUwYWQwMmI1YWNjYTdjMDcvMmYyNTQ1YWRmMGI1ZmFiODZlYzYxODQ0YTA3NTAxMTE3NTI1NDcxNzNlNGMzMWFiNmJhZWIwNDIyYTQ1ZWI5Nj9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=Jy-vYU5bZzcsg0JuIOJPH1ODtcvQP1ZzpV5QKtH4yjF5JzhS86RKFpPaAYPUp2WDHwDpbEKTdCMQSDdLrNjgER2AVbahCRobO0XwzpW7EWDdF7w6hmXJejXOiRSbmZhiHLV%7EXXZcG6x8OviJXfW8qbWaSv%7EUdflrG8jqZvW9z3KYNNwygBd6Ln9qDxVlD5J0X1THTLflob2HsPmr3tJL34DrHV0BboWB3CD1XjEAZ82wUvNniYGLEwsE3aO%7Es8P7Ji50CkmysdHwdwSzYv7l02lqb7G3rdY3LwXgD1M48vD4FrIO1GDzNQtvo6I6ikZmZByL-lL64v66Jmsl3Z-vNw__&Key-Pair-Id=K24J24Z295AEI9" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
                 </div>
 
                 <!-- Full Stack Data Analytics -->
@@ -335,31 +344,24 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center dark:bg-gray-900">
-        <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
+</footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-
-        
-    </script>
-    <!-- JavaScript for Mobile Toggle -->
+<!-- Scripts -->
 <script>
-    document.getElementById('menu-toggle').addEventListener('click', function () {
-        const navMenu = document.getElementById('nav-menu');
-        navMenu.classList.toggle('hidden');
-        navMenu.classList.toggle('flex');
-        navMenu.classList.toggle('flex-col');
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpenIcon = document.getElementById('menu-open-icon');
+    const menuCloseIcon = document.getElementById('menu-close-icon');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuOpenIcon.classList.toggle('hidden');
+        menuCloseIcon.classList.toggle('hidden');
     });
 </script>
-
 </body>
 </html>
