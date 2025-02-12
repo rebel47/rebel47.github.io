@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Ayaz Alam - Data Scientist</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .nav-link:hover {
             text-decoration: underline;
@@ -15,79 +17,100 @@
         .card:hover {
             transform: scale(1.05);
         }
+        .dark-mode {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
-    <header class="bg-white shadow-md">
+    <!-- Dark Mode Toggle -->
+    <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-700 z-50">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-900 text-white py-20">
+        <div class="container mx-auto text-center" data-aos="fade-up">
+            <img src="path/to/your/photo.jpg" alt="Mohammad Ayaz Alam" class="w-32 h-32 mx-auto rounded-full mb-6">
+            <h1 class="text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
+            <p class="mt-4 text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
+            <a href="#projects" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">View My Projects</a>
+        </div>
+    </section>
+
+    <header class="bg-white shadow-md dark:bg-gray-800">
         <div class="container mx-auto p-6 flex justify-between items-center">
             <div class="text-xl font-semibold">Mohammad Ayaz Alam</div>
             <nav class="space-x-4">
-                <a href="#about" class="nav-link text-gray-800">About</a>
-                <a href="#skills" class="nav-link text-gray-800">Skills</a>
-                <a href="#experience" class="nav-link text-gray-800">Experience</a>
-                <a href="#projects" class="nav-link text-gray-800">Projects</a>
-                <a href="#certifications" class="nav-link text-gray-800">Certifications</a>
-                <a href="#education" class="nav-link text-gray-800">Education</a>
-                <a href="#contact" class="nav-link text-gray-800">Contact</a>
+                <a href="#about" class="nav-link text-gray-800 dark:text-gray-200">About</a>
+                <a href="#skills" class="nav-link text-gray-800 dark:text-gray-200">Skills</a>
+                <a href="#experience" class="nav-link text-gray-800 dark:text-gray-200">Experience</a>
+                <a href="#projects" class="nav-link text-gray-800 dark:text-gray-200">Projects</a>
+                <a href="#certifications" class="nav-link text-gray-800 dark:text-gray-200">Certifications</a>
+                <a href="#education" class="nav-link text-gray-800 dark:text-gray-200">Education</a>
+                <a href="#contact" class="nav-link text-gray-800 dark:text-gray-200">Contact</a>
             </nav>
         </div>
     </header>
 
     <main class="container mx-auto p-6">
-        <section id="about" class="my-16 text-center">
-            <h2 class="text-4xl font-semibold text-gray-800">About Me</h2>
+        <!-- About Section -->
+        <section id="about" class="my-16 text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200">About Me</h2>
             <p class="mt-4 text-lg">Hi, I'm Mohammad Ayaz Alam, a Data Scientist with a passion for Natural Language Processing (NLP) and cutting-edge AI technologies. I have a strong background in machine learning, web development, and business analytics, and I am currently working as a Machine Learning Researcher.</p>
         </section>
-        
-        <section id="skills" class="my-16">
-            <h2 class="text-4xl font-semibold text-gray-800 text-center">Skills</h2>
-            <div class="grid grid-cols-2 gap-4 mt-8">
-                <div class="card bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Programming Languages</h3>
-                    <p class="mt-2">Python, JavaScript</p>
+
+        <!-- Skills Section -->
+        <section id="skills" class="my-16" data-aos="fade-up">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Programming & Data Science</h3>
+                    <p class="mt-2">Python (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, PyTorch, Jupyter), R</p>
                 </div>
-                <div class="card bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Web Frameworks</h3>
-                    <p class="mt-2">Django, Flask, FastAPI</p>
+                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Generative AI & NLP</h3>
+                    <p class="mt-2">LLMs, LangChain, Fine-Tuning, RAG, Llamaindex, Prompt Engineering, Hugging Face</p>
                 </div>
-                <div class="card bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Machine Learning & AI</h3>
-                    <p class="mt-2">LLM, LangChain, Fine Tuning, NLP, Generative AI, Prompt Engineering, LlamaIndex, Retrieval-Augmented Generation (RAG)</p>
+                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Databases & Big Data</h3>
+                    <p class="mt-2">SQL, PostgreSQL, Database Design, Query Optimization, MongoDB, Apache Spark</p>
                 </div>
-                <div class="card bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Data Analysis & Visualization</h3>
-                    <p class="mt-2">Pandas, Numpy, Matplotlib, Seaborn, Microsoft Power BI, Tableau</p>
+                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Data Visualization & BI Tools</h3>
+                    <p class="mt-2">Tableau, Power BI, Plotly, Dash</p>
                 </div>
-                 <div class="card bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Microsoft Office</h3>
-                    <p class="mt-2">MS Word, MS PowerPoint, MS Excel</p>
+                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Web Development & APIs</h3>
+                    <p class="mt-2">Django, Flask, FastAPI, RESTful APIs, HTML, CSS, JavaScript, Bootstrap, Tailwind</p>
                 </div>
-                 <div class="card bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Operating Systems</h3>
-                    <p class="mt-2">Windows, Linux</p>
+                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">DevOps & Tools</h3>
+                    <p class="mt-2">Docker, Kubernetes, Git/GitHub, CI/CD Pipelines, Linux/Unix</p>
                 </div>
             </div>
         </section>
-        
-        <section id="experience" class="my-16">
-            <h2 class="text-4xl font-semibold text-gray-800 text-center">Experience</h2>
+
+        <!-- Experience Section -->
+        <section id="experience" class="my-16" data-aos="fade-up">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Experience</h2>
             <div class="mt-8">
-                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
                     <h3 class="text-2xl font-bold">Institute for Employment Research, Machine Learning Researcher</h3>
-                    <p class="text-gray-600">Nuremberg, Germany (Nov 2024 - Present)</p>
+                    <p class="text-gray-600 dark:text-gray-400">Nuremberg, Germany (Nov 2024 - Present)</p>
                     <ul class="list-disc list-inside mt-2 text-lg">
-                        <li>Applied machine learning algorithms (XGBoost, Random Forest, SVM, PU learning) to forecast labor market trends
-                            using datasets of 150M+ records.</li>
+                        <li>Applied machine learning algorithms (XGBoost, Random Forest, SVM, PU learning) to forecast labor market trends using datasets of 150M+ records.</li>
                         <li>Developed scalable data pipelines for preprocessing, feature engineering, and model optimization.</li>
                         <li>Built predictive models for unemployment and labor demand, supporting policy decisions.</li>
                         <li>Delivered actionable insights on labor market dynamics through reports and stakeholder presentations.</li>
                     </ul>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
                     <h3 class="text-2xl font-bold">Shape AI, Business Development Intern</h3>
-                    <p class="text-gray-600">Delhi, India (Mar 2021 - Oct 2021)</p>
+                    <p class="text-gray-600 dark:text-gray-400">Delhi, India (Mar 2021 - Oct 2021)</p>
                     <ul class="list-disc list-inside mt-2 text-lg">
                         <li>Conducted comprehensive data analysis provided by the sales team using Microsoft Power BI, resulting in actionable insights to drive business decisions.</li>
                         <li>Designed and created visually appealing data visualizations to effectively communicate key metrics and trends across the organization.</li>
@@ -95,9 +118,10 @@
                         <li>Contributed to a marketing project aimed at promoting the organization’s courses, leveraging innovative strategies to reach the target audience.</li>
                     </ul>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Hoda Engineering Works, Web Developer Intern</h3>
-                    <p class="text-gray-600">Delhi, India (Sep 2020 - Jan 2021)</p>
+                    <p class="text-gray-600 dark:text-gray-400">Delhi, India (Sep 2020 - Jan 2021)</p>
                     <ul class="list-disc list-inside mt-2 text-lg">
                         <li>Developed and managed websites using HTML, CSS, Bootstrap, and JavaScript to ensure high-quality and responsive user interfaces.</li>
                         <li>Performed rigorous testing to ensure compatibility of web pages across various browsers and devices, enhancing user experience and accessibility.</li>
@@ -107,182 +131,110 @@
                 </div>
             </div>
         </section>
-        
-        <section id="projects" class="my-16">
-            <h2 class="text-4xl font-semibold text-gray-800 text-center">Projects</h2>
+
+        <!-- Projects Section -->
+        <section id="projects" class="my-16" data-aos="fade-up">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Projects</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Lina's Audio to Text Transcription App -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Lina's Audio to Text Transcription App</h3>
-                    <img src="image/audio.png" alt="Audio to Text Transcription" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Built this Streamlit-based app to convert audio files into text, inspired by my friend Lina. The app supports various audio file formats, processes long files by splitting them into smaller chunks, and automatically converts them into a compatible WAV format. It supports multiple languages, including English, Spanish, French, German, and more.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://lina-speech-to-text.streamlit.app/" target="_blank" class="text-blue-500">lina-speech-to-text.streamlit.app</a></p>
+                <!-- RAG Chatbot -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">RAG Chatbot for Emulating Chat Tone and Personality</h3>
+                    <p class="text-lg mt-4">Built an AI chatbot using Streamlit, Langchain, and Google Gemini to mimic user-specific conversational styles.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://persona-chat.streamlit.app/" target="_blank" class="text-blue-500">persona-chat.streamlit.app</a></p>
                 </div>
-                
-                <!-- Persona Chatbot -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Persona Chatbot</h3>
-                    <img src="image/chatbot.png" alt="Persona Chatbot" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Created a chatbot that emulates the conversational style of a selected person based on their WhatsApp chat history. Users upload a WhatsApp chat log, choose a persona, and interact with the bot that mimics the selected individual’s communication style.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/persona-chatbot" target="_blank" class="text-blue-500">GitHub Repository</a></p>
-                </div>
-                
-                <!-- Improved Food Locha Project -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Health Management App (Food Locha)</h3>
-                    <img src="image/health.png" alt="Health Management App" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a health management application that uses advanced machine learning techniques to analyze meal images and provide detailed information about calories and nutritional content. The app utilizes Google Gemini Pro Vision API to extract visual data, and provides real-time analysis, including calories, macro/micro-nutrients, and nutritional breakdown for diverse meal types.</p>
-                    <p class="text-lg mt-2">Incorporates multiple language support for users, making it accessible globally. The app also allows users to track their diet over time, offering personalized suggestions for maintaining a balanced diet based on goals like weight loss, muscle gain, or general health improvement.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://healthmanagementapp.streamlit.app/" target="_blank" class="text-blue-500">healthmanagementapp.streamlit.app</a></p>
-                </div>
-                <!-- Additional Projects -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">AI Story Generator from Image</h3>
-                    <img src="image/story.png" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">AI Story Generator from Image
-                        This Streamlit app uses AI to generate stories based on images. Users upload an image, and the app extracts detailed descriptions of the content using Google Gemini API. Then, it generates a short story based on the extracted description and converts the story into speech using Google Text-to-Speech (gTTS).<br>
-                        
-                        Key Features:<br>
-                        
-                        1. Image to Text: Converts the content of an uploaded image into a concise description using Google Gemini API.<br>
-                        2. Story Generation: Generates a short, realistic story based on the description of the image.<br>
-                        3. Text-to-Speech: Converts the generated story into an audio file and plays it back to the user.<br>
-                        4. Interactive: Users can upload an image, get a story, and listen to it in one seamless flow.<br>
-                        5. The app provides a fun and engaging way to create stories from images, making it ideal for creativity and entertainment purposes.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://scenescripter.streamlit.app/" target="_blank" class="text-blue-500">scenescripter.streamlit.app</a></p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Gemini ATS Resume Improvement Tool</h3>
-                    <img src="image/ats.png" alt="Gemini ATS Resume Improvement Tool" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed an AI-powered application to automate resume evaluation and generate cover letters based on job descriptions. Built using Streamlit, PyPDF2, and the Gemini API. Allows users to upload resumes and input job descriptions for tailored feedback and cover letter generation.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://atswithcoverletter.streamlit.app/" target="_blank" class="text-blue-500">atswithcoverletter.streamlit.app</a></p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Whatsapp Chat Analyzer</h3>
-                    <img src="image/whatsapp.png" alt="Whatsapp Chat Analyzer" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a web app that analyzes WhatsApp chats and generates statistics and graphs using Streamlit, matplotlib, and a custom list of stop words for Hinglish. Implemented features such as word clouds and emoji counts to provide insights and patterns from WhatsApp chats.</p>
+
+                <!-- WhatsApp Chat Analytics -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Advanced WhatsApp Chat Analytics Platform</h3>
+                    <p class="text-lg mt-4">Created a Streamlit app to analyze WhatsApp chat exports with detailed statistics and visualizations.</p>
                     <p class="text-lg mt-2">URL: <a href="https://analyzewhatsappchat.streamlit.app/" target="_blank" class="text-blue-500">analyzewhatsappchat.streamlit.app</a></p>
                 </div>
-                <!-- Existing Projects -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">RAG-Powered Q&A for Neural Dynamics Course with LlamaIndex</h3>
-                    <img src="image/rag.jpeg" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a RAG application to analyze and interact with lecture slides from the 'Neural Dynamics' course, utilizing the Llama-2-7b-chat-hf model from Hugging Face to extract key insights, summarize complex concepts, and enable an interactive QA interface, enhancing the learning experience and understanding of advanced neural dynamics principles through interactive analysis.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" target="_blank" class="text-blue-500">GitHub Repository - RAG Application</a></p>
+
+                <!-- Audio to Text Transcription -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Audio to Text Transcription App</h3>
+                    <p class="text-lg mt-4">Developed a Streamlit app for audio-to-text transcription using Google Speech Recognition.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://lina-speech-to-text.streamlit.app/" target="_blank" class="text-blue-500">lina-speech-to-text.streamlit.app</a></p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Emotion Detection System</h3>
-                    <img src="image/emotion.jpg" alt="AI Story Generator from Image" class="w-full h-auto mt-4 rounded-lg shadow-md">
-                    <p class="text-lg mt-4">Developed a CNN-based system to classify facial expressions into seven emotions using TensorFlow and Keras, achieving 90% validation accuracy, with image preprocessing via OpenCV and data augmentation techniques.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Emotion-Detection-System" target="_blank" class="text-blue-500">GitHub Repository-Emotion Detection System</a></p>
+
+                <!-- Biller - Bill Management System -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Biller - Your Friendly Bill Management System</h3>
+                    <p class="text-lg mt-4">Built a Streamlit app for bill management with secure authentication and SQLite database integration.</p>
+                    <p class="text-lg mt-2">URL: <a href="https://biller.streamlit.app/" target="_blank" class="text-blue-500">biller.streamlit.app</a></p>
                 </div>
-                
-                
-                
-                
             </div>
         </section>
-        
 
-        <section id="certifications" class="my-16">
-            <h2 class="text-4xl font-semibold text-gray-800 text-center">Certifications</h2>
+        <!-- Certifications Section -->
+        <section id="certifications" class="my-16" data-aos="fade-up">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Certifications</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- New Certifications -->
-<div class="bg-white p-6 rounded-lg shadow-md">
-    <h3 class="text-xl font-bold">Full Stack Data Analytics</h3>
-    <p class="text-lg mt-2">Completed the Full Stack Data Analytics program on 13th August 2024 from iNeuron.ai</p>
-    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank">View Certification</a></p>
-</div>
-<div class="bg-white p-6 rounded-lg shadow-md">
-    <h3 class="text-xl font-bold">Deep Learning Foundation</h3>
-    <p class="text-lg mt-2">Completed the Deep Learning Foundation course on 8th September 2024 from iNeuron.</p>
-    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank">View Certification</a></p>
-</div>
-<div class="bg-white p-6 rounded-lg shadow-md">
-    <h3 class="text-xl font-bold">Intro to Machine Learning</h3>
-    <p class="text-lg mt-2">Completed the Intro to Machine Learning course on 11th November 2024 from Kaggle</p>
-    <p class="text-blue-500 mt-2"><a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank">View Certification</a></p>
-</div>
-
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">NLP Foundations</h3>
-                    <p class="text-lg mt-2">Completed the NLP Foundations program on 20th February 2023 from iNeuron.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank" class="text-blue-500">View Certificate</a></p>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Full Stack Data Analytics</h3>
+                    <p class="text-lg mt-2">Completed the Full Stack Data Analytics program on 13th August 2024 from iNeuron.ai</p>
+                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank">View Certification</a></p>
                 </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Responsive Web Design</h3>
-                    <p class="text-lg mt-2">Successfully completed the course on 1st April 2020 from freeCodeCamp.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank" class="text-blue-500">View Certificate</a></p>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Deep Learning Foundation</h3>
+                    <p class="text-lg mt-2">Completed the Deep Learning Foundation course on 8th September 2024 from iNeuron.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank">View Certification</a></p>
                 </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Data Analysis with Python</h3>
-                    <p class="text-lg mt-2">Successfully completed the course on 7th March 2022 from freeCodeCamp.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank" class="text-blue-500">View Certificate</a></p>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Python (Basic)</h3>
-                    <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from HackerRank.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank" class="text-blue-500">View Certificate</a></p>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">HTML</h3>
-                    <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="https://www.sololearn.com/Certificate/CT-QDXM5O98/png" target="_blank" class="text-blue-500">View Certificate</a></p>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">JavaScript (Intermediate)</h3>
-                    <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="https://www.sololearn.com/Certificate/CT-STN25BSP/png" target="_blank" class="text-blue-500">View Certificate</a></p>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Python 3</h3>
-                    <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="/mnt/data/cert-CT-PO6LRWHK.pdf" target="_blank" class="text-blue-500">View Certificate</a></p>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Python for Data Science</h3>
-                    <p class="text-lg mt-2">Successfully completed the course on 5th July 2024 from SoloLearn.</p>
-                    <p class="text-lg mt-2">Certificate: <a href="/mnt/data/cert-CT-IH6MD2WI.pdf" target="_blank" class="text-blue-500">View Certificate</a></p>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Intro to Machine Learning</h3>
+                    <p class="text-lg mt-2">Completed the Intro to Machine Learning course on 11th November 2024 from Kaggle.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank">View Certification</a></p>
                 </div>
             </div>
         </section>
-        
-        <section id="education" class="my-16">
-            <h2 class="text-4xl font-semibold text-gray-800 text-center">Education</h2>
+
+        <!-- Education Section -->
+        <section id="education" class="my-16" data-aos="fade-up">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Education</h2>
             <div class="mt-8">
-                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-                    <h3 class="text-2xl font-bold">FAU Erlangen, MSc. Data Science</h3>
-                    <p class="text-gray-600">(2022 - Present)</p>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-2xl font-bold">Friedrich-Alexander-Universität Erlangen-Nürnberg, MSc. Data Science</h3>
+                    <p class="text-gray-600 dark:text-gray-400">(2022 - Present)</p>
                     <p class="text-lg mt-2">Courses: Business Analytics, ML Time Series, ML in Finance, Mathematics of Learning, Linked Data</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">GGSIPU, Bachelors of Computer Applications</h3>
-                    <p class="text-gray-600">(2018 - 2021)</p>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold">Guru Gobind Singh Indraprastha University, Bachelors of Computer Applications</h3>
+                    <p class="text-gray-600 dark:text-gray-400">(2018 - 2021)</p>
                     <p class="text-lg mt-2">Courses: OOPs, Network Security, DBMS, Web Technologies, Data Warehousing and Data Mining</p>
                 </div>
             </div>
         </section>
-        
-        <section id="contact" class="my-16 text-center">
-            <h2 class="text-4xl font-semibold text-gray-800">Contact Information</h2>
+
+        <!-- Contact Section -->
+        <section id="contact" class="my-16 text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200">Contact Information</h2>
             <div class="mt-8 text-lg">
                 <p>GitHub: <a href="https://github.com/rebel47" target="_blank" class="text-blue-500">github.com/rebel47</a></p>
                 <p>LinkedIn: <a href="https://www.linkedin.com/in/ayaz-alam" target="_blank" class="text-blue-500">linkedin.com/in/ayaz-alam</a></p>
+                <p>Email: <a href="mailto:alam.ayaz476@gmail.com" class="text-blue-500">alam.ayaz476@gmail.com</a></p>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 text-center">
         <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            themeIcon.textContent = html.classList.contains('dark') ? '☀️' : '🌙';
+        });
+    </script>
 </body>
 </html>
