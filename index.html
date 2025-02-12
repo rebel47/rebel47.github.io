@@ -3,52 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio website of Mohammad Ayaz Alam - Data Scientist">
     <title>Mohammad Ayaz Alam - Data Scientist</title>
+    <script>
+        // Add dark mode support
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
+        .nav-link {
+            transition: all 0.3s ease;
+        }
         .nav-link:hover {
             text-decoration: underline;
+            opacity: 0.8;
         }
         .card {
-            transition: transform 0.2s;
+            transition: transform 0.3s ease;
         }
         .card:hover {
             transform: scale(1.05);
         }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-
-     <header class="bg-white shadow-md dark:bg-gray-800">
-        <div class="container mx-auto p-6 flex justify-between items-center">
-            <div class="text-xl font-semibold">Mohammad Ayaz Alam</div>
-            <nav class="space-x-4">
-                <a href="#about" class="nav-link text-gray-800 dark:text-gray-200">About</a>
-                <a href="#skills" class="nav-link text-gray-800 dark:text-gray-200">Skills</a>
-                <a href="#experience" class="nav-link text-gray-800 dark:text-gray-200">Experience</a>
-                <a href="#projects" class="nav-link text-gray-800 dark:text-gray-200">Projects</a>
-                <a href="#certifications" class="nav-link text-gray-800 dark:text-gray-200">Certifications</a>
-                <a href="#education" class="nav-link text-gray-800 dark:text-gray-200">Education</a>
-                <a href="#contact" class="nav-link text-gray-800 dark:text-gray-200">Contact</a>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <header class="bg-white shadow-md dark:bg-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 md:p-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-xl md:text-2xl font-semibold">Mohammad Ayaz Alam</div>
+            <nav class="space-x-2 md:space-x-4 mt-4 md:mt-0">
+                <a href="#about" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">About</a>
+                <a href="#skills" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Skills</a>
+                <a href="#experience" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Experience</a>
+                <a href="#projects" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Projects</a>
+                <a href="#certifications" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Certifications</a>
+                <a href="#education" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Education</a>
+                <a href="#contact" class="nav-link text-gray-800 dark:text-gray-200 text-sm md:text-base px-2 py-1">Contact</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gray-900 text-white py-20 dark:bg-gray-800">
-        <div class="container mx-auto text-center" data-aos="fade-up">
-            <img src="image/selfai.jpg" alt="Mohammad Ayaz Alam" class="w-32 h-32 mx-auto rounded-full mb-6">
-            <h1 class="text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
-            <p class="mt-4 text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
-            <a href="#projects" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">View My Projects</a>
+    <section class="bg-gray-900 text-white py-16 md:py-20 dark:bg-gray-800">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <img src="/api/placeholder/128/128" alt="Mohammad Ayaz Alam" class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full mb-6 object-cover">
+            <h1 class="text-4xl md:text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
+            <p class="mt-4 text-lg md:text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
+            <a href="#projects" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200">View My Projects</a>
         </div>
     </section>
 
-   
-
-    <main class="container mx-auto p-6">
+    <main class="container mx-auto px-4 py-6">
         <!-- About Section -->
         <section id="about" class="my-16 text-center" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200">About Me</h2>
@@ -56,7 +71,7 @@
         </section>
 
         <!-- Skills Section -->
-       <section id="skills" class="my-16" data-aos="fade-up">
+        <section id="skills" class="my-16" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
@@ -87,7 +102,7 @@
         </section>
 
         <!-- Experience Section -->
-       <section id="experience" class="my-16" data-aos="fade-up">
+        <section id="experience" class="my-16" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Experience</h2>
             <div class="mt-8">
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
@@ -108,7 +123,7 @@
                         <li>Conducted comprehensive data analysis provided by the sales team using Microsoft Power BI, resulting in actionable insights to drive business decisions.</li>
                         <li>Designed and created visually appealing data visualizations to effectively communicate key metrics and trends across the organization.</li>
                         <li>Formulated and implemented a demand-centric course structure for the winter training program, resulting in increased engagement and enrollment.</li>
-                        <li>Contributed to a marketing project aimed at promoting the organization’s courses, leveraging innovative strategies to reach the target audience.</li>
+                        <li>Contributed to a marketing project aimed at promoting the organization's courses, leveraging innovative strategies to reach the target audience.</li>
                     </ul>
                 </div>
 
@@ -126,164 +141,163 @@
         </section>
 
         <!-- Projects Section -->
-       <section id="projects" class="my-16" data-aos="fade-up">
+        <section id="projects" class="my-16" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Projects</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Persona Chatbot -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Persona Chatbot</h3>
                     <p class="text-lg mt-4">An AI-powered chatbot that emulates conversational styles based on WhatsApp chat history.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/persona-chatbot" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/persona-chatbot" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
 
                 <!-- Audio to Text Transcription App -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Audio to Text Transcription App</h3>
                     <p class="text-lg mt-4">Streamlit-based application to transcribe audio files into text, supporting multiple languages.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://lina-speech-to-text.streamlit.app/" target="_blank" class="text-blue-500">lina-speech-to-text.streamlit.app</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://lina-speech-to-text.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">lina-speech-to-text.streamlit.app</a></p>
                 </div>
 
-                <!-- Biller - Bill Management System -->
+                <!-- Biller -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Biller - Your Friendly AI-Powered Bill Management System</h3>
                     <p class="text-lg mt-4">A Streamlit-based application to manage and analyze bills using AI.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://biller.streamlit.app/" target="_blank" class="text-blue-500">biller.streamlit.app</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://biller.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">biller.streamlit.app</a></p>
                 </div>
 
                 <!-- Be-Healthier -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Be-Healthier</h3>
                     <p class="text-lg mt-4">A web-based health and fitness tracker built with Streamlit.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://be-healthier.streamlit.app/" target="_blank" class="text-blue-500">be-healthier.streamlit.app</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://be-healthier.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">be-healthier.streamlit.app</a></p>
                 </div>
 
                 <!-- Advanced WhatsApp Chat Analytics Platform -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Advanced WhatsApp Chat Analytics Platform</h3>
                     <p class="text-lg mt-4">Analyzes WhatsApp chat data with interactive visualizations.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Whatsapp-Chat-Analyzer" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Whatsapp-Chat-Analyzer" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
 
                 <!-- Food Locha -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Food Locha</h3>
                     <p class="text-lg mt-4">An AI-powered app that analyzes meal images, calculates calorie details, and provides nutritional insights.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Food-Locha" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Food-Locha" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
 
                 <!-- AI-Powered Image-to-Story Generator -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">AI-Powered Image-to-Story Generator</h3>
                     <p class="text-lg mt-4">Converts images into short stories using Gemini AI and gTTS.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/imagetostory" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/imagetostory" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
 
                 <!-- Gemini ATS Resume Improvement Tool -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Gemini ATS Resume Improvement Tool</h3>
                     <p class="text-lg mt-4">AI-powered app to evaluate resumes and generate cover letters based on job descriptions.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/ATS-with-Cover-Letter" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/ATS-with-Cover-Letter" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
 
-                <!-- Interactive RAG-Based QA System for Neural Dynamics -->
+                <!-- Interactive RAG-Based QA System -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Interactive RAG-Based QA System for Neural Dynamics</h3>
                     <p class="text-lg mt-4">A RAG system to analyze lecture slides with LlamaIndex and Llama-2-7b-chat-hf.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
 
                 <!-- Email/SMS Spam Classifier -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Email/SMS Spam Classifier</h3>
                     <p class="text-lg mt-4">ML model for classifying messages as spam or ham using NLP techniques.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Email-SMS-Classifier" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Email-SMS-Classifier" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
 
                 <!-- Emotion Detection System -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold">Emotion Detection System</h3>
                     <p class="text-lg mt-4">CNN-based system to classify facial expressions into seven emotions with TensorFlow and Keras.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Emotion-Detection-System" target="_blank" class="text-blue-500">GitHub Repository</a></p>
+                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Emotion-Detection-System" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
                 </div>
             </div>
         </section>
 
-       <!-- Certifications Section -->
-<section id="certifications" class="my-16" data-aos="fade-up">
+        <!-- Certifications Section -->
+        <section id="certifications" class="my-16" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Certifications</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- AI Agents Fundamentals Course - Huggingface -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">AI Agents Fundamentals Course</h3>
-            <p class="text-lg mt-2">Completed the AI Agents Fundamentals Course from Huggingface.</p>
-            <p class="text-blue-500 mt-2"><a href="https://cdn-lfs-us-1.hf.co/repos/f2/34/f2344151f60f6027c436821dc61cf3f27a46435de57df8df50ad02b5acca7c07/2f2545adf0b5fab86ec61844a0750111752547173e4c31ab6baeb0422a45eb96?response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&Expires=1739399602&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczOTM5OTYwMn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zL2YyLzM0L2YyMzQ0MTUxZjYwZjYwMjdjNDM2ODIxZGM2MWNmM2YyN2E0NjQzNWRlNTdkZjhkZjUwYWQwMmI1YWNjYTdjMDcvMmYyNTQ1YWRmMGI1ZmFiODZlYzYxODQ0YTA3NTAxMTE3NTI1NDcxNzNlNGMzMWFiNmJhZWIwNDIyYTQ1ZWI5Nj9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=Xs6NQNswe3Ma6iJ5YYa-2MLZR5vDvLqQiHFDI4gy7-x0aDJQyHIoZOGbT9GzTr-Ut0zr6ZQN1zh6G02sAH-onuAmJiJR96YnQA3wrI3x1uNGaCb5s-zut39au2Ylp1qZ87MXAlHAyxeNyhAxkHL319pG%7EVCRPqS8ZLDB0ZdP6R7IMNrchaopQDVfWJrSteHOrCuL6USec3wxwrVFV1n5r1tpaEsxVnCb6SVNbG6LZvarsrAoiQ3JuzXPU4tGKeCmE3o9qWpDiONpjPV9a62SWabbf39xwcQT9CdWUqTppo-aJTrAb0mxUc9ZsyI3AkS5NLj2sn-ecaZ08rnFYWheTg__&Key-Pair-Id=K24J24Z295AEI9" target="_blank">View Certification</a></p>
-        </div>
-        <!-- Full Stack Data Analytics -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">Full Stack Data Analytics</h3>
-            <p class="text-lg mt-2">Completed the Full Stack Data Analytics program on 13th August 2024 from iNeuron.ai</p>
-            <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank">View Certification</a></p>
-        </div>
+                <!-- AI Agents Fundamentals Course -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">AI Agents Fundamentals Course</h3>
+                    <p class="text-lg mt-2">Completed the AI Agents Fundamentals Course from Huggingface.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://cdn-lfs-us-1.hf.co/repos/f2/34/f2344151f60f6027c436821dc61cf3f27a46435de57df8df50ad02b5acca7c07/2f2545adf0b5fab86ec61844a0750111752547173e4c31ab6baeb0422a45eb96?response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&Expires=1739401074&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczOTQwMTA3NH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zL2YyLzM0L2YyMzQ0MTUxZjYwZjYwMjdjNDM2ODIxZGM2MWNmM2YyN2E0NjQzNWRlNTdkZjhkZjUwYWQwMmI1YWNjYTdjMDcvMmYyNTQ1YWRmMGI1ZmFiODZlYzYxODQ0YTA3NTAxMTE3NTI1NDcxNzNlNGMzMWFiNmJhZWIwNDIyYTQ1ZWI5Nj9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=DqU3NcaU9xfWqd7CoeyCimw2x03BYclvV2Xtz6v2gdcLjUmb1LhZEHSESSUjquODXXSRxWyQ8sU8WaDLPHW61TBcFN%7EHsHxTmGP31LCu1q3cRC6XOmP2%7E2t0zNt6zAF1gpekR9Alorgjiq2knI0xY42kVcQPvBDIM4HM1LNDN6kbKAN1sICu43PhmhSBghBDV9kKBOKHY7TyCPQN%7EPvA0DJMsDVdFgzYDKSTRpUDUom4Dwl8BbUrakSrIkW8vypcCPitne%7EnzL4%7EwlMSc6mI3kacyobwYO5WvxqYWHtmI4c05Jq1I2PTDOdBE7c%7EOnVYZySPo5orCEqDlBY3KgJMBA__&Key-Pair-Id=K24J24Z295AEI9" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- Deep Learning Foundation -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">Deep Learning Foundation</h3>
-            <p class="text-lg mt-2">Completed the Deep Learning Foundation course on 8th September 2024 from iNeuron.</p>
-            <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank">View Certification</a></p>
-        </div>
+                <!-- Full Stack Data Analytics -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Full Stack Data Analytics</h3>
+                    <p class="text-lg mt-2">Completed the Full Stack Data Analytics program on 13th August 2024 from iNeuron.ai</p>
+                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- Intro to Machine Learning -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">Intro to Machine Learning</h3>
-            <p class="text-lg mt-2">Completed the Intro to Machine Learning course on 11th November 2024 from Kaggle.</p>
-            <p class="text-blue-500 mt-2"><a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank">View Certification</a></p>
-        </div>
+                <!-- Deep Learning Foundation -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Deep Learning Foundation</h3>
+                    <p class="text-lg mt-2">Completed the Deep Learning Foundation course on 8th September 2024 from iNeuron.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- NLP Foundation -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">NLP Foundation</h3>
-            <p class="text-lg mt-2">Completed the NLP Foundation program on 20th February 2023 from iNeuron.</p>
-            <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank">View Certification</a></p>
-        </div>
+                <!-- Intro to Machine Learning -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Intro to Machine Learning</h3>
+                    <p class="text-lg mt-2">Completed the Intro to Machine Learning course on 11th November 2024 from Kaggle.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- ChatGPT Prompt Engineering for Developers -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">ChatGPT Prompt Engineering for Developers</h3>
-            <p class="text-lg mt-2">Completed the ChatGPT Prompt Engineering for Developers course from DeepLearning.ai.</p>
-            <p class="text-blue-500 mt-2"><a href="https://learn.deeplearning.ai/accomplishments/303988d6-a049-493b-9d32-54b63e7b07a5?usp=sharing" target="_blank">View Certification</a></p>
-        </div>
+                <!-- NLP Foundation -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">NLP Foundation</h3>
+                    <p class="text-lg mt-2">Completed the NLP Foundation program on 20th February 2023 from iNeuron.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- Responsive Web Design -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">Responsive Web Design</h3>
-            <p class="text-lg mt-2">Completed the Responsive Web Design course from freeCodeCamp.</p>
-            <p class="text-blue-500 mt-2"><a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank">View Certification</a></p>
-        </div>
+                <!-- ChatGPT Prompt Engineering -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">ChatGPT Prompt Engineering for Developers</h3>
+                    <p class="text-lg mt-2">Completed the ChatGPT Prompt Engineering for Developers course from DeepLearning.ai.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://learn.deeplearning.ai/accomplishments/303988d6-a049-493b-9d32-54b63e7b07a5" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- Python Basic - Hackerrank -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">Python Basic</h3>
-            <p class="text-lg mt-2">Completed the Python Basic course from Hackerrank.</p>
-            <p class="text-blue-500 mt-2"><a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank">View Certification</a></p>
-        </div>
+                <!-- Responsive Web Design -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Responsive Web Design</h3>
+                    <p class="text-lg mt-2">Completed the Responsive Web Design course from freeCodeCamp.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- Data Analysis with Python -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">Data Analysis with Python</h3>
-            <p class="text-lg mt-2">Completed the Data Analysis with Python course from freeCodeCamp.</p>
-            <p class="text-blue-500 mt-2"><a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank">View Certification</a></p>
-        </div>
+                <!-- Python Basic -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Python Basic</h3>
+                    <p class="text-lg mt-2">Completed the Python Basic course from Hackerrank.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        <!-- Automate Boring Stuff with Python -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold">Automate Boring Stuff with Python</h3>
-            <p class="text-lg mt-2">Completed the Automate Boring Stuff with Python course from Udemy.</p>
-            <p class="text-blue-500 mt-2"><a href="https://www.udemy.com/certificate/UC-772ce804-2385-4131-834b-7f492b286f84/" target="_blank">View Certification</a></p>
-        </div>
+                <!-- Data Analysis with Python -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Data Analysis with Python</h3>
+                    <p class="text-lg mt-2">Completed the Data Analysis with Python course from freeCodeCamp.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
 
-        
-    </div>
-</section>
+                <!-- Automate Boring Stuff with Python -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold">Automate Boring Stuff with Python</h3>
+                    <p class="text-lg mt-2">Completed the Automate Boring Stuff with Python course from Udemy.</p>
+                    <p class="text-blue-500 mt-2"><a href="https://www.udemy.com/certificate/UC-772ce804-2385-4131-834b-7f492b286f84/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                </div>
+            </div>
+        </section>
 
         <!-- Education Section -->
         <section id="education" class="my-16" data-aos="fade-up">
@@ -306,9 +320,9 @@
         <section id="contact" class="my-16 text-center" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200">Contact Information</h2>
             <div class="mt-8 text-lg">
-                <p>GitHub: <a href="https://github.com/rebel47" target="_blank" class="text-blue-500">github.com/rebel47</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/ayaz-alam" target="_blank" class="text-blue-500">linkedin.com/in/ayaz-alam</a></p>
-                <p>Email: <a href="mailto:alam.ayaz47@gmail.com" class="text-blue-500">alam.ayaz476@gmail.com</a></p>
+                <p>GitHub: <a href="https://github.com/rebel47" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">github.com/rebel47</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/ayaz-alam" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">linkedin.com/in/ayaz-alam</a></p>
+                <p>Email: <a href="mailto:alam.ayaz47@gmail.com" class="text-blue-500 hover:text-blue-600">alam.ayaz47@gmail.com</a></p>
             </div>
         </section>
     </main>
@@ -318,5 +332,14 @@
         <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>
