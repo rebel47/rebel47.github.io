@@ -17,10 +17,6 @@
         .card:hover {
             transform: scale(1.05);
         }
-        .dark-mode {
-            background-color: #1a202c;
-            color: #e2e8f0;
-        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
@@ -31,9 +27,9 @@
     </button>
 
     <!-- Hero Section -->
-    <section class="bg-gray-900 text-white py-20">
+    <section class="bg-gray-900 text-white py-20 dark:bg-gray-800">
         <div class="container mx-auto text-center" data-aos="fade-up">
-            <img src="path/to/your/photo.jpg" alt="Mohammad Ayaz Alam" class="w-32 h-32 mx-auto rounded-full mb-6">
+            <img src="image/selfai.jpg" alt="Mohammad Ayaz Alam" class="w-32 h-32 mx-auto rounded-full mb-6">
             <h1 class="text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
             <p class="mt-4 text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
             <a href="#projects" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">View My Projects</a>
@@ -63,7 +59,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="my-16" data-aos="fade-up">
+       <section id="skills" class="my-16" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
@@ -94,7 +90,7 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="my-16" data-aos="fade-up">
+       <section id="experience" class="my-16" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Experience</h2>
             <div class="mt-8">
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
@@ -133,7 +129,7 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="my-16" data-aos="fade-up">
+       <section id="projects" class="my-16" data-aos="fade-up">
             <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Projects</h2>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Persona Chatbot -->
@@ -217,8 +213,8 @@
 
        <!-- Certifications Section -->
 <section id="certifications" class="my-16" data-aos="fade-up">
-    <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Certifications</h2>
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Certifications</h2>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- AI Agents Fundamentals Course - Huggingface -->
         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-bold">AI Agents Fundamentals Course</h3>
@@ -321,13 +317,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 text-center">
+    <footer class="bg-gray-800 text-white py-6 text-center dark:bg-gray-900">
         <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
     </footer>
-
-    <!-- Scripts -->
+ <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS (Animate On Scroll)
         AOS.init();
 
         // Dark Mode Toggle
@@ -335,9 +331,22 @@
         const themeIcon = document.getElementById('theme-icon');
         const html = document.documentElement;
 
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+            themeIcon.textContent = '☀️';
+        } else {
+            html.classList.remove('dark');
+            themeIcon.textContent = '🌙';
+        }
+
+        // Toggle Dark Mode
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark');
-            themeIcon.textContent = html.classList.contains('dark') ? '☀️' : '🌙';
+            const isDarkMode = html.classList.contains('dark');
+            themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
     </script>
 </body>
