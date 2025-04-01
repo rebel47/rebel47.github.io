@@ -3,365 +3,1194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio website of Mohammad Ayaz Alam - Data Scientist">
-    <title>Mohammad Ayaz Alam - Data Scientist</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Mohammad Ayaz Alam | Data Scientist & AI Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .nav-link {
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f1f5f9;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-pill {
+            transition: all 0.2s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            z-index: 2;
+        }
+        
+        .tag {
             transition: all 0.3s ease;
         }
-        .nav-link:hover {
-            text-decoration: underline;
-            opacity: 0.8;
+        
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.9);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .contact-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .active-nav:after {
+            width: 100%;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <!-- Navbar -->
-    <nav class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex h-16 items-center justify-between">
-                <!-- Logo / Name -->
-                <div class="flex items-center">
-                    <div class="text-xl md:text-2xl font-semibold text-white">Mohammad Ayaz Alam</div>
+<body class="bg-slate-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold gradient-text">Ayaz</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-slate-700 hover:text-blue-500">About</a>
+                    <a href="#skills" class="nav-link text-slate-700 hover:text-blue-500">Skills</a>
+                    <a href="#experience" class="nav-link text-slate-700 hover:text-blue-500">Experience</a>
+                    <a href="#projects" class="nav-link text-slate-700 hover:text-blue-500">Projects</a>
+                    <a href="#education" class="nav-link text-slate-700 hover:text-blue-500">Education</a>
+                    <a href="#contact" class="nav-link text-slate-700 hover:text-blue-500">Contact</a>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="flex md:hidden">
-                    <button id="menu-toggle" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <span class="sr-only">Open main menu</span>
-                        <!-- Hamburger Icon -->
-                        <svg id="menu-open-icon" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <!-- Close Icon -->
-                        <svg id="menu-close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-slate-700 hover:text-blue-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
-
-                <!-- Desktop Navigation Links -->
-                <div class="hidden md:flex space-x-4">
-                    <a href="#about" class="nav-link text-white text-sm md:text-base px-3 py-2">About</a>
-                    <a href="#skills" class="nav-link text-white text-sm md:text-base px-3 py-2">Skills</a>
-                    <a href="#experience" class="nav-link text-white text-sm md:text-base px-3 py-2">Experience</a>
-                    <a href="#projects" class="nav-link text-white text-sm md:text-base px-3 py-2">Projects</a>
-                    <a href="#certifications" class="nav-link text-white text-sm md:text-base px-3 py-2">Certifications</a>
-                    <a href="#education" class="nav-link text-white text-sm md:text-base px-3 py-2">Education</a>
-                    <a href="#contact" class="nav-link text-white text-sm md:text-base px-3 py-2">Contact</a>
-                </div>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#skills" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#experience" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#projects" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#certifications" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Certifications</a>
-                <a href="#education" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Education</a>
-                <a href="#contact" class="block text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <a href="#about" class="block px-3 py-2 hover:bg-slate-100">About</a>
+                <a href="#skills" class="block px-3 py-2 hover:bg-slate-100">Skills</a>
+                <a href="#experience" class="block px-3 py-2 hover:bg-slate-100">Experience</a>
+                <a href="#projects" class="block px-3 py-2 hover:bg-slate-100">Projects</a>
+                <a href="#education" class="block px-3 py-2 hover:bg-slate-100">Education</a>
+                <a href="#contact" class="block px-3 py-2 hover:bg-slate-100">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-gray-900 text-white py-16 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            <img src="image/selfai.jpg" alt="Mohammad Ayaz Alam" class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full mb-6 object-cover">
-            <h1 class="text-4xl md:text-5xl font-bold">Hi, I'm Mohammad Ayaz Alam</h1>
-            <p class="mt-4 text-lg md:text-xl">A Data Scientist passionate about NLP, AI, and building impactful solutions.</p>
-            <a href="#projects" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200">View My Projects</a>
+    <section id="about" class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/3 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                        <img src="image/selfai.jpg" 
+                             alt="Mohammad Ayaz Alam" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-md px-4 py-2 flex items-center justify-center">
+                        <div class="flex space-x-2">
+                            <a href="https://linkedin.com/in/ayaz-alam" class="text-blue-500 hover:text-blue-700">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://www.github.com/rebel47" class="text-gray-800 hover:text-gray-600">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:alam.ayaz47@gmail.com" class="text-red-500 hover:text-red-700">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-2/3 mt-8 md:mt-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+                    Hi, I'm <span class="gradient-text">Mohammad Ayaz Alam</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-slate-600 mb-6">
+                    Data Scientist & AI Engineer
+                </h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    Passionate about leveraging data and AI to solve complex problems. My expertise spans machine learning, 
+                    generative AI, and full-stack data solutions. I thrive at the intersection of technology and research, 
+                    delivering impactful insights and innovative solutions.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <div class="flex items-center text-slate-600">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        <span>(+49) 017684051947</span>
+                    </div>
+                    <div class="flex items-center text-slate-600">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>alam.ayaz47@gmail.com</span>
+                    </div>
+                    <div class="flex items-center text-slate-600">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>Nuremberg, Germany</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition duration-300 shadow-md hover:shadow-lg">
+                        Contact Me
+                    </a>
+                    <a href="assets/cv.pdf" class="px-6 py-3 bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-50 rounded-lg font-medium transition duration-300 shadow-md hover:shadow-lg">
+                        Download CV
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-6">
-        <!-- About Section -->
-        <section id="about" class="my-16 text-center">
-            <h2 class="text-4xl font-semibold text-gray-800">About Me</h2>
-            <p class="mt-4 text-lg">Hi, I'm Mohammad Ayaz Alam, a Data Scientist with a passion for Natural Language Processing (NLP) and cutting-edge AI technologies. I have a strong background in machine learning, web development, and business analytics, and I am currently working as a Machine Learning Researcher.</p>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="my-16" data-aos="fade-up">
-            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Programming & Data Science</h3>
-                    <p class="mt-2">Python (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, PyTorch, Jupyter), R</p>
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-xl shadow-sm">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span class="gradient-text">Skills</span></h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                I've cultivated a diverse set of technical skills through both academic studies and professional experience
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Programming & Data Science -->
+            <div class="card bg-slate-50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">Programming & Data Science</h3>
                 </div>
-                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Generative AI & NLP</h3>
-                    <p class="mt-2">LLMs, LangChain, Fine-Tuning, RAG, Llamaindex, Prompt Engineering, Hugging Face</p>
-                </div>
-                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Databases & Big Data</h3>
-                    <p class="mt-2">SQL, PostgreSQL, Database Design, Query Optimization, MongoDB, Apache Spark</p>
-                </div>
-                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Data Visualization & BI Tools</h3>
-                    <p class="mt-2">Tableau, Power BI, Plotly, Dash</p>
-                </div>
-                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Web Development & APIs</h3>
-                    <p class="mt-2">Django, Flask, FastAPI, RESTful APIs, HTML, CSS, JavaScript, Bootstrap, Tailwind</p>
-                </div>
-                <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">DevOps & Tools</h3>
-                    <p class="mt-2">Docker, Kubernetes, Git/GitHub, CI/CD Pipelines, Linux/Unix</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Python</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Pandas</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">NumPy</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Matplotlib</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Seaborn</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Scikit-learn</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">PyTorch</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Jupyter</span>
+                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">R</span>
                 </div>
             </div>
-        </section>
+            
+            <!-- Generative AI & NLP -->
+            <div class="card bg-slate-50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 mr-4">
+                        <i class="fas fa-brain text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">Generative AI & NLP</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">LLMs</span>
+                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">LangChain</span>
+                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Fine-Tuning</span>
+                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">RAG</span>
+                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Llamaindex</span>
+                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Prompt Engineering</span>
+                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Hugging Face</span>
+                </div>
+            </div>
+            
+            <!-- Databases & Big Data -->
+            <div class="card bg-slate-50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-4">
+                        <i class="fas fa-database text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">Databases & Big Data</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">SQL</span>
+                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">PostgreSQL</span>
+                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Database Design</span>
+                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Query Optimization</span>
+                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">MongoDB</span>
+                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Apache Spark</span>
+                </div>
+            </div>
+            
+            <!-- Data Visualization & BI -->
+            <div class="card bg-slate-50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-500 mr-4">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">Data Visualization & BI</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Tableau</span>
+                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Power BI</span>
+                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Plotly</span>
+                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Dash</span>
+                </div>
+            </div>
+            
+            <!-- Web Development -->
+            <div class="card bg-slate-50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-500 mr-4">
+                        <i class="fas fa-laptop-code text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">Web Development & APIs</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">Django</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">Flask</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">FastAPI</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">RESTful APIs</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">HTML</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">CSS</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">JavaScript</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">Bootstrap</span>
+                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">TailwindCSS</span>
+                </div>
+            </div>
+            
+            <!-- DevOps & Tools -->
+            <div class="card bg-slate-50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-500 mr-4">
+                        <i class="fas fa-server text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-800">DevOps & Tools</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">Docker</span>
+                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">Kubernetes</span>
+                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">Git/GitHub</span>
+                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">CI/CD Pipelines</span>
+                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">Linux/Unix</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="my-16" data-aos="fade-up">
-            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Experience</h2>
-            <div class="mt-8">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-                    <h3 class="text-2xl font-bold">Institute for Employment Research, Machine Learning Researcher</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Nuremberg, Germany (Nov 2024 - Present)</p>
-                    <ul class="list-disc list-inside mt-2 text-lg">
-                        <li>Applied machine learning algorithms (XGBoost, Random Forest, SVM, PU learning) to forecast labor market trends using datasets of 90M+ records.</li>
-                        <li>Developed scalable data pipelines for preprocessing, feature engineering, and model optimization.</li>
-                        <li>Built predictive models for unemployment and labor demand, supporting policy decisions.</li>
-                        <li>Delivered actionable insights on labor market dynamics through reports and stakeholder presentations.</li>
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">Work <span class="gradient-text">Experience</span></h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                My professional journey through research institutions and tech companies
+            </p>
+        </div>
+        
+        <div class="space-y-8 relative">
+            <!-- Timeline connector -->
+            <div class="hidden md:block absolute left-4 md:left-1/2 h-full w-0.5 bg-blue-500 transform -translate-x-1/2 -translate-y-4"></div>
+            
+            <!-- Experience item 1 -->
+            <div class="relative md:w-1/2 ml-auto pl-8 md:pl-0 pr-8 md:pr-0">
+                <div class="timeline-dot hidden md:block"></div>
+                <div class="card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Research Assistant</h3>
+                            <p class="text-blue-500 font-medium">Institute for Employment Research</p>
+                        </div>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Mar 2025 - Present</span>
+                    </div>
+                    <p class="text-slate-600 mb-4">Nuremberg, Germany</p>
+                    <ul class="space-y-2 list-disc list-inside text-slate-600">
+                        <li>Applied ML techniques (PU learning: Elkan & Noto, Two-Step Strategy, Bagging) for job market analysis.</li>
+                        <li>Designed and optimized data pipelines for efficient processing, management, and feature engineering.</li>
+                        <li>Conducted data analysis, visualization, and exploratory data analysis (EDA) to extract key labor market insights.</li>
+                        <li>Engaged in research paper writing, proofreading, and technical documentation.</li>
                     </ul>
                 </div>
-
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-                    <h3 class="text-2xl font-bold">Shape AI, Business Development Intern</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Delhi, India (Mar 2021 - Oct 2021)</p>
-                    <ul class="list-disc list-inside mt-2 text-lg">
-                        <li>Conducted comprehensive data analysis provided by the sales team using Microsoft Power BI, resulting in actionable insights to drive business decisions.</li>
-                        <li>Designed and created visually appealing data visualizations to effectively communicate key metrics and trends across the organization.</li>
-                        <li>Formulated and implemented a demand-centric course structure for the winter training program, resulting in increased engagement and enrollment.</li>
-                        <li>Contributed to a marketing project aimed at promoting the organization's courses, leveraging innovative strategies to reach the target audience.</li>
+            </div>
+            
+            <!-- Experience item 2 -->
+            <div class="relative md:w-1/2 mr-auto pr-8 md:pr-0 md:pl-8">
+                <div class="timeline-dot hidden md:block"></div>
+                <div class="card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Machine Learning Researcher</h3>
+                            <p class="text-blue-500 font-medium">Institute for Employment Research</p>
+                        </div>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Nov 2024 - Feb 2025</span>
+                    </div>
+                    <p class="text-slate-600 mb-4">Nuremberg, Germany</p>
+                    <ul class="space-y-2 list-disc list-inside text-slate-600">
+                        <li>Applied ML techniques (XGBoost, Random Forest, SVM, PU learning) to forecast labor market trends.</li>
+                        <li>Built scalable data pipelines for preprocessing and feature engineering on 90M+ records.</li>
+                        <li>Addressed class imbalances through weight estimation, improving model robustness and accuracy.</li>
+                        <li>Developed predictive models to rank job offers, aiding caseworkers in pre-selecting opportunities.</li>
+                        <li>Delivered insights on labor market dynamics through reports and stakeholder presentations.</li>
                     </ul>
                 </div>
-
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Hoda Engineering Works, Web Developer Intern</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Delhi, India (Sep 2020 - Jan 2021)</p>
-                    <ul class="list-disc list-inside mt-2 text-lg">
-                        <li>Developed and managed websites using HTML, CSS, Bootstrap, and JavaScript to ensure high-quality and responsive user interfaces.</li>
-                        <li>Performed rigorous testing to ensure compatibility of web pages across various browsers and devices, enhancing user experience and accessibility.</li>
-                        <li>Enhanced website performance and functionality by optimizing JavaScript and CSS code, leading to faster load times and improved user interactions.</li>
-                        <li>Continuously expanded technical expertise by exploring and mastering a diverse range of web technologies, design tools, and programming best practices.</li>
+            </div>
+            
+            <!-- Experience item 3 -->
+            <div class="relative md:w-1/2 ml-auto pl-8 md:pl-0 pr-8 md:pr-0">
+                <div class="timeline-dot hidden md:block"></div>
+                <div class="card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Business Development Intern</h3>
+                            <p class="text-blue-500 font-medium">Shape AI</p>
+                        </div>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Mar 2021 - Oct 2021</span>
+                    </div>
+                    <p class="text-slate-600 mb-4">Delhi, India</p>
+                    <ul class="space-y-2 list-disc list-inside text-slate-600">
+                        <li>Performed data analysis using Power BI, extracting actionable insights from sales data.</li>
+                        <li>Developed dashboards and visualizations to clearly communicate key metrics.</li>
+                        <li>Designed a data-backed course structure for the winter training program.</li>
+                        <li>Contributed to marketing by analyzing target audience behavior.</li>
                     </ul>
                 </div>
             </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="my-16" data-aos="fade-up">
-            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Projects</h2>
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Persona Chatbot -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Persona Chatbot</h3>
-                    <p class="text-lg mt-4">An AI-powered chatbot that emulates conversational styles based on WhatsApp chat history.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/persona-chatbot" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
-                </div>
-
-                <!-- Audio to Text Transcription App -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Audio to Text Transcription App</h3>
-                    <p class="text-lg mt-4">Streamlit-based application to transcribe audio files into text, supporting multiple languages.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://lina-speech-to-text.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">lina-speech-to-text.streamlit.app</a></p>
-                </div>
-
-                <!-- Biller -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Biller - Your Friendly AI-Powered Bill Management System</h3>
-                    <p class="text-lg mt-4">A Streamlit-based application to manage and analyze bills using AI.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://biller.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">biller.streamlit.app</a></p>
-                </div>
-
-                <!-- Be-Healthier -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Be-Healthier</h3>
-                    <p class="text-lg mt-4">A web-based health and fitness tracker built with Streamlit.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://be-healthier.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">be-healthier.streamlit.app</a></p>
-                </div>
-
-                <!-- Advanced WhatsApp Chat Analytics Platform -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Advanced WhatsApp Chat Analytics Platform</h3>
-                    <p class="text-lg mt-4">Analyzes WhatsApp chat data with interactive visualizations.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Whatsapp-Chat-Analyzer" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
-                </div>
-
-                <!-- Food Locha -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Food Locha</h3>
-                    <p class="text-lg mt-4">An AI-powered app that analyzes meal images, calculates calorie details, and provides nutritional insights.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Food-Locha" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
-                </div>
-
-                <!-- AI-Powered Image-to-Story Generator -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">AI-Powered Image-to-Story Generator</h3>
-                    <p class="text-lg mt-4">Converts images into short stories using Gemini AI and gTTS.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/imagetostory" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
-                </div>
-
-                <!-- Gemini ATS Resume Improvement Tool -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Gemini ATS Resume Improvement Tool</h3>
-                    <p class="text-lg mt-4">AI-powered app to evaluate resumes and generate cover letters based on job descriptions.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/ATS-with-Cover-Letter" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
-                </div>
-
-                <!-- Interactive RAG-Based QA System -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Interactive RAG-Based QA System for Neural Dynamics</h3>
-                    <p class="text-lg mt-4">A RAG system to analyze lecture slides with LlamaIndex and Llama-2-7b-chat-hf.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
-                </div>
-
-                <!-- Email/SMS Spam Classifier -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Email/SMS Spam Classifier</h3>
-                    <p class="text-lg mt-4">ML model for classifying messages as spam or ham using NLP techniques.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Email-SMS-Classifier" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
-                </div>
-
-                <!-- Emotion Detection System -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Emotion Detection System</h3>
-                    <p class="text-lg mt-4">CNN-based system to classify facial expressions into seven emotions with TensorFlow and Keras.</p>
-                    <p class="text-lg mt-2">URL: <a href="https://github.com/rebel47/Emotion-Detection-System" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">GitHub Repository</a></p>
+            
+            <!-- Experience item 4 -->
+            <div class="relative md:w-1/2 mr-auto pr-8 md:pr-0 md:pl-8">
+                <div class="timeline-dot hidden md:block"></div>
+                <div class="card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Web Developer Intern</h3>
+                            <p class="text-blue-500 font-medium">Hoda Engineering Works</p>
+                        </div>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Sept 2020 - Jan 2021</span>
+                    </div>
+                    <p class="text-slate-600 mb-4">Delhi, India</p>
+                    <ul class="space-y-2 list-disc list-inside text-slate-600">
+                        <li>Built responsive websites using HTML, CSS, Bootstrap, and JavaScript.</li>
+                        <li>Performed testing and debugging on various devices to improve UX.</li>
+                        <li>Optimized JavaScript and CSS for faster load times.</li>
+                        <li>Adopted modern web frameworks and best practices.</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="my-16" data-aos="fade-up">
-            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Certifications</h2>
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- AI Agents Fundamentals Course -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">AI Agents Fundamentals Course</h3>
-                    <p class="text-lg mt-2">Completed the AI Agents Fundamentals Course from Huggingface.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://cdn-lfs-us-1.hf.co/repos/f2/34/f2344151f60f6027c436821dc61cf3f27a46435de57df8df50ad02b5acca7c07/2f2545adf0b5fab86ec61844a0750111752547173e4c31ab6baeb0422a45eb96?response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&Expires=1739406886&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczOTQwNjg4Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zL2YyLzM0L2YyMzQ0MTUxZjYwZjYwMjdjNDM2ODIxZGM2MWNmM2YyN2E0NjQzNWRlNTdkZjhkZjUwYWQwMmI1YWNjYTdjMDcvMmYyNTQ1YWRmMGI1ZmFiODZlYzYxODQ0YTA3NTAxMTE3NTI1NDcxNzNlNGMzMWFiNmJhZWIwNDIyYTQ1ZWI5Nj9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=Jy-vYU5bZzcsg0JuIOJPH1ODtcvQP1ZzpV5QKtH4yjF5JzhS86RKFpPaAYPUp2WDHwDpbEKTdCMQSDdLrNjgER2AVbahCRobO0XwzpW7EWDdF7w6hmXJejXOiRSbmZhiHLV%7EXXZcG6x8OviJXfW8qbWaSv%7EUdflrG8jqZvW9z3KYNNwygBd6Ln9qDxVlD5J0X1THTLflob2HsPmr3tJL34DrHV0BboWB3CD1XjEAZ82wUvNniYGLEwsE3aO%7Es8P7Ji50CkmysdHwdwSzYv7l02lqb7G3rdY3LwXgD1M48vD4FrIO1GDzNQtvo6I6ikZmZByL-lL64v66Jmsl3Z-vNw__&Key-Pair-Id=K24J24Z295AEI9" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-xl shadow-sm">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">Featured <span class="gradient-text">Projects</span></h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                My hands-on projects that demonstrate practical applications of my skills
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                    <img src="image/hugging.png" 
+                         alt="Fine-Tuned GPT-2 for Poetry Generation with RL" class="w-full h-full object-cover">
                 </div>
-
-                <!-- Full Stack Data Analytics -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">Full Stack Data Analytics</h3>
-                    <p class="text-lg mt-2">Completed the Full Stack Data Analytics program on 13th August 2024 from iNeuron.ai</p>
-                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Poetry Generation with RL</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                            AI/ML
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Fine-tuned GPT-2 (124M) on Gutenberg poetry dataset using Reinforcement Learning to enhance stylistic quality.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded">GPT-2</span>
+                        <span class="tag px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded">RL</span>
+                        <span class="tag px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded">Transformers</span>
+                    </div>
                 </div>
-
-                <!-- Deep Learning Foundation -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">Deep Learning Foundation</h3>
-                    <p class="text-lg mt-2">Completed the Deep Learning Foundation course on 8th September 2024 from iNeuron.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
-                </div>
-
-                <!-- Intro to Machine Learning -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">Intro to Machine Learning</h3>
-                    <p class="text-lg mt-2">Completed the Intro to Machine Learning course on 11th November 2024 from Kaggle.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
-                </div>
-
-                <!-- NLP Foundation -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">NLP Foundation</h3>
-                    <p class="text-lg mt-2">Completed the NLP Foundation program on 20th February 2023 from iNeuron.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
-                </div>
-
-                <!-- ChatGPT Prompt Engineering -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">ChatGPT Prompt Engineering for Developers</h3>
-                    <p class="text-lg mt-2">Completed the ChatGPT Prompt Engineering for Developers course from DeepLearning.ai.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://learn.deeplearning.ai/accomplishments/303988d6-a049-493b-9d32-54b63e7b07a5" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
-                </div>
-
-                <!-- Responsive Web Design -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">Responsive Web Design</h3>
-                    <p class="text-lg mt-2">Completed the Responsive Web Design course from freeCodeCamp.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
-                </div>
-
-                <!-- Python Basic -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">Python Basic</h3>
-                    <p class="text-lg mt-2">Completed the Python Basic course from Hackerrank.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
-                </div>
-
-                <!-- Data Analysis with Python -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">Data Analysis with Python</h3>
-                    <p class="text-lg mt-2">Completed the Data Analysis with Python course from freeCodeCamp.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
-                </div>
-
-                <!-- Automate Boring Stuff with Python -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold">Automate Boring Stuff with Python</h3>
-                    <p class="text-lg mt-2">Completed the Automate Boring Stuff with Python course from Udemy.</p>
-                    <p class="text-blue-500 mt-2"><a href="https://www.udemy.com/certificate/UC-772ce804-2385-4131-834b-7f492b286f84/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a></p>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Custom reward functions for rhyme, coherence, and creativity</li>
+                        <li>Adaptive learning rates and policy gradients</li>
+                        <li>Publicly available on HuggingFace</li>
+                    </ul>
+                    <a href="https://huggingface.co/ayazfau/GPT2-124M-poetry-RL" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="my-16" data-aos="fade-up">
-            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200 text-center">Education</h2>
-            <div class="mt-8">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-                    <h3 class="text-2xl font-bold">Friedrich-Alexander-Universität Erlangen-Nürnberg, MSc. Data Science</h3>
-                    <p class="text-gray-600 dark:text-gray-400">(2022 - Present)</p>
-                    <p class="text-lg mt-2">Courses: Business Analytics, ML Time Series, ML in Finance, Mathematics of Learning, Linked Data</p>
+            
+            <!-- Project 2 -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                    <img src="image/chatbot.png" 
+                         alt="RAG Chatbot for Emulating Chat Tone" class="w-full h-full object-cover">
                 </div>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold">Guru Gobind Singh Indraprastha University, Bachelors of Computer Applications</h3>
-                    <p class="text-gray-600 dark:text-gray-400">(2018 - 2021)</p>
-                    <p class="text-lg mt-2">Courses: OOPs, Network Security, DBMS, Web Technologies, Data Warehousing and Data Mining</p>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Persona Chatbot</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                            NLP
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        RAG chatbot with Gemini Pro API for personalized conversation emulation from WhatsApp history.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">RAG</span>
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">LangChain</span>
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">FAISS</span>
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Streamlit</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Persona-based response system with consistent tone</li>
+                        <li>Efficient similarity search with FAISS</li>
+                        <li>Intuitive UI with real-time chat</li>
+                    </ul>
+                    <a href="https://persona-chat.streamlit.app" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="my-16 text-center" data-aos="fade-up">
-            <h2 class="text-4xl font-semibold text-gray-800 dark:text-gray-200">Contact Information</h2>
-            <div class="mt-8 text-lg">
-                <p>GitHub: <a href="https://github.com/rebel47" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">github.com/rebel47</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/ayaz-alam" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600">linkedin.com/in/ayaz-alam</a></p>
-                <p>Email: <a href="mailto:alam.ayaz47@gmail.com" class="text-blue-500 hover:text-blue-600">alam.ayaz47@gmail.com</a></p>
+            
+            <!-- Project 3 -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                    <img src="image/biller.png" 
+                         alt="Biller - Your Friendly Bill Management System" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Biller</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                            Full-Stack
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Full-stack expense management system with Gemini AI for OCR-based receipt processing.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded">Streamlit</span>
+                        <span class="tag px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded">Supabase</span>
+                        <span class="tag px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded">PostgreSQL</span>
+                        <span class="tag px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded">Plotly</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>OCR-based receipt processing</li>
+                        <li>Secure authentication with Supabase</li>
+                        <li>Interactive analytics dashboard</li>
+                    </ul>
+                    <a href="https://biller.streamlit.app" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
             </div>
-        </section>
-    </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 text-center">
-    <p>&copy; 2025 Mohammad Ayaz Alam. All rights reserved.</p>
-</footer>
 
-<!-- Scripts -->
-<script>
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuOpenIcon = document.getElementById('menu-open-icon');
-    const menuCloseIcon = document.getElementById('menu-close-icon');
+              
+              <!-- Project 2: Audio to Text Transcription App -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/audio.png" alt="Audio to Text Transcription App" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Audio to Text Transcription App</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      AI/Speech
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    Streamlit-based application to transcribe audio files into text, supporting multiple languages.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Streamlit</span>
+                    <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Transcription</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Multi-language support</li>
+                    <li>Accurate transcription</li>
+                    <li>User-friendly interface</li>
+                  </ul>
+                  <a href="https://lina-speech-to-text.streamlit.app/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+    
+              
+              <!-- Project 4: Be-Healthier -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/health.png" alt="Be-Healthier" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Be-Healthier</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                      Web App
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    A web-based health and fitness tracker built with Streamlit.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Health</span>
+                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Fitness</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Health monitoring</li>
+                    <li>Fitness tracking</li>
+                    <li>User dashboard</li>
+                  </ul>
+                  <a href="https://be-healthier.streamlit.app/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Project 5: Advanced WhatsApp Chat Analytics Platform -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/whatsapp.png" alt="Advanced WhatsApp Chat Analytics Platform" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Advanced WhatsApp Chat Analytics Platform</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                      Analytics
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    Analyzes WhatsApp chat data with interactive visualizations.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Visualization</span>
+                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Data</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Interactive charts</li>
+                    <li>Chat data analysis</li>
+                    <li>Data export</li>
+                  </ul>
+                  <a href="https://github.com/rebel47/Whatsapp-Chat-Analyzer" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Project 6: Food Locha -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/health.png" alt="Food Locha" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Food Locha</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      AI
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    An AI-powered app that analyzes meal images, calculates calorie details, and provides nutritional insights.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">Nutrition</span>
+                    <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">Image Analysis</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Meal image analysis</li>
+                    <li>Calorie calculation</li>
+                    <li>Nutritional insights</li>
+                  </ul>
+                  <a href="https://github.com/rebel47/Food-Locha" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Project 7: AI-Powered Image-to-Story Generator -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/story.png" alt="AI-Powered Image-to-Story Generator" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">AI-Powered Image-to-Story Generator</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                      AI/Creative
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    Converts images into short stories using Gemini AI and gTTS.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Image</span>
+                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Story</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Image-to-text conversion</li>
+                    <li>Story generation</li>
+                    <li>Gemini AI integration</li>
+                  </ul>
+                  <a href="https://github.com/rebel47/imagetostory" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Project 8: Gemini ATS Resume Improvement Tool -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/ats.png" alt="Gemini ATS Resume Improvement Tool" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Gemini ATS Resume Improvement Tool</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                      AI/ATS
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    AI-powered app to evaluate resumes and generate cover letters based on job descriptions.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Resume</span>
+                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">ATS</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Resume evaluation</li>
+                    <li>Cover letter generation</li>
+                    <li>Job description matching</li>
+                  </ul>
+                  <a href="https://github.com/rebel47/ATS-with-Cover-Letter" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Project 9: Interactive RAG-Based QA System -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/rag.jpeg" alt="Interactive RAG-Based QA System" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Interactive RAG-Based QA System</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                      RAG/QA
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    A RAG system to analyze lecture slides with LlamaIndex and Llama-2-7b-chat-hf.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Q&A</span>
+                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">LlamaIndex</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Slide analysis</li>
+                    <li>Interactive Q&A</li>
+                    <li>LlamaIndex integration</li>
+                  </ul>
+                  <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Project 10: Email/SMS Spam Classifier -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/email.png" alt="Email/SMS Spam Classifier" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Email/SMS Spam Classifier</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                      NLP
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    ML model for classifying messages as spam or ham using NLP techniques.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">NLP</span>
+                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Classifier</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Spam detection</li>
+                    <li>NLP-based classification</li>
+                    <li>High accuracy</li>
+                  </ul>
+                  <a href="https://github.com/rebel47/Email-SMS-Classifier" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Project 11: Emotion Detection System -->
+              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 overflow-hidden">
+                  <img src="image/emotion.jpg" alt="Emotion Detection System" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-800">Emotion Detection System</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                      CNN/Deep Learning
+                    </span>
+                  </div>
+                  <p class="text-slate-600 mb-4">
+                    CNN-based system to classify facial expressions into seven emotions with TensorFlow and Keras.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">TensorFlow</span>
+                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Keras</span>
+                  </div>
+                </div>
+                <div class="project-overlay">
+                  <h4 class="font-bold mb-2">Key Features</h4>
+                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                    <li>Facial expression classification</li>
+                    <li>Real-time detection</li>
+                    <li>Seven emotion categories</li>
+                  </ul>
+                  <a href="https://github.com/rebel47/Emotion-Detection-System" class="inline-block mt-3 text-blue-300 hover:text-white">
+                    View Project <i class="fas fa-arrow-right ml-1"></i>
+                  </a>
+                </div>
+              </div>
 
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        menuOpenIcon.classList.toggle('hidden');
-        menuCloseIcon.classList.toggle('hidden');
-    });
-</script>
+
+        </div>
+    </section>
+
+    <!-- Education & Certificates -->
+<section id="education" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8">
+        <!-- Education Column -->
+        <div>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span class="gradient-text">Education</span></h2>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Education 1 -->
+                <div class="card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">MSc. Data Science</h3>
+                            <p class="text-blue-500 font-medium">Friedrich-Alexander-Universität Erlangen-Nürnberg</p>
+                        </div>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Oct 2022 - Present</span>
+                    </div>
+                    <p class="text-slate-600 mb-4">Erlangen, Germany</p>
+                    <p class="text-slate-600">Courses: Business Analytics, ML Time Series, ML in Finance, Mathematics of Learning, Linked Data</p>
+                </div>
+                
+                <!-- Education 2 -->
+                <div class="card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Bachelors of Computer Applications</h3>
+                            <p class="text-blue-500 font-medium">Guru Gobind Singh Indraprastha University</p>
+                        </div>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Aug 2018 - Sept 2021</span>
+                    </div>
+                    <p class="text-slate-600 mb-4">Delhi, India</p>
+                    <p class="text-slate-600">Courses: OOPs, Network Security, DBMS, Web Technologies, Data Warehousing and Data Mining</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificates Column -->
+        <div>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span class="gradient-text">Certificates</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Certificate 1 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500">
+                    <h3 class="font-semibold text-slate-800">AI Agents Fundamentals</h3>
+                    <p class="text-sm text-slate-600">Huggingface - Agents fundamentals, Tools and Action, Agents Workflow</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="#certificate-link" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-emerald-500">
+                    <h3 class="font-semibold text-slate-800">Full Stack Data Analytics</h3>
+                    <p class="text-sm text-slate-600">iNeuron.ai - Completed August 2024</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-slate-800">Deep Learning Foundation</h3>
+                    <p class="text-sm text-slate-600">iNeuron - Neural Network, Backpropagation, CNN</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
+                    <h3 class="font-semibold text-slate-800">Intro to Machine Learning</h3>
+                    <p class="text-sm text-slate-600">Kaggle - Model Validation, Random Forest</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-red-500">
+                    <h3 class="font-semibold text-slate-800">NLP Foundation</h3>
+                    <p class="text-sm text-slate-600">iNeuron - Completed February 2023</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 6 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-slate-800">ChatGPT Prompt Engineering</h3>
+                    <p class="text-sm text-slate-600">DeepLearning.ai - Developer-focused strategies</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://learn.deeplearning.ai/accomplishments/303988d6-a049-493b-9d32-54b63e7b07a5" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 7 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-teal-500">
+                    <h3 class="font-semibold text-slate-800">Responsive Web Design</h3>
+                    <p class="text-sm text-slate-600">freeCodeCamp - Web development fundamentals</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 8 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-orange-500">
+                    <h3 class="font-semibold text-slate-800">Python Basic</h3>
+                    <p class="text-sm text-slate-600">Hackerrank - Core Python concepts</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 9 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-pink-500">
+                    <h3 class="font-semibold text-slate-800">Data Analysis with Python</h3>
+                    <p class="text-sm text-slate-600">freeCodeCamp - Numpy, Pandas, Data Cleaning</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+
+                <!-- Certificate 10 -->
+                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-gray-500">
+                    <h3 class="font-semibold text-slate-800">Automate Boring Stuff with Python</h3>
+                    <p class="text-sm text-slate-600">Udemy - Practical Python automation</p>
+                    <p class="text-blue-500 mt-2">
+                        <a href="https://www.udemy.com/certificate/UC-772ce804-2385-4131-834b-7f492b286f84/" target="_blank" class="hover:text-blue-600">View Certification</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-xl shadow-sm">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">Get In <span class="gradient-text">Touch</span></h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                Feel free to reach out for collaborations, job opportunities, or just to say hi!
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-xl font-semibold text-slate-800 mb-6">Contact Information</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-slate-800">Phone</h4>
+                            <p class="text-slate-600">(+49) 017684051947</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-slate-800">Email</h4>
+                            <p class="text-slate-600">alam.ayaz47@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-slate-800">Location</h4>
+                            <p class="text-slate-600">Nuremberg, Germany</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-slate-800">Connect</h4>
+                            <div class="flex space-x-4 mt-2">
+                                <a href="https://www.linkedin.com/in/ayaz-alam/" class="text-slate-600 hover:text-blue-500">
+                                    <i class="fab fa-linkedin-in text-lg"></i>
+                                </a>
+                                <a href="https://github.com/rebel47" class="text-slate-600 hover:text-gray-800">
+                                    <i class="fab fa-github text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-semibold text-slate-800 mb-6">Send Me a Message</h3>
+                
+                <form class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                        <input type="text" id="name" name="name" class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                        <input type="text" id="subject" name="subject" class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition duration-300 shadow-md hover:shadow-lg">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-xl font-bold gradient-text mb-2">AYAZ ALAM</div>
+                    <p class="text-slate-300">Data Scientist & AI Engineer</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/ayaz-alam/" class="text-slate-300 hover:text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/rebel47" class="text-slate-300 hover:text-white">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:alam.ayaz47@gmail.com" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+                <p>&copy; 2024 Mohammad Ayaz Alam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
