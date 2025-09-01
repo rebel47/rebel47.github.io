@@ -33,10 +33,10 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
 ## 🚀 Getting Started
 
 1. **Clone this repo**
-   ```bash
+   ```
    git clone https://github.com/rebel47/rebel47.github.io.git
    cd rebel47.github.io
-````
+```
 
 2. **Open locally**
    Simply open `index.html` in your browser.
@@ -44,7 +44,6 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
 3. **Deploy updates**
    Push changes to the `main` branch — GitHub Pages will automatically update your live site.
 
----
 
 ## 📂 Repository Structure
 
@@ -61,7 +60,6 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
 * **GitHub:** [@rebel47](https://github.com/rebel47)
 * **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/ayaz-alam)
 
----
 
 ⭐ If you like this project, consider giving it a star!
 
