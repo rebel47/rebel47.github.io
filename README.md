@@ -65,5 +65,4 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
 
 ⭐ If you like this project, consider giving it a star!
 
-```
 
