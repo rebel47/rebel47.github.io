@@ -1,3 +1,5 @@
+
+````markdown
 # Personal Portfolio — rebel47.github.io
 
 This is my personal portfolio website built with **HTML + Tailwind CSS**.  
@@ -19,13 +21,13 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
   Built with **Tailwind CSS** for a minimal, responsive, and mobile-friendly design.  
 
 - 🌍 **GitHub Pages Deployment**  
-  Easy to host and update directly from this repository.  
+  Hosted directly from this repository with automatic updates on push.  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, Tailwind CSS  
+- **Frontend:** HTML, Tailwind CSS  
 - **Deployment:** GitHub Pages  
 
 ---
@@ -33,17 +35,18 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
 ## 🚀 Getting Started
 
 1. **Clone this repo**
-   ```
+   ```bash
    git clone https://github.com/rebel47/rebel47.github.io.git
    cd rebel47.github.io
-```
+````
 
 2. **Open locally**
    Simply open `index.html` in your browser.
 
 3. **Deploy updates**
-   Push changes to the `main` branch — GitHub Pages will automatically update your live site.
+   Push changes to the `main` branch — GitHub Pages will automatically rebuild and update your live site.
 
+---
 
 ## 📂 Repository Structure
 
@@ -55,12 +58,14 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
 └── README.md         # Documentation
 ```
 
+---
+
 ## 📬 Contact
 
 * **GitHub:** [@rebel47](https://github.com/rebel47)
-* **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/ayaz-alam)
+* **LinkedIn:** [Ayaz Alam](https://linkedin.com/in/ayaz-alam)
 
+---
 
 ⭐ If you like this project, consider giving it a star!
-
 
