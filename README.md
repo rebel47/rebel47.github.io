@@ -36,11 +36,11 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
    ```bash
    git clone https://github.com/rebel47/rebel47.github.io.git
    cd rebel47.github.io
+````
 ```
-
 2. **Open locally**
    Simply open `index.html` in your browser.
-
+```
 3. **Deploy updates**
    Push changes to the `main` branch — GitHub Pages will automatically update your live site.
 
