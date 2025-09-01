@@ -37,8 +37,6 @@ It showcases my **experience, projects, and skills** in Data Science, AI, and So
    git clone https://github.com/rebel47/rebel47.github.io.git
    cd rebel47.github.io
   ```
-
-
 2. **Clone this repo**
    Simply open `index.html` in your browser.
 
