@@ -1,238 +1,488 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Ayaz Alam | Data Scientist & AI Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' }
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
         :root {
             --primary: #3b82f6;
             --primary-dark: #2563eb;
             --secondary: #10b981;
-            --dark: #1e293b;
+            --accent: #8b5cf6;
+            --dark: #0f172a;
             --light: #f8fafc;
         }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
+
+        * {
             scroll-behavior: smooth;
-            background-color: #f1f5f9;
         }
-        
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Dark mode styles */
+        .dark body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .dark .nav-bg {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-bg {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
         .gradient-text {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            animation: gradient 8s ease infinite;
         }
-        
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
+        }
+
+        /* Animated background blobs */
+        .blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            filter: blur(40px);
+            opacity: 0.7;
+        }
+
         .card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
         }
-        
+
+        .dark .card:hover {
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
         .skill-pill {
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
         }
-        
+
         .skill-pill:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
         }
-        
+
         .timeline-item {
             position: relative;
             padding-left: 2rem;
         }
-        
+
         .timeline-item:before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
-            width: 4px;
-            background: var(--primary);
+            width: 3px;
+            background: linear-gradient(180deg, #3b82f6, #8b5cf6);
             border-radius: 2px;
         }
-        
+
         .timeline-dot {
             position: absolute;
-            left: -6px;
+            left: -8px;
             top: 10px;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: var(--primary);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            animation: pulse-slow 2s infinite;
             z-index: 2;
         }
-        
+
         .tag {
             transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
+
         .tag:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         .project-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
-        
+
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .project-card:hover .project-overlay {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .project-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(15, 23, 42, 0.9);
+            background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.95));
             color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             transform: translateY(100%);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
         }
-        
+
+        .contact-input {
+            transition: all 0.3s ease;
+        }
+
         .contact-input:focus {
             outline: none;
-            box-shadow: 0 0 0 2px var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
         }
-        
+
         .nav-link {
             position: relative;
+            transition: all 0.3s ease;
         }
-        
+
         .nav-link:after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: 0;
-            left: 0;
-            background: var(--primary);
-            transition: width 0.3s;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
-        
+
         .nav-link:hover:after {
             width: 100%;
         }
-        
+
         .active-nav:after {
             width: 100%;
         }
+
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Floating animation for icons */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Button hover effects */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            width: 60px;
+            height: 30px;
+            background: #cbd5e1;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dark .theme-toggle {
+            background: #475569;
+        }
+
+        .theme-toggle-circle {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark .theme-toggle-circle {
+            transform: translateX(30px);
+            background: #1e293b;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Network Canvas */
+        #network-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 </head>
-<body class="bg-slate-100">
+
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300">
+    
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-indicator" class="scroll-indicator"></div>
+
+    <!-- Network Background Canvas -->
+    <canvas id="network-canvas"></canvas>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <nav class="fixed top-0 left-0 right-0 nav-bg shadow-lg z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="text-xl font-bold gradient-text">Mohammad Ayaz Alam</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="nav-link text-slate-700 hover:text-blue-500">About</a>
-                    <a href="#skills" class="nav-link text-slate-700 hover:text-blue-500">Skills</a>
-                    <a href="#experience" class="nav-link text-slate-700 hover:text-blue-500">Experience</a>
-                    <a href="#projects" class="nav-link text-slate-700 hover:text-blue-500">Projects</a>
-                    <a href="#education" class="nav-link text-slate-700 hover:text-blue-500">Education</a>
-                    <a href="#contact" class="nav-link text-slate-700 hover:text-blue-500">Contact</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 font-medium">About</a>
+                    <a href="#skills" class="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 font-medium">Skills</a>
+                    <a href="#experience" class="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 font-medium">Experience</a>
+                    <a href="#projects" class="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 font-medium">Projects</a>
+                    <a href="#education" class="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 font-medium">Education</a>
+                    <a href="#contact" class="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 font-medium">Contact</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="theme-toggle ml-4" aria-label="Toggle theme">
+                        <div class="theme-toggle-circle">
+                            <i class="fas fa-sun text-yellow-500 text-xs absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 dark:hidden"></i>
+                            <i class="fas fa-moon text-slate-200 text-xs absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden dark:block"></i>
+                        </div>
+                    </button>
                 </div>
-                <div class="md:hidden">
-                    <button id="menu-btn" class="text-slate-700 hover:text-blue-500 focus:outline-none">
+                <div class="md:hidden flex items-center space-x-4">
+                    <!-- Mobile Theme Toggle -->
+                    <button id="theme-toggle-mobile" class="text-slate-700 dark:text-slate-300 hover:text-blue-500 focus:outline-none">
+                        <i class="fas fa-moon text-lg dark:hidden"></i>
+                        <i class="fas fa-sun text-lg hidden dark:block"></i>
+                    </button>
+                    <button id="menu-btn" class="text-slate-700 dark:text-slate-300 hover:text-blue-500 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block px-3 py-2 hover:bg-slate-100">About</a>
-                <a href="#skills" class="block px-3 py-2 hover:bg-slate-100">Skills</a>
-                <a href="#experience" class="block px-3 py-2 hover:bg-slate-100">Experience</a>
-                <a href="#projects" class="block px-3 py-2 hover:bg-slate-100">Projects</a>
-                <a href="#education" class="block px-3 py-2 hover:bg-slate-100">Education</a>
-                <a href="#contact" class="block px-3 py-2 hover:bg-slate-100">Contact</a>
+                <a href="#about" class="block px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">About</a>
+                <a href="#skills" class="block px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">Skills</a>
+                <a href="#experience" class="block px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">Experience</a>
+                <a href="#projects" class="block px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">Projects</a>
+                <a href="#education" class="block px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">Education</a>
+                <a href="#contact" class="block px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="about" class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center gap-8">
+    <!-- Hero Section with Enhanced Animations -->
+    <section id="about" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div class="flex flex-col md:flex-row items-center gap-12 relative z-10">
             <div class="md:w-1/3 flex justify-center">
-                <div class="relative">
-                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                        <img src="image/self1.png" 
-                             alt="Mohammad Ayaz Alam" class="w-full h-full object-cover">
+                <div class="relative floating mb-16 md:mb-8">
+                    <div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-visible border-4 border-white dark:border-slate-700 shadow-2xl relative z-0">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 opacity-20 animate-pulse-slow rounded-full"></div>
+                        <img src="image/self1.png" alt="Mohammad Ayaz Alam" class="w-full h-full object-cover relative rounded-full">
                     </div>
-                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-md px-4 py-2 flex items-center justify-center">
-                        <div class="flex space-x-2">
-                            <a href="https://linkedin.com/in/ayaz-alam" class="text-blue-500 hover:text-blue-700">
-                                <i class="fab fa-linkedin-in"></i>
+                    <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-lg shadow-2xl px-3 py-2 flex items-center justify-center border-2 border-white/50 dark:border-slate-700/50 z-20">
+                        <div class="flex space-x-2.5">
+                            <a href="https://linkedin.com/in/ayaz-alam" target="_blank" rel="noopener noreferrer" 
+                               class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 transition-all transform hover:scale-110 hover:-translate-y-1">
+                                <i class="fab fa-linkedin-in text-sm"></i>
                             </a>
-                            <a href="https://www.github.com/rebel47" class="text-gray-800 hover:text-gray-600">
-                                <i class="fab fa-github"></i>
+                            <a href="https://www.github.com/rebel47" target="_blank" rel="noopener noreferrer"
+                               class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 hover:bg-gray-800 hover:text-white dark:hover:bg-gray-600 transition-all transform hover:scale-110 hover:-translate-y-1">
+                                <i class="fab fa-github text-sm"></i>
                             </a>
-                            <a href="mailto:alam.ayaz47@gmail.com" class="text-red-500 hover:text-red-700">
-                                <i class="fas fa-envelope"></i>
+                            <a href="mailto:alam.ayaz47@gmail.com"
+                               class="w-8 h-8 flex items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-500 transition-all transform hover:scale-110 hover:-translate-y-1">
+                                <i class="fas fa-envelope text-sm"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="md:w-2/3 mt-8 md:mt-0">
-                <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            <div class="md:w-2/3 mt-12 md:mt-0">
+                <div class="inline-block mb-4 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium animate-pulse-slow">
+                    <i class="fas fa-circle text-green-500 mr-2 animate-pulse"></i>
+                    Available for opportunities
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-800 dark:text-white mb-6 leading-tight">
                     Hi, I'm <span class="gradient-text">Mohammad Ayaz Alam</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl text-slate-600 mb-6">
+                <h2 class="text-3xl md:text-4xl text-slate-600 dark:text-slate-300 mb-8 font-semibold">
                     Data Scientist & AI Engineer
                 </h2>
-                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
-                    Passionate about leveraging data and AI to solve complex problems. My expertise spans machine learning, 
-                    generative AI, and full-stack data solutions. I thrive at the intersection of technology and research, 
-                    delivering impactful insights and innovative solutions.
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-2xl">
+                    Passionate about leveraging data and AI to solve complex problems. My expertise spans <span class="font-semibold text-blue-600 dark:text-blue-400">machine learning</span>,
+                    <span class="font-semibold text-purple-600 dark:text-purple-400">generative AI</span>, and full-stack data solutions. I thrive at the intersection of technology and
+                    research, delivering impactful insights and innovative solutions.
                 </p>
-                <div class="flex flex-wrap gap-4 mb-8">
-                    <div class="flex items-center text-slate-600">
-                        <i class="fas fa-phone-alt mr-2"></i>
-                        <span>(+49) 017684051947</span>
+                <div class="flex flex-wrap gap-6 mb-10">
+                    <div class="flex items-center text-slate-600 dark:text-slate-400 group">
+                        <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-phone-alt text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <span class="font-medium">(+49) 017684051947</span>
                     </div>
-                    <div class="flex items-center text-slate-600">
-                        <i class="fas fa-envelope mr-2"></i>
-                        <span>alam.ayaz47@gmail.com</span>
+                    <div class="flex items-center text-slate-600 dark:text-slate-400 group">
+                        <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-purple-600 dark:text-purple-400"></i>
+                        </div>
+                        <span class="font-medium">alam.ayaz47@gmail.com</span>
                     </div>
-                    <div class="flex items-center text-slate-600">
-                        <i class="fas fa-map-marker-alt mr-2"></i>
-                        <span>Nuremberg, Germany</span>
+                    <div class="flex items-center text-slate-600 dark:text-slate-400 group">
+                        <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-map-marker-alt text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <span class="font-medium">Nuremberg, Germany</span>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#contact" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition duration-300 shadow-md hover:shadow-lg">
-                        Contact Me
+                    <a href="#contact"
+                        class="btn-primary px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center">
+                        <span class="relative z-10">Contact Me</span>
+                        <i class="fas fa-arrow-right ml-2 relative z-10"></i>
                     </a>
-                    <a href="assets/cv.pdf" class="px-6 py-3 bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-50 rounded-lg font-medium transition duration-300 shadow-md hover:shadow-lg">
-                        Download CV
+                    <a href="assets/CV.pdf"
+                        class="btn-primary px-8 py-4 bg-transparent border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center">
+                        <i class="fas fa-download mr-2 relative z-10"></i>
+                        <span class="relative z-10">Download CV</span>
                     </a>
                 </div>
             </div>
@@ -240,122 +490,155 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-xl shadow-sm">
-        <div class="text-center mb-12">
+    <section id="skills" class="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="glass rounded-3xl p-8 md:p-12 shadow-2xl relative z-10">
+            <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span class="gradient-text">Skills</span></h2>
             <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                I've cultivated a diverse set of technical skills through both academic studies and professional experience
+                I've cultivated a diverse set of technical skills through both academic studies and professional
+                experience
             </p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Generative AI Systems -->
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-brain text-purple-500 mr-2"></i> Generative AI Systems
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Agentic AI</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">MCP</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">LangGraph</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">LangChain</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">RAG</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">OpenWebUI</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Multi-Agent Systems</span>
+                </div>
+            </div>
+
+            <!-- Natural Language Processing -->
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-language text-green-500 mr-2"></i> NLP
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Fine-tuning</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Prompt Engineering</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Hugging Face</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Transformers</span>
+                </div>
+            </div>
+
+            <!-- Machine Learning & Analytics -->
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-chart-line text-blue-500 mr-2"></i> ML & Analytics
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Supervised Learning</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Unsupervised Learning</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Feature Engineering</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Model Evaluation</span>
+                </div>
+            </div>
+
             <!-- Programming & Data Science -->
-            <div class="card bg-slate-50 rounded-xl p-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
-                        <i class="fas fa-code text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-800">Programming & Data Science</h3>
-                </div>
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-code text-indigo-500 mr-2"></i> Programming & Data Science
+                </h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Python</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Pandas</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">NumPy</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Matplotlib</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Seaborn</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Scikit-learn</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">PyTorch</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Jupyter</span>
-                    <span class="skill-pill px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">R</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Python</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Pandas</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">NumPy</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Matplotlib</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Seaborn</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Scikit-learn</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">PyTorch</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Jupyter</span>
                 </div>
             </div>
-            
-            <!-- Generative AI & NLP -->
-            <div class="card bg-slate-50 rounded-xl p-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 mr-4">
-                        <i class="fas fa-brain text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-800">Generative AI & NLP</h3>
-                </div>
+
+            <!-- Web Development & APIs -->
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-globe text-cyan-500 mr-2"></i> Web Development & APIs
+                </h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">LLMs</span>
-                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">LangChain</span>
-                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Fine-Tuning</span>
-                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">RAG</span>
-                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Llamaindex</span>
-                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Prompt Engineering</span>
-                    <span class="skill-pill px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Hugging Face</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">FastAPI</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Flask</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Django</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">RESTful APIs</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">HTML</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">CSS</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">JavaScript</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Bootstrap</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Tailwind</span>
                 </div>
             </div>
-            
+
+            <!-- Mobile & Backend Services -->
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-mobile-alt text-pink-500 mr-2"></i> Mobile & Backend
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Flutter</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Firebase</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Node.js</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Cloud Functions</span>
+                </div>
+            </div>
+
             <!-- Databases & Big Data -->
-            <div class="card bg-slate-50 rounded-xl p-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-4">
-                        <i class="fas fa-database text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-800">Databases & Big Data</h3>
-                </div>
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-database text-yellow-500 mr-2"></i> Databases & Big Data
+                </h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">SQL</span>
-                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">PostgreSQL</span>
-                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Database Design</span>
-                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Query Optimization</span>
-                    <span class="skill-pill px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">MongoDB</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">SQL</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">PostgreSQL</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Query Optimization</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Firebase</span>
                 </div>
             </div>
-            
-            <!-- Data Visualization & BI -->
-            <div class="card bg-slate-50 rounded-xl p-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-500 mr-4">
-                        <i class="fas fa-chart-line text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-800">Data Visualization & BI</h3>
-                </div>
+
+            <!-- Data Visualization & BI Tools -->
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-chart-bar text-emerald-500 mr-2"></i> Data Visualization & BI
+                </h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Tableau</span>
-                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Power BI</span>
-                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Plotly</span>
-                    <span class="skill-pill px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm">Dash</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Power BI</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Plotly</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Dash</span>
                 </div>
             </div>
-            
-            <!-- Web Development -->
-            <div class="card bg-slate-50 rounded-xl p-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-500 mr-4">
-                        <i class="fas fa-laptop-code text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-800">Web Development & APIs</h3>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">Django</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">Flask</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">FastAPI</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">RESTful APIs</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">HTML</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">CSS</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">JavaScript</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">Bootstrap</span>
-                    <span class="skill-pill px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">TailwindCSS</span>
-                </div>
-            </div>
-            
+
             <!-- DevOps & Tools -->
-            <div class="card bg-slate-50 rounded-xl p-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-500 mr-4">
-                        <i class="fas fa-server text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-800">DevOps & Tools</h3>
-                </div>
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-tools text-gray-500 mr-2"></i> DevOps & Tools
+                </h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">Docker</span>
-                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">Git/GitHub</span>
-                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">CI/CD Pipelines</span>
-                    <span class="skill-pill px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">Linux/Unix</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Docker</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Git/GitHub</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">CI/CD Pipelines</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">Linux/Unix</span>
+                </div>
+            </div>
+
+            <!-- Productivity Tools -->
+            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-tasks text-orange-500 mr-2"></i> Productivity Tools
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">MS Excel (Advanced)</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">MS Word</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">MS PowerPoint</span>
+                    <span class="skill-pill px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600">LaTeX</span>
                 </div>
             </div>
         </div>
@@ -366,231 +649,390 @@
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-slate-800 mb-4">Work <span class="gradient-text">Experience</span></h2>
             <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                My professional journey through research institutions and tech companies
+                Professional journey building AI solutions and data-driven systems
             </p>
         </div>
-        
-        <div class="space-y-8 relative">
-            <!-- Timeline connector -->
-            <div class="hidden md:block absolute left-4 md:left-1/2 h-full w-0.5 bg-blue-500 transform -translate-x-1/2 -translate-y-4"></div>
 
-             <!-- Siemens Energy -->
-
-<div class="relative md:w-1/2 ml-auto pl-8 md:pl-0 pr-8 md:pr-0">
-    <div class="timeline-dot hidden md:block"></div>
-    <div class="card bg-white p-6 rounded-xl shadow-sm">
-        <div class="flex justify-between items-start mb-2">
-            <div>
-                <h3 class="text-xl font-bold text-slate-800">Junior Data Scientist (NLP) — Master's Thesis</h3>
-                <p class="text-blue-500 font-medium">Siemens Energy</p>
-            </div>
-            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">July 2025 - Present</span>
-        </div>
-        <p class="text-slate-600 mb-4">Erlangen, Germany (Hybrid)</p>
-        <ul class="space-y-2 list-disc list-inside text-slate-600">
-            <li>Integrated agentic AI into TMS for operator support: log traces, reports, fix plans (config diffs, restart/rollback), emails.</li>
-            <li>Implemented MCP server to orchestrate hierarchical multi-agent system (parent/child) with role-specific tools.</li>
-            <li>Built NLP components (retrieval, summarization, entity extraction) over TMS/knowledge bases for tools and copilots.</li>
-        </ul>
-    </div>
-</div>          
-
-<!-- BASF -->
-
-<div class="relative md:w-1/2 mr-auto pr-8 md:pr-0 md:pl-8">
-    <div class="timeline-dot hidden md:block"></div>
-    <div class="card bg-white p-6 rounded-xl shadow-sm">
-        <div class="flex justify-between items-start mb-2">
-            <div>
-                <h3 class="text-xl font-bold text-slate-800">Data Consultant Intern</h3>
-                <p class="text-blue-500 font-medium">BASF</p>
-            </div>
-            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">April 2025 - July 2025</span>
-        </div>
-        <p class="text-slate-600 mb-4">Ludwigshafen am Rhein, Germany</p>
-        <ul class="space-y-2 list-disc list-inside text-slate-600">
-            <li>Supported internal clients across business units by building and integrating Generative AI tools into daily workflows.</li>
-            <li>Developed a Data Validation AI Agent to analyze structured datasets, generate validation reports, compute quality scores, and run custom validation tests.</li>
-            <li>Led the end-to-end event app for Inhouse Consulting (submissions, voting, UI, analytics, and access controls).</li>
-            <li>Contributed to internal project management tools to streamline team operations and task tracking.</li>
-        </ul>
-    </div>
-</div>
-
-            
-            <!-- Experience item 1 -->
-            <div class="relative md:w-1/2 ml-auto pl-8 md:pl-0 pr-8 md:pr-0">
-                <div class="timeline-dot hidden md:block"></div>
-                <div class="card bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800">Research Assistant</h3>
-                            <p class="text-blue-500 font-medium">Institute for Employment Research</p>
-                        </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Mar 2025 - Present</span>
+        <div class="space-y-8">
+            <!-- Experience 1: Siemens Energy -->
+            <div class="card bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Junior Data Scientist (NLP)</h3>
+                        <p class="text-lg text-blue-500 font-medium">Siemens Energy - Master's Thesis</p>
+                        <p class="text-slate-600 mt-1">Erlangen, Germany (Hybrid)</p>
                     </div>
-                    <p class="text-slate-600 mb-4">Nuremberg, Germany</p>
-                    <ul class="space-y-2 list-disc list-inside text-slate-600">
-                        <li>Applied ML techniques (PU learning: Elkan & Noto, Two-Step Strategy, Bagging) for job market analysis.</li>
-                        <li>Designed and optimized data pipelines for efficient processing, management, and feature engineering.</li>
-                        <li>Conducted data analysis, visualization, and exploratory data analysis (EDA) to extract key labor market insights.</li>
-                        <li>Engaged in research paper writing, proofreading, and technical documentation.</li>
-                    </ul>
+                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Jul 2025 - Present</span>
                 </div>
+                <ul class="space-y-2 text-slate-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Architected production-ready multi-agent AI framework using LangChain v1/LangGraph with PostgreSQL memory persistence, RESTful API (FastAPI + Swagger UI), and multi-LLM provider support (Azure OpenAI, Anthropic, Ollama) with hot-swapping capability and real-time streaming responses.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Implemented MCP server to orchestrate hierarchical multi-agent system with 6+ specialized agents (orchestrator, planner, architect, coder) using role-specific tools and parent-child coordination patterns for complex workflows.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Established comprehensive testing infrastructure with 22+ pytest tests covering framework initialization, tool integration, conversation memory, and multi-agent collaboration, ensuring production reliability and maintainability.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Applied framework to Siemens Energy's TMS: Developed agentic solution for operator support automating log trace analysis, incident report generation, automated fix plan recommendations (config diffs, restart/rollback procedures), and email notifications for proactive system maintenance.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Built NLP components (retrieval, summarization, entity extraction) with extensible tool registry (9+ capabilities: file operations, notifications, database queries) over TMS knowledge bases, enabling intelligent operator copilots for faster incident resolution and reduced downtime.</span>
+                    </li>
+                </ul>
             </div>
-            
-            <!-- Experience item 2 -->
-            <div class="relative md:w-1/2 mr-auto pr-8 md:pr-0 md:pl-8">
-                <div class="timeline-dot hidden md:block"></div>
-                <div class="card bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800">Machine Learning Researcher</h3>
-                            <p class="text-blue-500 font-medium">Institute for Employment Research</p>
-                        </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Nov 2024 - Feb 2025</span>
+
+            <!-- Experience 2: Institute for Employment Research -->
+            <div class="card bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Machine Learning Researcher / Research Assistant</h3>
+                        <p class="text-lg text-blue-500 font-medium">Institute for Employment Research</p>
+                        <p class="text-slate-600 mt-1">Nuremberg, Germany</p>
                     </div>
-                    <p class="text-slate-600 mb-4">Nuremberg, Germany</p>
-                    <ul class="space-y-2 list-disc list-inside text-slate-600">
-                        <li>Applied ML techniques (XGBoost, Random Forest, SVM, PU learning) to forecast labor market trends.</li>
-                        <li>Built scalable data pipelines for preprocessing and feature engineering on 90M+ records.</li>
-                        <li>Addressed class imbalances through weight estimation, improving model robustness and accuracy.</li>
-                        <li>Developed predictive models to rank job offers, aiding caseworkers in pre-selecting opportunities.</li>
-                        <li>Delivered insights on labor market dynamics through reports and stakeholder presentations.</li>
-                    </ul>
+                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Nov 2024 - Nov 2025</span>
                 </div>
+                <ul class="space-y-2 text-slate-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Applied ML techniques (XGBoost, Random Forest, SVM, PU learning: Elkan & Noto, Two-Step Strategy, Bagging) to forecast labor market trends and analyze job suitability patterns.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Built scalable data pipelines for preprocessing and feature engineering on 90M+ records, optimizing for efficient data processing and management.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Developed predictive models to rank job offers and aid caseworkers in pre-selecting opportunities, addressing class imbalances through weight estimation to improve model robustness.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Conducted comprehensive data analysis, visualization, and EDA to extract key labor market insights and deliver findings through reports and stakeholder presentations.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Contributed to research paper writing, proofreading, and technical documentation for academic publications.</span>
+                    </li>
+                </ul>
             </div>
-            
-            <!-- Experience item 3 -->
-            <div class="relative md:w-1/2 ml-auto pl-8 md:pl-0 pr-8 md:pr-0">
-                <div class="timeline-dot hidden md:block"></div>
-                <div class="card bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800">Business Development Intern</h3>
-                            <p class="text-blue-500 font-medium">Shape AI</p>
-                        </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Mar 2021 - Oct 2021</span>
+
+            <!-- Experience 3: BASF -->
+            <div class="card bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Data Consultant Intern</h3>
+                        <p class="text-lg text-blue-500 font-medium">BASF</p>
+                        <p class="text-slate-600 mt-1">Ludwigshafen am Rhein, Germany</p>
                     </div>
-                    <p class="text-slate-600 mb-4">Delhi, India</p>
-                    <ul class="space-y-2 list-disc list-inside text-slate-600">
-                        <li>Performed data analysis using Power BI, extracting actionable insights from sales data.</li>
-                        <li>Developed dashboards and visualizations to clearly communicate key metrics.</li>
-                        <li>Designed a data-backed course structure for the winter training program.</li>
-                        <li>Contributed to marketing by analyzing target audience behavior.</li>
-                    </ul>
+                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Apr 2025 - Jul 2025</span>
                 </div>
+                <ul class="space-y-2 text-slate-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Supported internal clients across business units by building and integrating Generative AI tools into daily workflows.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Developed a Data Validation AI Agent to analyze structured datasets, generate validation reports, compute quality scores, and run custom validation tests.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Led the end-to-end event app for Inhouse Consulting (submissions, voting, UI, analytics and access controls).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Contributed to internal project management tools to streamline team operations and task tracking.</span>
+                    </li>
+                </ul>
             </div>
-            
-            <!-- Experience item 4 -->
-            <div class="relative md:w-1/2 mr-auto pr-8 md:pr-0 md:pl-8">
-                <div class="timeline-dot hidden md:block"></div>
-                <div class="card bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800">Web Developer Intern</h3>
-                            <p class="text-blue-500 font-medium">Hoda Engineering Works</p>
-                        </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Sept 2020 - Jan 2021</span>
+
+            <!-- Experience 4: Shape AI -->
+            <div class="card bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Business Development Intern</h3>
+                        <p class="text-lg text-blue-500 font-medium">Shape AI</p>
+                        <p class="text-slate-600 mt-1">Delhi, India</p>
                     </div>
-                    <p class="text-slate-600 mb-4">Delhi, India</p>
-                    <ul class="space-y-2 list-disc list-inside text-slate-600">
-                        <li>Built responsive websites using HTML, CSS, Bootstrap, and JavaScript.</li>
-                        <li>Performed testing and debugging on various devices to improve UX.</li>
-                        <li>Optimized JavaScript and CSS for faster load times.</li>
-                        <li>Adopted modern web frameworks and best practices.</li>
-                    </ul>
+                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Mar 2021 - Oct 2021</span>
                 </div>
+                <ul class="space-y-2 text-slate-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Performed data analysis using Power BI, extracting actionable insights from sales data to drive business decisions.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Developed dashboards and visualizations to clearly communicate key metrics across the organization.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Designed a data-backed course structure for the winter training program, boosting engagement and enrollment.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Contributed to a marketing project by analyzing target audience behavior, improving course promotion strategies.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Experience 5: Hoda Engineering Works -->
+            <div class="card bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Web Developer Intern</h3>
+                        <p class="text-lg text-blue-500 font-medium">Hoda Engineering Works</p>
+                        <p class="text-slate-600 mt-1">Delhi, India</p>
+                    </div>
+                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Sept 2020 - Jan 2021</span>
+                </div>
+                <ul class="space-y-2 text-slate-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Built responsive websites using HTML, CSS, Bootstrap, and JavaScript, ensuring performance and cross-browser support.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Performed testing and debugging on various devices, improving user experience and accessibility.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Optimized JavaScript and CSS for faster load times, boosting website interactivity and performance.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Adopted modern web frameworks and best practices, driving continuous improvements in development processes.</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-xl shadow-sm">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-slate-800 mb-4">Featured <span class="gradient-text">Projects</span></h2>
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">Featured <span class="gradient-text">Projects</span>
+            </h2>
             <p class="text-lg text-slate-600 max-w-3xl mx-auto">
                 My hands-on projects that demonstrate practical applications of my skills
             </p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1 -->
+            <!-- Project 1: Multi Agent Project Generator -->
             <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                    <img src="image/hugging.png" 
-                         alt="Fine-Tuned GPT-2 for Poetry Generation with RL" class="w-full h-full object-cover">
+                <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-robot text-white text-6xl"></i>
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold text-slate-800">Poetry Generation with RL</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                            AI/ML
+                        <h3 class="text-xl font-bold text-slate-800">Multi Agent Project Generator</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                            AI/Multi-Agent
                         </span>
                     </div>
                     <p class="text-slate-600 mb-4">
-                        Fine-tuned GPT-2 (124M) on Gutenberg poetry dataset using Reinforcement Learning to enhance stylistic quality.
+                        Autonomous AI project builder using LangGraph and Google Gemini AI that generates complete, production-ready projects from natural language prompts.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="tag px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded">GPT-2</span>
-                        <span class="tag px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded">RL</span>
-                        <span class="tag px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded">Transformers</span>
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">LangGraph</span>
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Gemini AI</span>
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Pydantic</span>
                     </div>
                 </div>
                 <div class="project-overlay">
                     <h4 class="font-bold mb-2">Key Features</h4>
                     <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                        <li>Custom reward functions for rhyme, coherence, and creativity</li>
-                        <li>Adaptive learning rates and policy gradients</li>
-                        <li>Publicly available on HuggingFace</li>
+                        <li>Planner–Architect–Coder agent hierarchy</li>
+                        <li>Structured planning & architecture design</li>
+                        <li>Sandboxed file operations</li>
+                        <li>Multiple tech stacks support</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/Multi-Agent-Project-Generator" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2: OnDevice SLM App -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                    <i class="fas fa-mobile-alt text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">OnDevice SLM App</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            Mobile AI
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Privacy-Focused On-Device LLM Inference using Flutter and llama_cpp_dart with real-time usage without cloud APIs.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">Flutter</span>
+                        <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">On-Device</span>
+                        <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">GGUF</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>1B–3B GGUF models support (Llama, Phi, Gemma)</li>
+                        <li>4-bit quantization for mobile</li>
+                        <li>Streaming chat & Material Design 3 UI</li>
+                        <li>Optimized with Android NDK 27</li>
+                    </ul>
+                    <a href="https://github.com/rebel47" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3: Fine-Tuned GPT-2 for Poetry Generation -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                    <i class="fas fa-feather-alt text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Fine-Tuned GPT-2 Poetry Generator</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                            NLP/RL
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Fine-tuned GPT-2 (124M) on Gutenberg poetry corpus with Reinforcement Learning for improved stylistic quality and coherence.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-pink-50 text-pink-600 text-xs rounded">GPT-2</span>
+                        <span class="tag px-2 py-1 bg-pink-50 text-pink-600 text-xs rounded">RL</span>
+                        <span class="tag px-2 py-1 bg-pink-50 text-pink-600 text-xs rounded">Poetry</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Custom reward functions (rhyme, coherence)</li>
+                        <li>Policy-gradient methods</li>
+                        <li>3600+ downloads on Hugging Face Hub</li>
                     </ul>
                     <a href="https://huggingface.co/ayazfau/GPT2-124M-poetry-RL" class="inline-block mt-3 text-blue-300 hover:text-white">
                         View Project <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
             </div>
-            
-            <!-- Project 2 -->
+
+            <!-- Project 4: RAG Chatbot -->
             <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                    <img src="image/chatbot.png" 
-                         alt="RAG Chatbot for Emulating Chat Tone" class="w-full h-full object-cover">
+                <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
+                    <i class="fas fa-comments text-white text-6xl"></i>
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold text-slate-800">Persona Chatbot</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                            NLP
+                        <h3 class="text-xl font-bold text-slate-800">RAG Chatbot for Chat Tone Emulation</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                            RAG/NLP
                         </span>
                     </div>
                     <p class="text-slate-600 mb-4">
-                        RAG chatbot with Gemini Pro API for personalized conversation emulation from WhatsApp history.
+                        RAG chatbot with Python, Streamlit, and Gemini API for personalized conversation emulation with FAISS and LangChain.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">RAG</span>
-                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">LangChain</span>
-                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">FAISS</span>
-                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Streamlit</span>
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">RAG</span>
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">FAISS</span>
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Streamlit</span>
                     </div>
                 </div>
                 <div class="project-overlay">
                     <h4 class="font-bold mb-2">Key Features</h4>
                     <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                        <li>Persona-based response system with consistent tone</li>
                         <li>Efficient similarity search with FAISS</li>
-                        <li>Intuitive UI with real-time chat</li>
+                        <li>Persona-based response system</li>
+                        <li>Real-time chat & multi-session support</li>
                     </ul>
                     <a href="https://persona-chat.streamlit.app" class="inline-block mt-3 text-blue-300 hover:text-white">
                         View Project <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
             </div>
-            
-            <!-- Project 3 -->
+
+            <!-- Project 5: Spento -->
             <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                    <img src="image/biller.png" 
-                         alt="Biller - Your Friendly Bill Management System" class="w-full h-full object-cover">
+                <div class="h-48 bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                    <i class="fas fa-receipt text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Spento - AI Expense Tracker</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                            Web App
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        AI-Powered expense tracking web app with Gemini API for automated receipt analysis and categorization.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded">Gemini API</span>
+                        <span class="tag px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded">Firebase</span>
+                        <span class="tag px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded">Tailwind</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Automated receipt analysis</li>
+                        <li>Firebase Authentication & Firestore</li>
+                        <li>Real-time expense dashboards</li>
+                    </ul>
+                    <a href="https://ilhamlabs-ai.github.io/Spento-Web/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 6: Audio to Text Transcription App -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
+                    <i class="fas fa-microphone text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Audio to Text Transcription App</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                            AI/Speech
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Streamlit-based application to transcribe audio files into text, supporting multiple languages.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Streamlit</span>
+                        <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Transcription</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Multi-language support</li>
+                        <li>Accurate transcription</li>
+                        <li>User-friendly interface</li>
+                    </ul>
+                    <a href="https://lina-speech-to-text.streamlit.app/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 7: Biller -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+                    <i class="fas fa-file-invoice-dollar text-white text-6xl"></i>
                 </div>
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-2">
@@ -622,449 +1064,685 @@
                 </div>
             </div>
 
+            <!-- Project 8: Be-Healthier -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center">
+                    <i class="fas fa-heartbeat text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Be-Healthier</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                            Web App
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        A web-based health and fitness tracker built with Streamlit.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Health</span>
+                        <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Fitness</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Health monitoring</li>
+                        <li>Fitness tracking</li>
+                        <li>User dashboard</li>
+                    </ul>
+                    <a href="https://be-healthier.streamlit.app/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
 
-              
-              <!-- Project 2: Audio to Text Transcription App -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/audio.png" alt="Audio to Text Transcription App" class="w-full h-full object-cover">
+            <!-- Project 9: WhatsApp Chat Analytics -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center">
+                    <i class="fab fa-whatsapp text-white text-6xl"></i>
                 </div>
                 <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Audio to Text Transcription App</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                      AI/Speech
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    Streamlit-based application to transcribe audio files into text, supporting multiple languages.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Streamlit</span>
-                    <span class="tag px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded">Transcription</span>
-                  </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">WhatsApp Chat Analytics Platform</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                            Analytics
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Analyzes WhatsApp chat data with interactive visualizations.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Visualization</span>
+                        <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Data</span>
+                    </div>
                 </div>
                 <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Multi-language support</li>
-                    <li>Accurate transcription</li>
-                    <li>User-friendly interface</li>
-                  </ul>
-                  <a href="https://lina-speech-to-text.streamlit.app/" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Interactive charts</li>
+                        <li>Chat data analysis</li>
+                        <li>Data export</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/Whatsapp-Chat-Analyzer" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
                 </div>
-              </div>
-              
-    
-              
-              <!-- Project 4: Be-Healthier -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/health.png" alt="Be-Healthier" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Be-Healthier</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                      Web App
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    A web-based health and fitness tracker built with Streamlit.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Health</span>
-                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Fitness</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Health monitoring</li>
-                    <li>Fitness tracking</li>
-                    <li>User dashboard</li>
-                  </ul>
-                  <a href="https://be-healthier.streamlit.app/" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- Project 5: Advanced WhatsApp Chat Analytics Platform -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/whatsapp.png" alt="Advanced WhatsApp Chat Analytics Platform" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Advanced WhatsApp Chat Analytics Platform</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                      Analytics
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    Analyzes WhatsApp chat data with interactive visualizations.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Visualization</span>
-                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Data</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Interactive charts</li>
-                    <li>Chat data analysis</li>
-                    <li>Data export</li>
-                  </ul>
-                  <a href="https://github.com/rebel47/Whatsapp-Chat-Analyzer" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- Project 6: Food Locha -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/health.png" alt="Food Locha" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Food Locha</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      AI
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    An AI-powered app that analyzes meal images, calculates calorie details, and provides nutritional insights.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">Nutrition</span>
-                    <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">Image Analysis</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Meal image analysis</li>
-                    <li>Calorie calculation</li>
-                    <li>Nutritional insights</li>
-                  </ul>
-                  <a href="https://github.com/rebel47/Food-Locha" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- Project 7: AI-Powered Image-to-Story Generator -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/story.png" alt="AI-Powered Image-to-Story Generator" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">AI-Powered Image-to-Story Generator</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                      AI/Creative
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    Converts images into short stories using Gemini AI and gTTS.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Image</span>
-                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Story</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Image-to-text conversion</li>
-                    <li>Story generation</li>
-                    <li>Gemini AI integration</li>
-                  </ul>
-                  <a href="https://github.com/rebel47/imagetostory" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- Project 8: Gemini ATS Resume Improvement Tool -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/ats.png" alt="Gemini ATS Resume Improvement Tool" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Gemini ATS Resume Improvement Tool</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                      AI/ATS
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    AI-powered app to evaluate resumes and generate cover letters based on job descriptions.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Resume</span>
-                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">ATS</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Resume evaluation</li>
-                    <li>Cover letter generation</li>
-                    <li>Job description matching</li>
-                  </ul>
-                  <a href="https://github.com/rebel47/ATS-with-Cover-Letter" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- Project 9: Interactive RAG-Based QA System -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/rag.jpeg" alt="Interactive RAG-Based QA System" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Interactive RAG-Based QA System</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                      RAG/QA
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    A RAG system to analyze lecture slides with LlamaIndex and Llama-2-7b-chat-hf.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Q&A</span>
-                    <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">LlamaIndex</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Slide analysis</li>
-                    <li>Interactive Q&A</li>
-                    <li>LlamaIndex integration</li>
-                  </ul>
-                  <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- Project 10: Email/SMS Spam Classifier -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/email.png" alt="Email/SMS Spam Classifier" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Email/SMS Spam Classifier</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                      NLP
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    ML model for classifying messages as spam or ham using NLP techniques.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">NLP</span>
-                    <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Classifier</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Spam detection</li>
-                    <li>NLP-based classification</li>
-                    <li>High accuracy</li>
-                  </ul>
-                  <a href="https://github.com/rebel47/Email-SMS-Classifier" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
-              
-              <!-- Project 11: Emotion Detection System -->
-              <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
-                <div class="h-48 overflow-hidden">
-                  <img src="image/emotion.jpg" alt="Emotion Detection System" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold text-slate-800">Emotion Detection System</h3>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                      CNN/Deep Learning
-                    </span>
-                  </div>
-                  <p class="text-slate-600 mb-4">
-                    CNN-based system to classify facial expressions into seven emotions with TensorFlow and Keras.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">TensorFlow</span>
-                    <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Keras</span>
-                  </div>
-                </div>
-                <div class="project-overlay">
-                  <h4 class="font-bold mb-2">Key Features</h4>
-                  <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                    <li>Facial expression classification</li>
-                    <li>Real-time detection</li>
-                    <li>Seven emotion categories</li>
-                  </ul>
-                  <a href="https://github.com/rebel47/Emotion-Detection-System" class="inline-block mt-3 text-blue-300 hover:text-white">
-                    View Project <i class="fas fa-arrow-right ml-1"></i>
-                  </a>
-                </div>
-              </div>
+            </div>
 
+            <!-- Project 10: Food Locha -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-lime-500 to-green-600 flex items-center justify-center">
+                    <i class="fas fa-utensils text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Food Locha</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            AI
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        An AI-powered app that analyzes meal images, calculates calorie details, and provides nutritional insights.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">Nutrition</span>
+                        <span class="tag px-2 py-1 bg-green-50 text-green-600 text-xs rounded">Image Analysis</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Meal image analysis</li>
+                        <li>Calorie calculation</li>
+                        <li>Nutritional insights</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/Food-Locha" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
 
+            <!-- Project 11: Image-to-Story Generator -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-book-open text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">AI-Powered Image-to-Story Generator</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                            AI/Creative
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Converts images into short stories using Gemini AI and gTTS.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Image</span>
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Story</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Image-to-text conversion</li>
+                        <li>Story generation</li>
+                        <li>Gemini AI integration</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/imagetostory" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 12: Gemini ATS Resume Tool -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+                    <i class="fas fa-file-alt text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Gemini ATS Resume Improvement Tool</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                            AI/ATS
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        AI-powered app to evaluate resumes and generate cover letters based on job descriptions.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Resume</span>
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">ATS</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Resume evaluation</li>
+                        <li>Cover letter generation</li>
+                        <li>Job description matching</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/ATS-with-Cover-Letter" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 13: RAG-Based QA System -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                    <i class="fas fa-question-circle text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Interactive RAG-Based QA System</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                            RAG/QA
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        A RAG system to analyze lecture slides with LlamaIndex and Llama-2-7b-chat-hf.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">Q&A</span>
+                        <span class="tag px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded">LlamaIndex</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Slide analysis</li>
+                        <li>Interactive Q&A</li>
+                        <li>LlamaIndex integration</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/RAG-Powered-Q-A-for-Neural-Dynamics-Course-with-LlamaIndex" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 14: Email/SMS Spam Classifier -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center">
+                    <i class="fas fa-envelope text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Email/SMS Spam Classifier</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                            NLP
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        ML model for classifying messages as spam or ham using NLP techniques.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">NLP</span>
+                        <span class="tag px-2 py-1 bg-red-50 text-red-600 text-xs rounded">Classifier</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Spam detection</li>
+                        <li>NLP-based classification</li>
+                        <li>High accuracy</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/Email-SMS-Classifier" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 15: Emotion Detection System -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-fuchsia-500 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-smile text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Emotion Detection System</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                            CNN/Deep Learning
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        CNN-based system to classify facial expressions into seven emotions with TensorFlow and Keras.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">TensorFlow</span>
+                        <span class="tag px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded">Keras</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Facial expression classification</li>
+                        <li>Real-time detection</li>
+                        <li>Seven emotion categories</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/Emotion-Detection-System" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 16: Live Translator -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center">
+                    <i class="fas fa-language text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Live Translator</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-100 text-sky-800">
+                            Mobile/AI
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Real-time speech-to-text translation app with Flutter featuring streaming translations via Gemini AI or Google Translate.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-sky-50 text-sky-600 text-xs rounded">Flutter</span>
+                        <span class="tag px-2 py-1 bg-sky-50 text-sky-600 text-xs rounded">Gemini AI</span>
+                        <span class="tag px-2 py-1 bg-sky-50 text-sky-600 text-xs rounded">Speech Recognition</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Real-time speech recognition (20+ languages)</li>
+                        <li>Dual translation engines (Gemini/Google)</li>
+                        <li>Smart conversation view with history</li>
+                        <li>Material 3 Design with dark/light themes</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/live-translation" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 17: StudySync -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">StudySync</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
+                            Web App
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Collaborative study application with real-time Pomodoro sessions, integrated chat, and cloud-synced notes.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-teal-50 text-teal-600 text-xs rounded">JavaScript</span>
+                        <span class="tag px-2 py-1 bg-teal-50 text-teal-600 text-xs rounded">Firebase</span>
+                        <span class="tag px-2 py-1 bg-teal-50 text-teal-600 text-xs rounded">Real-time</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Collaborative study sessions with room codes</li>
+                        <li>Synchronized Pomodoro timer across devices</li>
+                        <li>Real-time chat with notifications</li>
+                        <li>Focus mode and cloud-synced notes</li>
+                    </ul>
+                    <a href="https://rebel47.github.io/StudySync/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 18: Halal Food Checker -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                    <i class="fas fa-leaf text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Halal Food Checker</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                            Mobile/AI
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        AI-powered Flutter app that analyzes food ingredients using image recognition to determine Halal compliance.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded">Flutter</span>
+                        <span class="tag px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded">Gemini AI</span>
+                        <span class="tag px-2 py-1 bg-emerald-50 text-emerald-600 text-xs rounded">Firebase</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>AI-powered ingredient analysis (Gemini 2.5)</li>
+                        <li>HALAL/HARAM/MUSHBOOH classification</li>
+                        <li>Confidence meter (0-100%)</li>
+                        <li>Islamic duas carousel integration</li>
+                    </ul>
+                    <a href="https://ilhamlabs-ai.github.io/Halal-Food-Checker-Website/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 19: Time Capsule Messages -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center">
+                    <i class="fas fa-clock text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Time Capsule Messages</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800">
+                            Web App
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Secure time-delayed messaging app built with Flask allowing encrypted messages to be released at scheduled times.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-violet-50 text-violet-600 text-xs rounded">Flask</span>
+                        <span class="tag px-2 py-1 bg-violet-50 text-violet-600 text-xs rounded">SQLAlchemy</span>
+                        <span class="tag px-2 py-1 bg-violet-50 text-violet-600 text-xs rounded">AES Encryption</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>User authentication with Flask-Login</li>
+                        <li>AES encrypted messages with custom salt</li>
+                        <li>Time-delayed release with countdown timer</li>
+                        <li>Message logging and audit trail</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/Time-Capsule-Messages" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 20: Data Quality Assessment Tool -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-slate-500 to-gray-600 flex items-center justify-center">
+                    <i class="fas fa-chart-bar text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Data Quality Assessment Tool</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                            Data Science
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        AI-powered data validation tool with Streamlit and Gemini 2.5 Flash for comprehensive quality assessment and reporting.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-slate-50 text-slate-600 text-xs rounded">Streamlit</span>
+                        <span class="tag px-2 py-1 bg-slate-50 text-slate-600 text-xs rounded">Gemini AI</span>
+                        <span class="tag px-2 py-1 bg-slate-50 text-slate-600 text-xs rounded">Pandas</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Multi-format support (CSV, JSON, Excel)</li>
+                        <li>5 validation categories with AI insights</li>
+                        <li>Real-time quality scoring & charts</li>
+                        <li>Professional PDF report generation</li>
+                    </ul>
+                    <a href="https://data-quality-assessment.streamlit.app/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 21: LinkedIn-Style Post Generator -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                    <i class="fas fa-image text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">LinkedIn-Style Post Generator</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                            Design/API
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        A comprehensive Python library for creating branded social media posts with professional designs, gradients, patterns, and effects. Includes CLI tool, REST API, and batch generation capabilities.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-pink-50 text-pink-600 text-xs rounded">Python</span>
+                        <span class="tag px-2 py-1 bg-pink-50 text-pink-600 text-xs rounded">Pillow</span>
+                        <span class="tag px-2 py-1 bg-pink-50 text-pink-600 text-xs rounded">FastAPI</span>
+                        <span class="tag px-2 py-1 bg-pink-50 text-pink-600 text-xs rounded">Streamlit</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>10+ professional templates with 12 color schemes</li>
+                        <li>Multiple formats (Square, Story, LinkedIn Banner)</li>
+                        <li>Advanced effects (Gradients, Patterns, Vignette)</li>
+                        <li>CLI, REST API & Batch generation from CSV/JSON</li>
+                    </ul>
+                    <a href="https://github.com/rebel47/post-generator" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 22: Culinary AI -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+                    <i class="fas fa-utensils text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Culinary AI</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                            Mobile/AI
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Smart Flutter kitchen assistant that analyzes fridge contents using Gemini AI, suggests recipes based on available ingredients with dietary filters, and provides voice-guided cooking instructions.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded">Flutter</span>
+                        <span class="tag px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded">Gemini AI</span>
+                        <span class="tag px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded">TTS</span>
+                        <span class="tag px-2 py-1 bg-amber-50 text-amber-600 text-xs rounded">Speech-to-Text</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Image-based ingredient recognition from fridge photos</li>
+                        <li>Recipe suggestions with dietary filters (Vegan, Keto, etc.)</li>
+                        <li>Step-by-step cooking guide with voice commands</li>
+                        <li>Smart shopping list & TTS audio instructions</li>
+                    </ul>
+                    <a href="https://github.com/ilhamlabs-ai/Culinary-AI" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Education & Certificates -->
-<section id="education" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8">
-        <!-- Education Column -->
-        <div>
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span class="gradient-text">Education</span></h2>
-            </div>
-            
-            <div class="space-y-6">
-                <!-- Education 1 -->
-                <div class="card bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800">MSc. Data Science</h3>
-                            <p class="text-blue-500 font-medium">Friedrich-Alexander-Universität Erlangen-Nürnberg</p>
-                        </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Oct 2022 - Present</span>
-                    </div>
-                    <p class="text-slate-600 mb-4">Erlangen, Germany</p>
-                    <p class="text-slate-600">Courses: Business Analytics, ML Time Series, ML in Finance, Mathematics of Learning, Linked Data</p>
+    <section id="education" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8">
+            <!-- Education Column -->
+            <div>
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span class="gradient-text">Education</span>
+                    </h2>
                 </div>
-                
-                <!-- Education 2 -->
-                <div class="card bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800">Bachelors of Computer Applications</h3>
-                            <p class="text-blue-500 font-medium">Guru Gobind Singh Indraprastha University</p>
+
+                <div class="space-y-6">
+                    <!-- Education 1 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">M.Sc. Data Science</h3>
+                                <p class="text-blue-500 font-medium">Friedrich-Alexander-Universität Erlangen-Nürnberg
+                                </p>
+                            </div>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Oct 2022
+                                - Present</span>
                         </div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Aug 2018 - Sept 2021</span>
+                        <p class="text-slate-600 mb-4">Erlangen, Germany</p>
+                        <p class="text-slate-600">Courses: Business Analytics, ML Time Series, ML in Finance,
+                            Mathematics of Learning, Linked Data</p>
                     </div>
-                    <p class="text-slate-600 mb-4">Delhi, India</p>
-                    <p class="text-slate-600">Courses: OOPs, Network Security, DBMS, Web Technologies, Data Warehousing and Data Mining</p>
+
+                    <!-- Education 2 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">Bachelors of Computer Applications</h3>
+                                <p class="text-blue-500 font-medium">Guru Gobind Singh Indraprastha University</p>
+                            </div>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Aug 2018
+                                - Sept 2021</span>
+                        </div>
+                        <p class="text-slate-600 mb-4">Delhi, India</p>
+                        <p class="text-slate-600">Courses: OOPs, Network Security, DBMS, Web Technologies, Data
+                            Warehousing and Data Mining</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificates Column -->
+            <div>
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span
+                            class="gradient-text">Certificates</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Certificate 1 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500">
+                        <h3 class="font-semibold text-slate-800">AI Agents Fundamentals</h3>
+                        <p class="text-sm text-slate-600">Huggingface - Agents fundamentals, Tools and Action, Agents Workflow</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 2 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-emerald-500">
+                        <h3 class="font-semibold text-slate-800">Full Stack Data Analytics</h3>
+                        <p class="text-sm text-slate-600">iNeuron.ai - Python, SQL, Snowflake, PowerBI</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 3 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-purple-500">
+                        <h3 class="font-semibold text-slate-800">Deep Learning Foundation</h3>
+                        <p class="text-sm text-slate-600">iNeuron.ai - Neural Network, Backpropagation, CNN</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 4 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
+                        <h3 class="font-semibold text-slate-800">Intro to Machine Learning</h3>
+                        <p class="text-sm text-slate-600">Kaggle - Model Validation, Random Forest</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 5 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-red-500">
+                        <h3 class="font-semibold text-slate-800">NLP Foundation</h3>
+                        <p class="text-sm text-slate-600">iNeuron.ai - Completed February 2023</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 6 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-indigo-500">
+                        <h3 class="font-semibold text-slate-800">ChatGPT Prompt Engineering</h3>
+                        <p class="text-sm text-slate-600">DeepLearning.ai - Developer-focused strategies</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://learn.deeplearning.ai/accomplishments/303988d6-a049-493b-9d32-54b63e7b07a5" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 7 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-teal-500">
+                        <h3 class="font-semibold text-slate-800">Responsive Web Design</h3>
+                        <p class="text-sm text-slate-600">freeCodeCamp - Web development fundamentals</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 8 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-orange-500">
+                        <h3 class="font-semibold text-slate-800">Python Basic</h3>
+                        <p class="text-sm text-slate-600">Hackerrank - Core Python concepts</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 9 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-pink-500">
+                        <h3 class="font-semibold text-slate-800">Data Analysis with Python</h3>
+                        <p class="text-sm text-slate-600">freeCodeCamp - Numpy, Pandas, Data Cleaning</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
+
+                    <!-- Certificate 10 -->
+                    <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-gray-500">
+                        <h3 class="font-semibold text-slate-800">Automate Boring Stuff with Python</h3>
+                        <p class="text-sm text-slate-600">Udemy - Practical Python automation</p>
+                        <p class="text-blue-500 mt-2">
+                            <a href="https://www.udemy.com/certificate/UC-772ce804-2385-4131-834b-7f492b286f84/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Certificates Column -->
-        <div>
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4">My <span class="gradient-text">Certificates</span></h2>
+    <!-- Languages Section -->
+    <section id="languages" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-xl shadow-sm mb-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">Languages</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">English</h3>
+                <p class="text-blue-500 font-medium">Professional Proficiency</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Certificate 1 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500">
-                    <h3 class="font-semibold text-slate-800">AI Agents Fundamentals</h3>
-                    <p class="text-sm text-slate-600">Huggingface - Agents fundamentals, Tools and Action, Agents Workflow</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://cdn-lfs-us-1.hf.co/repos/f2/34/f2344151f60f6027c436821dc61cf3f27a46435de57df8df50ad02b5acca7c07/2f2545adf0b5fab86ec61844a0750111752547173e4c31ab6baeb0422a45eb96?response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&Expires=1743554861&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0MzU1NDg2MX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zL2YyLzM0L2YyMzQ0MTUxZjYwZjYwMjdjNDM2ODIxZGM2MWNmM2YyN2E0NjQzNWRlNTdkZjhkZjUwYWQwMmI1YWNjYTdjMDcvMmYyNTQ1YWRmMGI1ZmFiODZlYzYxODQ0YTA3NTAxMTE3NTI1NDcxNzNlNGMzMWFiNmJhZWIwNDIyYTQ1ZWI5Nj9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSomcmVzcG9uc2UtY29udGVudC10eXBlPSoifV19&Signature=CdTHp6ccThGibJdHIE95v7yqRumpdMg3fO0WEOKSXY7xLOkgYq7Raq9lo8Ld2RneKI7WuasvRQgpE80t%7EWq5DZf8oIbRRMH2QBrWV1xEkbI0ZWwCTJslBsX7Inj7yCtyo4H0qKqQgoMcj2mYpheJ%7EPs6Uz8e3YIV7SlstXH9WKAfov4P43MkYeFC547u0kx-i6XoTZOuF9gYyrWwjHUBdI4C3P9V%7EcUdq7PIvnXy01cRuGSzaZEZK5on%7EVXWK1cfjUr9x-%7EZ00Av5CxYbWkg9hQ3ripYmOweJuwrTxYJP4VObsuUZBVVsoW7ONIU1tqScpBY7JlgctUcxukp8cRmYA__&Key-Pair-Id=K24J24Z295AEI9" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 2 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-emerald-500">
-                    <h3 class="font-semibold text-slate-800">Full Stack Data Analytics</h3>
-                    <p class="text-sm text-slate-600">iNeuron.ai - Completed August 2024</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://learn.ineuron.ai/certificate/45256cc1-c994-499a-ab10-baebf441de51" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 3 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-purple-500">
-                    <h3 class="font-semibold text-slate-800">Deep Learning Foundation</h3>
-                    <p class="text-sm text-slate-600">iNeuron - Neural Network, Backpropagation, CNN</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://learn.ineuron.ai/certificate/69f88ff4-9649-4363-85cb-c3de6f047aa2" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 4 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500">
-                    <h3 class="font-semibold text-slate-800">Intro to Machine Learning</h3>
-                    <p class="text-sm text-slate-600">Kaggle - Model Validation, Random Forest</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://www.kaggle.com/learn/certification/mohammadayazalam/intro-to-machine-learning" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 5 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-red-500">
-                    <h3 class="font-semibold text-slate-800">NLP Foundation</h3>
-                    <p class="text-sm text-slate-600">iNeuron - Completed February 2023</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://learn.ineuron.ai/certificate/40f9029d-d660-4b6e-9eb8-bbaea9407a3e" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 6 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-indigo-500">
-                    <h3 class="font-semibold text-slate-800">ChatGPT Prompt Engineering</h3>
-                    <p class="text-sm text-slate-600">DeepLearning.ai - Developer-focused strategies</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://learn.deeplearning.ai/accomplishments/303988d6-a049-493b-9d32-54b63e7b07a5" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 7 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-teal-500">
-                    <h3 class="font-semibold text-slate-800">Responsive Web Design</h3>
-                    <p class="text-sm text-slate-600">freeCodeCamp - Web development fundamentals</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://www.freecodecamp.org/certification/its_ayaz/responsive-web-design" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 8 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-orange-500">
-                    <h3 class="font-semibold text-slate-800">Python Basic</h3>
-                    <p class="text-sm text-slate-600">Hackerrank - Core Python concepts</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://www.hackerrank.com/certificates/68905d179a31" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 9 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-pink-500">
-                    <h3 class="font-semibold text-slate-800">Data Analysis with Python</h3>
-                    <p class="text-sm text-slate-600">freeCodeCamp - Numpy, Pandas, Data Cleaning</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://www.freecodecamp.org/certification/its_ayaz/data-analysis-with-python-v7" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
-
-                <!-- Certificate 10 -->
-                <div class="card bg-white p-4 rounded-lg shadow-sm border-l-4 border-gray-500">
-                    <h3 class="font-semibold text-slate-800">Automate Boring Stuff with Python</h3>
-                    <p class="text-sm text-slate-600">Udemy - Practical Python automation</p>
-                    <p class="text-blue-500 mt-2">
-                        <a href="https://www.udemy.com/certificate/UC-772ce804-2385-4131-834b-7f492b286f84/" target="_blank" class="hover:text-blue-600">View Certification</a>
-                    </p>
-                </div>
+            <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">German</h3>
+                <p class="text-blue-500 font-medium">Intermediate Proficiency</p>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">Hindi & Urdu</h3>
+                <p class="text-blue-500 font-medium">Native Proficiency</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white rounded-xl shadow-sm">
@@ -1074,14 +1752,15 @@
                 Feel free to reach out for collaborations, job opportunities, or just to say hi!
             </p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
                 <h3 class="text-xl font-semibold text-slate-800 mb-6">Contact Information</h3>
-                
+
                 <div class="space-y-4">
                     <div class="flex items-start">
-                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div>
@@ -1089,9 +1768,10 @@
                             <p class="text-slate-600">(+49) 017684051947</p>
                         </div>
                     </div>
-                    
+
                     <div class="flex items-start">
-                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
@@ -1099,9 +1779,10 @@
                             <p class="text-slate-600">alam.ayaz47@gmail.com</p>
                         </div>
                     </div>
-                    
+
                     <div class="flex items-start">
-                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
@@ -1109,15 +1790,17 @@
                             <p class="text-slate-600">Nuremberg, Germany</p>
                         </div>
                     </div>
-                    
+
                     <div class="flex items-start">
-                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-code-branch"></i>
                         </div>
                         <div>
                             <h4 class="font-medium text-slate-800">Connect</h4>
                             <div class="flex space-x-4 mt-2">
-                                <a href="https://www.linkedin.com/in/ayaz-alam/" class="text-slate-600 hover:text-blue-500">
+                                <a href="https://www.linkedin.com/in/ayaz-alam/"
+                                    class="text-slate-600 hover:text-blue-500">
                                     <i class="fab fa-linkedin-in text-lg"></i>
                                 </a>
                                 <a href="https://github.com/rebel47" class="text-slate-600 hover:text-gray-800">
@@ -1128,73 +1811,46 @@
                     </div>
                 </div>
             </div>
-            
+
             <div>
                 <h3 class="text-xl font-semibold text-slate-800 mb-6">Send Me a Message</h3>
-                
-                <form 
-                    action="https://formspree.io/f/xovekqyl" 
-                    method="POST"
-                    class="space-y-4"
-                    id="contact-form"
-                >
+
+                <form action="https://formspree.io/f/xovekqyl" method="POST" class="space-y-4" id="contact-form">
                     <!-- Name Field -->
                     <div>
                         <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-                        <input 
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            required
-                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                        >
+                        <input type="text" id="name" name="name" required
+                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
-                    
+
                     <!-- Email Field -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            required
-                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                        >
+                        <input type="email" id="email" name="email" required
+                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
-                    
+
                     <!-- Subject Field -->
                     <div>
                         <label for="subject" class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
-                        <input 
-                            type="text" 
-                            id="subject" 
-                            name="subject" 
-                            required
-                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                        >
+                        <input type="text" id="subject" name="subject" required
+                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     </div>
-                    
+
                     <!-- Message Field -->
                     <div>
                         <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                        <textarea 
-                            id="message" 
-                            name="message" 
-                            rows="4" 
-                            required
-                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                        ></textarea>
+                        <textarea id="message" name="message" rows="4" required
+                            class="contact-input w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
                     </div>
-                    
+
                     <!-- Submit Button -->
-                    <button 
-                        type="submit" 
-                        class="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition duration-300 shadow-md hover:shadow-lg"
-                    >
+                    <button type="submit"
+                        class="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition duration-300 shadow-md hover:shadow-lg">
                         Send Message
                     </button>
                 </form>
-            
+
                 <!-- Success Message -->
                 <div id="success-message" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg">
                     Message sent successfully! I'll get back to you soon.
@@ -1203,46 +1859,159 @@
         </div>
     </section>
 
+    <!-- Spacer before footer -->
+    <div class="h-12"></div>
+
     <!-- Footer -->
-    <footer class="bg-slate-800 text-white py-8">
+    <footer class="bg-white dark:bg-slate-900 text-slate-800 dark:text-white py-4 relative z-10 border-t border-slate-200 dark:border-slate-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <div class="text-xl font-bold gradient-text mb-2">Mohammad Ayaz Alam</div>
-                    <p class="text-slate-300">Data Scientist & AI Engineer</p>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-base font-semibold gradient-text">Mohammad Ayaz Alam</span>
+                    <span class="hidden md:inline text-slate-400 dark:text-slate-600">|</span>
+                    <span class="text-sm text-slate-600 dark:text-slate-400">Data Scientist & AI Engineer</span>
                 </div>
-                
-                <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/in/ayaz-alam/" class="text-slate-300 hover:text-white">
-                        <i class="fab fa-linkedin-in"></i>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://www.linkedin.com/in/ayaz-alam/" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors transform hover:scale-110">
+                        <i class="fab fa-linkedin-in text-lg"></i>
                     </a>
-                    <a href="https://github.com/rebel47" class="text-slate-300 hover:text-white">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/rebel47" class="text-slate-600 dark:text-slate-300 hover:text-gray-800 dark:hover:text-white transition-colors transform hover:scale-110">
+                        <i class="fab fa-github text-lg"></i>
                     </a>
-                    <a href="mailto:alam.ayaz47@gmail.com" class="text-slate-300 hover:text-white">
-                        <i class="fas fa-envelope"></i>
+                    <a href="mailto:alam.ayaz47@gmail.com" class="text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 transition-colors transform hover:scale-110">
+                        <i class="fas fa-envelope text-lg"></i>
                     </a>
+                    <span class="hidden md:inline text-slate-400 dark:text-slate-600">|</span>
+                    <span class="text-sm text-slate-600 dark:text-slate-400">&copy; 2025 All rights reserved.</span>
                 </div>
-            </div>
-            
-            <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
-                <p>&copy; 2025 Mohammad Ayaz Alam. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // ===== ADVANCED NETWORK BACKGROUND ANIMATION =====
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Node class
+        class Node {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.connections = [];
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Keep within bounds
+                this.x = Math.max(0, Math.min(canvas.width, this.x));
+                this.y = Math.max(0, Math.min(canvas.height, this.y));
+            }
+
+            draw() {
+                const isDark = document.documentElement.classList.contains('dark');
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = isDark ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.6)';
+                ctx.fill();
+            }
+        }
+
+        // Create nodes
+        const nodeCount = Math.floor((canvas.width * canvas.height) / 15000);
+        const nodes = [];
+        for (let i = 0; i < nodeCount; i++) {
+            nodes.push(new Node());
+        }
+
+        // Draw connections
+        function drawConnections() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const maxDistance = 150;
+
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].connections = [];
+                
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        nodes[i].connections.push(nodes[j]);
+                        
+                        // Draw line
+                        const opacity = (1 - distance / maxDistance) * 0.3;
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = isDark 
+                            ? `rgba(139, 92, 246, ${opacity})` 
+                            : `rgba(99, 102, 241, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw nodes
+            nodes.forEach(node => {
+                node.update();
+                node.draw();
+            });
+
+            // Draw connections
+            drawConnections();
+
+            requestAnimationFrame(animate);
+        }
+
+        // Start animation
+        animate();
+
+        // Update on theme change
+        const originalToggleTheme = toggleTheme;
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        }
+
+        // ===== ORIGINAL SCRIPTS =====
         // Mobile menu toggle
-        document.getElementById('menu-btn').addEventListener('click', function() {
+        document.getElementById('menu-btn').addEventListener('click', function () {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
         // Update active nav link on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -1251,7 +2020,7 @@
                     current = section.getAttribute('id');
                 }
             });
-            
+
             navLinks.forEach(link => {
                 link.classList.remove('active-nav');
                 if (link.getAttribute('href') === `#${current}`) {
@@ -1262,19 +2031,99 @@
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                
+
                 // Close mobile menu if open
                 if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to 'light' mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Scroll Progress Indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-indicator').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect for background blobs
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const blobs = document.querySelectorAll('.blob');
+            blobs.forEach((blob, index) => {
+                const speed = 0.1 + (index * 0.05);
+                blob.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add typing effect to the hero title (optional)
+        const heroTitle = document.querySelector('h1 .gradient-text');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+        }
     </script>
 </body>
+
 </html>
