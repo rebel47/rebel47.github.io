@@ -184,29 +184,33 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            border-radius: 1rem;
+            border: 1px solid rgba(0,0,0,0.06);
         }
 
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(99,102,241,0.15);
         }
 
         .project-card:hover .project-overlay {
             opacity: 1;
-            transform: translateY(0);
         }
 
         .project-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.95));
+            inset: 0;
+            background: linear-gradient(155deg, rgba(7, 7, 30, 0.97) 0%, rgba(18, 8, 52, 0.98) 60%, rgba(5, 25, 45, 0.97) 100%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: white;
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 1.75rem;
             opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.25rem;
         }
 
         .contact-input {
@@ -350,6 +354,164 @@
             pointer-events: none;
             z-index: -1;
         }
+
+        /* ===== PROJECT OVERLAY TYPOGRAPHY ===== */
+        .project-overlay h4 {
+            font-size: 0.7rem !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.12em !important;
+            text-transform: uppercase !important;
+            color: #a5b4fc !important;
+            margin-bottom: 0.75rem !important;
+            padding-bottom: 0.5rem !important;
+            border-bottom: 1px solid rgba(165,180,252,0.25) !important;
+        }
+
+        .project-overlay ul {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .project-overlay ul li {
+            list-style: none !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 0.5rem !important;
+            font-size: 0.78rem !important;
+            color: #cbd5e1 !important;
+            line-height: 1.5 !important;
+            padding: 0 !important;
+        }
+
+        .project-overlay ul li::before {
+            content: '›' !important;
+            color: #818cf8 !important;
+            font-weight: 900 !important;
+            font-size: 1rem !important;
+            flex-shrink: 0 !important;
+            line-height: 1.4 !important;
+        }
+
+        .project-overlay a {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            margin-top: 1rem !important;
+            padding: 0.55rem 1.1rem !important;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+            color: white !important;
+            border-radius: 0.5rem !important;
+            font-size: 0.78rem !important;
+            font-weight: 600 !important;
+            text-decoration: none !important;
+            transition: all 0.2s ease !important;
+            align-self: flex-start !important;
+            letter-spacing: 0.03em !important;
+            box-shadow: 0 4px 15px rgba(99,102,241,0.4) !important;
+        }
+
+        .project-overlay a:hover {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+            transform: translateX(4px) !important;
+            box-shadow: 0 6px 20px rgba(99,102,241,0.6) !important;
+        }
+
+        /* ===== SKILL CATEGORY CARD THEMING ===== */
+        .skill-cat-ai   { background: linear-gradient(135deg,#faf5ff,#f5f3ff) !important; border:1px solid #e9d5ff !important; }
+        .skill-cat-nlp  { background: linear-gradient(135deg,#f0fdf4,#dcfce7) !important; border:1px solid #bbf7d0 !important; }
+        .skill-cat-ml   { background: linear-gradient(135deg,#eff6ff,#dbeafe) !important; border:1px solid #bfdbfe !important; }
+        .skill-cat-prog { background: linear-gradient(135deg,#eef2ff,#e0e7ff) !important; border:1px solid #c7d2fe !important; }
+        .skill-cat-web  { background: linear-gradient(135deg,#ecfeff,#cffafe) !important; border:1px solid #a5f3fc !important; }
+        .skill-cat-mobile { background: linear-gradient(135deg,#fdf4ff,#fae8ff) !important; border:1px solid #f5d0fe !important; }
+        .skill-cat-db   { background: linear-gradient(135deg,#fefce8,#fef9c3) !important; border:1px solid #fde68a !important; }
+        .skill-cat-viz  { background: linear-gradient(135deg,#ecfdf5,#d1fae5) !important; border:1px solid #a7f3d0 !important; }
+        .skill-cat-devops { background: linear-gradient(135deg,#f8fafc,#f1f5f9) !important; border:1px solid #e2e8f0 !important; }
+        .skill-cat-productivity { background: linear-gradient(135deg,#fff7ed,#ffedd5) !important; border:1px solid #fed7aa !important; }
+
+        .skill-cat-ai   .skill-pill { background:#f5f3ff !important; border-color:#c4b5fd !important; color:#6d28d9 !important; }
+        .skill-cat-nlp  .skill-pill { background:#f0fdf4 !important; border-color:#86efac !important; color:#15803d !important; }
+        .skill-cat-ml   .skill-pill { background:#eff6ff !important; border-color:#93c5fd !important; color:#1d4ed8 !important; }
+        .skill-cat-prog .skill-pill { background:#eef2ff !important; border-color:#a5b4fc !important; color:#4338ca !important; }
+        .skill-cat-web  .skill-pill { background:#ecfeff !important; border-color:#67e8f9 !important; color:#0e7490 !important; }
+        .skill-cat-mobile .skill-pill { background:#fdf4ff !important; border-color:#e879f9 !important; color:#a21caf !important; }
+        .skill-cat-db   .skill-pill { background:#fefce8 !important; border-color:#fde047 !important; color:#854d0e !important; }
+        .skill-cat-viz  .skill-pill { background:#ecfdf5 !important; border-color:#6ee7b7 !important; color:#065f46 !important; }
+        .skill-cat-devops .skill-pill { background:#f1f5f9 !important; border-color:#94a3b8 !important; color:#334155 !important; }
+        .skill-cat-productivity .skill-pill { background:#fff7ed !important; border-color:#fdba74 !important; color:#9a3412 !important; }
+
+        /* ===== EXPERIENCE CARD ACCENTS ===== */
+        .exp-zalion     { border-left: 4px solid #10b981 !important; }
+        .exp-siemens    { border-left: 4px solid #3b82f6 !important; }
+        .exp-iab        { border-left: 4px solid #8b5cf6 !important; }
+        .exp-basf       { border-left: 4px solid #f59e0b !important; }
+        .exp-shapeai    { border-left: 4px solid #ec4899 !important; }
+        .exp-hoda       { border-left: 4px solid #06b6d4 !important; }
+
+        .exp-zalion:hover  { box-shadow: 0 20px 45px rgba(16,185,129,0.12) !important; }
+        .exp-siemens:hover { box-shadow: 0 20px 45px rgba(59,130,246,0.12) !important; }
+        .exp-iab:hover     { box-shadow: 0 20px 45px rgba(139,92,246,0.12) !important; }
+        .exp-basf:hover    { box-shadow: 0 20px 45px rgba(245,158,11,0.12) !important; }
+        .exp-shapeai:hover { box-shadow: 0 20px 45px rgba(236,72,153,0.12) !important; }
+        .exp-hoda:hover    { box-shadow: 0 20px 45px rgba(6,182,212,0.12) !important; }
+
+        /* ===== EXPERIENCE COMPANY BADGE DOTS ===== */
+        .exp-dot-zalion  { background: #10b981; }
+        .exp-dot-siemens { background: #3b82f6; }
+        .exp-dot-iab     { background: #8b5cf6; }
+        .exp-dot-basf    { background: #f59e0b; }
+        .exp-dot-shapeai { background: #ec4899; }
+        .exp-dot-hoda    { background: #06b6d4; }
+
+        /* ===== SECTION HEADER BADGE ===== */
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.9rem;
+            background: linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.1));
+            border: 1px solid rgba(99,102,241,0.25);
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6366f1;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== PROJECT CARD TAG PILLS ===== */
+        .tag {
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            border-radius: 0.375rem;
+        }
+
+        /* ===== DARK MODE SKILL CATEGORY ADJUSTMENTS ===== */
+        .dark .skill-cat-ai   { background: linear-gradient(135deg,rgba(109,40,217,0.15),rgba(91,33,182,0.1)) !important; border-color:rgba(139,92,246,0.3) !important; }
+        .dark .skill-cat-nlp  { background: linear-gradient(135deg,rgba(21,128,61,0.15),rgba(22,163,74,0.1)) !important; border-color:rgba(74,222,128,0.3) !important; }
+        .dark .skill-cat-ml   { background: linear-gradient(135deg,rgba(29,78,216,0.15),rgba(37,99,235,0.1)) !important; border-color:rgba(96,165,250,0.3) !important; }
+        .dark .skill-cat-prog { background: linear-gradient(135deg,rgba(67,56,202,0.15),rgba(79,70,229,0.1)) !important; border-color:rgba(129,140,248,0.3) !important; }
+        .dark .skill-cat-web  { background: linear-gradient(135deg,rgba(14,116,144,0.15),rgba(8,145,178,0.1)) !important; border-color:rgba(34,211,238,0.3) !important; }
+        .dark .skill-cat-mobile { background: linear-gradient(135deg,rgba(162,28,175,0.15),rgba(134,25,143,0.1)) !important; border-color:rgba(232,121,249,0.3) !important; }
+        .dark .skill-cat-db   { background: linear-gradient(135deg,rgba(133,77,14,0.15),rgba(161,98,7,0.1)) !important; border-color:rgba(250,204,21,0.3) !important; }
+        .dark .skill-cat-viz  { background: linear-gradient(135deg,rgba(6,95,70,0.15),rgba(4,120,87,0.1)) !important; border-color:rgba(52,211,153,0.3) !important; }
+        .dark .skill-cat-devops { background: linear-gradient(135deg,rgba(51,65,85,0.3),rgba(30,41,59,0.2)) !important; border-color:rgba(148,163,184,0.3) !important; }
+        .dark .skill-cat-productivity { background: linear-gradient(135deg,rgba(154,52,18,0.15),rgba(180,83,9,0.1)) !important; border-color:rgba(251,146,60,0.3) !important; }
+
+        .dark .skill-cat-ai   .skill-pill { background:rgba(109,40,217,0.2) !important; border-color:rgba(167,139,250,0.4) !important; color:#c4b5fd !important; }
+        .dark .skill-cat-nlp  .skill-pill { background:rgba(21,128,61,0.2) !important; border-color:rgba(74,222,128,0.4) !important; color:#86efac !important; }
+        .dark .skill-cat-ml   .skill-pill { background:rgba(29,78,216,0.2) !important; border-color:rgba(96,165,250,0.4) !important; color:#93c5fd !important; }
+        .dark .skill-cat-prog .skill-pill { background:rgba(67,56,202,0.2) !important; border-color:rgba(129,140,248,0.4) !important; color:#a5b4fc !important; }
+        .dark .skill-cat-web  .skill-pill { background:rgba(14,116,144,0.2) !important; border-color:rgba(34,211,238,0.4) !important; color:#67e8f9 !important; }
+        .dark .skill-cat-mobile .skill-pill { background:rgba(162,28,175,0.2) !important; border-color:rgba(232,121,249,0.4) !important; color:#f0abfc !important; }
+        .dark .skill-cat-db   .skill-pill { background:rgba(133,77,14,0.2) !important; border-color:rgba(250,204,21,0.4) !important; color:#fde047 !important; }
+        .dark .skill-cat-viz  .skill-pill { background:rgba(6,95,70,0.2) !important; border-color:rgba(52,211,153,0.4) !important; color:#6ee7b7 !important; }
+        .dark .skill-cat-devops .skill-pill { background:rgba(51,65,85,0.3) !important; border-color:rgba(148,163,184,0.4) !important; color:#cbd5e1 !important; }
+        .dark .skill-cat-productivity .skill-pill { background:rgba(154,52,18,0.2) !important; border-color:rgba(251,146,60,0.4) !important; color:#fdba74 !important; }
     </style>
 </head>
 
@@ -454,7 +616,6 @@
                     research, delivering impactful insights and innovative solutions.
                 </p>
                 <div class="flex flex-wrap gap-6 mb-10">
-                
                     <div class="flex items-center text-slate-600 dark:text-slate-400 group">
                         <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
                             <i class="fas fa-envelope text-purple-600 dark:text-purple-400"></i>
@@ -465,7 +626,7 @@
                         <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
                             <i class="fas fa-map-marker-alt text-green-600 dark:text-green-400"></i>
                         </div>
-                        <span class="font-medium">Nuremberg, Germany</span>
+                        <span class="font-medium">Munich, Germany</span>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-4">
@@ -499,8 +660,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Generative AI Systems -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-ai p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-brain text-purple-500 mr-2"></i> Generative AI Systems
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -515,8 +676,8 @@
             </div>
 
             <!-- Natural Language Processing -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-nlp p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-language text-green-500 mr-2"></i> NLP
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -528,8 +689,8 @@
             </div>
 
             <!-- Machine Learning & Analytics -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-ml p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-chart-line text-blue-500 mr-2"></i> ML & Analytics
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -541,8 +702,8 @@
             </div>
 
             <!-- Programming & Data Science -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-prog p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-code text-indigo-500 mr-2"></i> Programming & Data Science
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -558,8 +719,8 @@
             </div>
 
             <!-- Web Development & APIs -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-web p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-globe text-cyan-500 mr-2"></i> Web Development & APIs
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -576,8 +737,8 @@
             </div>
 
             <!-- Mobile & Backend Services -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-mobile p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-mobile-alt text-pink-500 mr-2"></i> Mobile & Backend
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -589,8 +750,8 @@
             </div>
 
             <!-- Databases & Big Data -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-db p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-database text-yellow-500 mr-2"></i> Databases & Big Data
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -602,8 +763,8 @@
             </div>
 
             <!-- Data Visualization & BI Tools -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-viz p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-chart-bar text-emerald-500 mr-2"></i> Data Visualization & BI
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -614,8 +775,8 @@
             </div>
 
             <!-- DevOps & Tools -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-devops p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-tools text-gray-500 mr-2"></i> DevOps & Tools
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -627,8 +788,8 @@
             </div>
 
             <!-- Productivity Tools -->
-            <div class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
+            <div class="skill-cat-productivity p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center">
                     <i class="fas fa-tasks text-orange-500 mr-2"></i> Productivity Tools
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -653,49 +814,83 @@
         </div>
 
         <div class="space-y-8">
-            <!-- Experience 1: Siemens Energy -->
-            <div class="card bg-white p-8 rounded-xl shadow-sm">
+            <!-- Experience 1: Zalion GmbH -->
+            <div class="card exp-zalion bg-white p-8 rounded-xl shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div>
-                        <h3 class="text-2xl font-bold text-slate-800">Junior Data Scientist (NLP)</h3>
-                        <p class="text-lg text-blue-500 font-medium">Siemens Energy - Master's Thesis</p>
-                        <p class="text-slate-600 mt-1">Erlangen, Germany (Hybrid)</p>
+                        <h3 class="text-2xl font-bold text-slate-800">Junior AI Engineer</h3>
+                        <p class="text-lg text-blue-500 font-medium">Zalion GmbH</p>
+                        <p class="text-slate-600 mt-1">Munich, Germany</p>
                     </div>
-                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Jul 2025 - Present</span>
+                    <span class="inline-block mt-2 md:mt-0 bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Mar 2026 – Present</span>
                 </div>
                 <ul class="space-y-2 text-slate-600">
                     <li class="flex items-start">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
-                        <span>Architected production-ready multi-agent AI framework using LangChain v1/LangGraph with PostgreSQL memory persistence, RESTful API (FastAPI + Swagger UI), and multi-LLM provider support (Azure OpenAI, Anthropic, Ollama) with hot-swapping capability and real-time streaming responses.</span>
+                        <span>Integrating specialized sub-agent endpoints into the chat interface to enable faster, task-specific AI interactions.</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
-                        <span>Implemented MCP server to orchestrate hierarchical multi-agent system with 6+ specialized agents (orchestrator, planner, architect, coder) using role-specific tools and parent-child coordination patterns for complex workflows.</span>
+                        <span>Designing and developing a multi-agent system for procurement workflows, improving automation and decision support.</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
-                        <span>Established comprehensive testing infrastructure with 22+ pytest tests covering framework initialization, tool integration, conversation memory, and multi-agent collaboration, ensuring production reliability and maintainability.</span>
+                        <span>Upgrading AI infrastructure using LangChain and LangGraph to improve modularity, scalability, and maintainability.</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
-                        <span>Applied framework to Siemens Energy's TMS: Developed agentic solution for operator support automating log trace analysis, incident report generation, automated fix plan recommendations (config diffs, restart/rollback procedures), and email notifications for proactive system maintenance.</span>
+                        <span>Developing frontend components using Next.js with Atomic Design principles for a scalable UI architecture.</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
-                        <span>Built NLP components (retrieval, summarization, entity extraction) with extensible tool registry (9+ capabilities: file operations, notifications, database queries) over TMS knowledge bases, enabling intelligent operator copilots for faster incident resolution and reduced downtime.</span>
+                        <span>Building backend services using FastAPI and deploying them on AWS EC2; implementing CI/CD pipelines to streamline development, testing, and deployment.</span>
                     </li>
                 </ul>
             </div>
 
-            <!-- Experience 2: Institute for Employment Research -->
-            <div class="card bg-white p-8 rounded-xl shadow-sm">
+            <!-- Experience 2: Siemens Energy -->
+            <div class="card exp-siemens bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Junior Data Scientist (NLP)</h3>
+                        <p class="text-lg text-blue-500 font-medium">Siemens Energy – Master's Thesis</p>
+                        <p class="text-slate-600 mt-1">Erlangen, Germany (Hybrid)</p>
+                    </div>
+                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Jul 2025 – Feb 2026</span>
+                </div>
+                <ul class="space-y-2 text-slate-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Designed and implemented a modular, production-oriented multi-agent framework for LLM-based systems with explicit orchestration, persistent conversation state, and auditable execution flows.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Implemented agent orchestration using LangGraph with centralized routing, hierarchical agent coordination, and strict separation between orchestration, agent execution, memory management, and tool invocation.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Built a unified execution pipeline via FastAPI-based REST interface with OpenAI-compatible endpoints, enabling consistent behavior across CLI, web UI, and API clients with streaming responses.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Applied the framework to two Siemens Energy projects: Methanol Factory Assistant for requirements-to-capabilities alignment and TMS operator support for log analysis, diagnostic summarization, and email draft generation.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                        <span>Implemented safety-critical human-in-the-loop approvals and established engineering-grade testing with pytest, structured logging, and configurable debug modes.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Experience 3: Institute for Employment Research -->
+            <div class="card exp-iab bg-white p-8 rounded-xl shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div>
                         <h3 class="text-2xl font-bold text-slate-800">Machine Learning Researcher / Research Assistant</h3>
                         <p class="text-lg text-blue-500 font-medium">Institute for Employment Research</p>
                         <p class="text-slate-600 mt-1">Nuremberg, Germany</p>
                     </div>
-                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Nov 2024 - Present</span>
+                    <span class="inline-block mt-2 md:mt-0 bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Nov 2024 – Feb 2026</span>
                 </div>
                 <ul class="space-y-2 text-slate-600">
                     <li class="flex items-start">
@@ -721,8 +916,8 @@
                 </ul>
             </div>
 
-            <!-- Experience 3: BASF -->
-            <div class="card bg-white p-8 rounded-xl shadow-sm">
+            <!-- Experience 4: BASF -->
+            <div class="card exp-basf bg-white p-8 rounded-xl shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div>
                         <h3 class="text-2xl font-bold text-slate-800">Data Consultant Intern</h3>
@@ -751,8 +946,8 @@
                 </ul>
             </div>
 
-            <!-- Experience 4: Shape AI -->
-            <div class="card bg-white p-8 rounded-xl shadow-sm">
+            <!-- Experience 5: Shape AI -->
+            <div class="card exp-shapeai bg-white p-8 rounded-xl shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div>
                         <h3 class="text-2xl font-bold text-slate-800">Business Development Intern</h3>
@@ -781,8 +976,8 @@
                 </ul>
             </div>
 
-            <!-- Experience 5: Hoda Engineering Works -->
-            <div class="card bg-white p-8 rounded-xl shadow-sm">
+            <!-- Experience 6: Hoda Engineering Works -->
+            <div class="card exp-hoda bg-white p-8 rounded-xl shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div>
                         <h3 class="text-2xl font-bold text-slate-800">Web Developer Intern</h3>
@@ -824,6 +1019,82 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 0: Lattice-Lab -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center">
+                    <i class="fas fa-project-diagram text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Lattice-Lab</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-100 text-cyan-800">
+                            AI Platform
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Visual multi-LLM collaboration platform — query up to 4 AI models simultaneously, compare responses, and build complex conversation workflows through an intuitive node-based canvas.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-cyan-50 text-cyan-700 text-xs rounded">Next.js</span>
+                        <span class="tag px-2 py-1 bg-cyan-50 text-cyan-700 text-xs rounded">FastAPI</span>
+                        <span class="tag px-2 py-1 bg-cyan-50 text-cyan-700 text-xs rounded">ReactFlow</span>
+                        <span class="tag px-2 py-1 bg-cyan-50 text-cyan-700 text-xs rounded">PostgreSQL</span>
+                        <span class="tag px-2 py-1 bg-cyan-50 text-cyan-700 text-xs rounded">TypeScript</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>Parallel execution across GPT-4o, Gemini, Claude, DeepSeek</li>
+                        <li>Real-time streaming responses per model</li>
+                        <li>Text-selection branching into new conversation nodes</li>
+                        <li>Merge multiple conversation paths into one node</li>
+                        <li>OAuth auth, user tiers, encrypted file attachments</li>
+                    </ul>
+                    <a href="https://github.com/ilhamlabs-ai/lattice-lab" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 0: When You Open Me -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center">
+                    <i class="fas fa-lock text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">When You Open Me</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                            Full-Stack
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Write a message to the future. Lock it with a password and a date — no one can open it before its time. AES-256 encrypted time capsules with server-enforced release locks.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded">Flask</span>
+                        <span class="tag px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded">PostgreSQL</span>
+                        <span class="tag px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded">AES-256</span>
+                        <span class="tag px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded">AWS S3</span>
+                        <span class="tag px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded">Docker</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>AES-256 encryption — server never sees plaintext</li>
+                        <li>Server-enforced time locks with live countdown</li>
+                        <li>Encrypted file attachments up to 50 MB</li>
+                        <li>Email invitations for unregistered recipients</li>
+                        <li>CI/CD via GitHub Actions + Docker on AWS EC2</li>
+                    </ul>
+                    <a href="https://whenyouopen.me" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        Live Demo <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
             <!-- Project 1: Multi Agent Project Generator -->
             <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
                 <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
@@ -832,7 +1103,7 @@
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="text-xl font-bold text-slate-800">Multi Agent Project Generator</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 whitespace-nowrap">
                             AI/Multi-Agent
                         </span>
                     </div>
@@ -867,8 +1138,8 @@
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="text-xl font-bold text-slate-800">Ilmora - Your Private Thinking Machine</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            Mobile AI
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 whitespace-nowrap">
+                            Mobile/AI
                         </span>
                     </div>
                     <p class="text-slate-600 mb-4">
@@ -890,6 +1161,44 @@
                         <li>Quality badges for model quantization levels</li>
                     </ul>
                     <a href="https://ilhamlabs-ai.github.io/ilmora-web/" class="inline-block mt-3 text-blue-300 hover:text-white">
+                        View Project <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project: Amorae -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-md relative">
+                <div class="h-48 bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center">
+                    <i class="fas fa-heart text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-slate-800">Amorae – AI Companion App</h3>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800 whitespace-nowrap">
+                            Mobile/AI
+                        </span>
+                    </div>
+                    <p class="text-slate-600 mb-4">
+                        Personalized AI companion app with 10 unique personas (Einstein, Gandhi, Tesla, Sherlock…), emotional intelligence, long-term memory, and custom companion creation.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag px-2 py-1 bg-rose-50 text-rose-600 text-xs rounded">Flutter</span>
+                        <span class="tag px-2 py-1 bg-rose-50 text-rose-600 text-xs rounded">FastAPI</span>
+                        <span class="tag px-2 py-1 bg-rose-50 text-rose-600 text-xs rounded">GPT-4o</span>
+                        <span class="tag px-2 py-1 bg-rose-50 text-rose-600 text-xs rounded">Firebase</span>
+                        <span class="tag px-2 py-1 bg-rose-50 text-rose-600 text-xs rounded">Riverpod</span>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <h4 class="font-bold mb-2">Key Features</h4>
+                    <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
+                        <li>10 distinct AI personas with unique speaking styles</li>
+                        <li>Long-term memory with fact extraction & recall</li>
+                        <li>Thread-specific personas for consistent conversations</li>
+                        <li>Google Sign-In & Firebase Auth</li>
+                        <li>Free & Pro subscription tiers</li>
+                    </ul>
+                    <a href="https://ilhamlabs-ai.github.io/Amorae-Web/" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-blue-300 hover:text-white">
                         View Project <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -1304,7 +1613,7 @@
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="text-xl font-bold text-slate-800">Emotion Detection System</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 whitespace-nowrap">
                             CNN/Deep Learning
                         </span>
                     </div>
@@ -1477,7 +1786,7 @@
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="text-xl font-bold text-slate-800">Data Quality Assessment Tool</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 whitespace-nowrap">
                             Data Science
                         </span>
                     </div>
@@ -1763,8 +2072,6 @@
                 <h3 class="text-xl font-semibold text-slate-800 mb-6">Contact Information</h3>
 
                 <div class="space-y-4">
-            
-
                     <div class="flex items-start">
                         <div
                             class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
