@@ -474,35 +474,38 @@
             </div>
           </article>
 
-          <!-- Project 5: whenyouopen.me -->
+          <!-- Project 5: When You Open Me -->
           <article class="featured-card">
             <div class="card-content">
               <div class="card-meta">
-                <span class="badge badge-info">Security & Cryptography</span>
-                <span class="card-category">Cloud Application</span>
+                <span class="badge badge-info">Zero-Knowledge Encryption</span>
+                <span class="card-category">Time-Locked Web App</span>
               </div>
               <div class="project-brand-header">
-                <img src="image/whenyouopen-mark.svg" alt="whenyouopen.me" class="project-mark" width="44" height="44">
-                <h3 class="card-title" style="margin-bottom: 0;">whenyouopen.me: Scheduled Encrypted Capsules</h3>
+                <img src="image/whenyouopen-mark.svg" alt="When You Open Me" class="project-mark" width="44" height="44">
+                <h3 class="card-title" style="margin-bottom: 0;">When You Open Me: Write to the Future</h3>
               </div>
               <p class="card-desc">
-                A deployed cloud application for scheduling private messages and file attachments for future release, with client-side password encryption, access controls, and cloud object storage.
+                Write a message to the future, locked with a password and a date. No one - not even the server - can open it before its time. Encrypts messages and file attachments (up to 50 MB each) with scheduled delivery; recipients cannot read content until the release time arrives and they enter the correct password.
               </p>
               <ul class="card-features">
-                <li>Client-side cryptographic locking before transmission with WebCrypto</li>
-                <li>FastAPI backend managing time-locks and authenticated delivery</li>
-                <li>Deployed with AWS S3, Docker, Nginx, and automated SSL termination</li>
+                <li><strong>AES-256 Fernet Encryption:</strong> PBKDF2-HMAC-SHA256 with 100,000 iterations and unique random salt per message; passwords and plaintext are never stored.</li>
+                <li><strong>Server-Enforced Time Locks:</strong> Database-level release verification with live countdown timers, email invitations, and unlock receipts.</li>
+                <li><strong>Encrypted File Attachments:</strong> Attach up to 5 files (50 MB each) encrypted with the shared password before upload to S3, with an in-browser file viewer.</li>
+                <li><strong>Full Self-Hosted Stack:</strong> FastAPI, PostgreSQL, Docker Compose, Nginx reverse proxy, scheduler, and Certbot automated SSL on AWS EC2.</li>
               </ul>
               <div class="tech-tags">
                 <span class="tag">FastAPI</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">AES-256 (Fernet)</span>
+                <span class="tag">PBKDF2</span>
                 <span class="tag">AWS S3</span>
-                <span class="tag">Docker</span>
+                <span class="tag">Docker Compose</span>
                 <span class="tag">Nginx</span>
-                <span class="tag">Encryption</span>
               </div>
               <div class="card-links">
                 <a class="btn btn-sm btn-primary" href="https://whenyouopen.me" target="_blank" rel="noopener noreferrer">
-                  <span>Visit whenyouopen.me</span>
+                  <span>Open whenyouopen.me</span>
                   <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
                     <path d="M4 12L12 4M12 4H6M12 4V10"/>
                   </svg>
