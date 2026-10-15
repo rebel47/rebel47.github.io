@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <defs>
+    <linearGradient id="lattice-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="lattice-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.1" />
+    </linearGradient>
+  </defs>
+  <!-- Background Glow / Frame -->
+  <rect x="6" y="6" width="88" height="88" rx="22" fill="#0b0f17" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.25" />
+  <!-- Diamond / Lattice Connection Lines -->
+  <path d="M50 22 L78 50 L50 78 L22 50 Z" stroke="url(#lattice-grad)" stroke-width="2.5" stroke-linejoin="round" />
+  <path d="M50 22 L50 78" stroke="url(#lattice-grad)" stroke-width="1.8" stroke-dasharray="3 3" stroke-opacity="0.6" />
+  <path d="M22 50 L78 50" stroke="url(#lattice-grad)" stroke-width="1.8" stroke-dasharray="3 3" stroke-opacity="0.6" />
+  <!-- Corner Nodes (Representing 4 Language Models) -->
+  <circle cx="50" cy="22" r="5" fill="#818cf8" />
+  <circle cx="50" cy="22" r="2" fill="#ffffff" />
+  
+  <circle cx="78" cy="50" r="5" fill="#38bdf8" />
+  <circle cx="78" cy="50" r="2" fill="#ffffff" />
+  
+  <circle cx="50" cy="78" r="5" fill="#6366f1" />
+  <circle cx="50" cy="78" r="2" fill="#ffffff" />
+  
+  <circle cx="22" cy="50" r="5" fill="#38bdf8" />
+  <circle cx="22" cy="50" r="2" fill="#ffffff" />
+  <!-- Central Convergence Hub Node -->
+  <circle cx="50" cy="50" r="7.5" fill="#0b0f17" stroke="url(#lattice-grad)" stroke-width="2.5" />
+  <circle cx="50" cy="50" r="3.5" fill="#38bdf8" />
+</svg>
