@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+  <!-- Squircle container -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg-grad)" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.3" />
+  <!-- Minimalist Geometric 'A' -->
+  <path d="M32 14 L46 48 L38.5 48 L35.2 39.5 L28.8 39.5 L25.5 48 L18 48 Z M30.3 33.5 L33.7 33.5 L32 24.2 Z" fill="#f8fafc" />
+  <!-- Cyan Accent dot / pulse -->
+  <circle cx="49" cy="46" r="3.5" fill="url(#accent-grad)" />
+</svg>
